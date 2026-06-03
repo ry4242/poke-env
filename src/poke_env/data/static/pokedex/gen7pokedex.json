@@ -39,6 +39,7 @@
             "0": "Snow Warning",
             "H": "Soundproof"
         },
+        "baseForme": "Highland",
         "baseStats": {
             "atk": 92,
             "def": 75,
@@ -55,13 +56,15 @@
         "evoLevel": 40,
         "formeOrder": [
             "Abomasnow",
-            "Abomasnow-Mega"
+            "Abomasnow-Mega",
+            "Abomasnow-Lowland"
         ],
         "heightm": 2.2,
         "name": "Abomasnow",
         "num": 460,
         "otherFormes": [
-            "Abomasnow-Mega"
+            "Abomasnow-Mega",
+            "Abomasnow-Lowland"
         ],
         "prevo": "Snover",
         "types": [
@@ -69,6 +72,40 @@
             "Ice"
         ],
         "weightkg": 135.5
+    },
+    "abomasnowlowland": {
+        "abilities": {
+            "0": "Evergreen",
+            "1": "Chlorophyll",
+            "H": "Soundproof"
+        },
+        "baseSpecies": "Abomasnow",
+        "baseStats": {
+            "atk": 92,
+            "def": 92,
+            "hp": 90,
+            "spa": 85,
+            "spd": 85,
+            "spe": 50
+        },
+        "changesFrom": "Abomasnow",
+        "color": "Brown",
+        "eggGroups": [
+            "Monster",
+            "Grass"
+        ],
+        "evoLevel": 40,
+        "forme": "Lowland",
+        "gen": 9,
+        "heightm": 2.4,
+        "name": "Abomasnow-Lowland",
+        "num": 460,
+        "prevo": "Snover-Lowland",
+        "types": [
+            "Grass",
+            "Ground"
+        ],
+        "weightkg": 122.5
     },
     "abomasnowmega": {
         "abilities": {
@@ -2114,7 +2151,7 @@
     },
     "avalugghisui": {
         "abilities": {
-            "0": "Strong Jaw",
+            "0": "Own Tempo",
             "1": "Ice Body",
             "H": "Sturdy"
         },
@@ -2132,7 +2169,9 @@
             "Monster",
             "Mineral"
         ],
+        "evoItem": "Mist Stone",
         "evoLevel": 37,
+        "evoType": "useItem",
         "forme": "Hisui",
         "heightm": 1.4,
         "name": "Avalugg-Hisui",
@@ -2222,15 +2261,55 @@
             "Fairy"
         ],
         "evoLevel": 18,
+        "formeOrder": [
+            "Azumarill",
+            "Azumarill-Kaskade"
+        ],
         "heightm": 0.8,
         "name": "Azumarill",
         "num": 184,
+        "otherFormes": [
+            "Azumarill-Kaskade"
+        ],
         "prevo": "Marill",
         "types": [
             "Water",
             "Fairy"
         ],
         "weightkg": 28.5
+    },
+    "azumarillkaskade": {
+        "abilities": {
+            "0": "Drizzle",
+            "1": "Sticky Hold",
+            "H": "Vegetate"
+        },
+        "baseSpecies": "Azumarill",
+        "baseStats": {
+            "atk": 20,
+            "def": 80,
+            "hp": 100,
+            "spa": 90,
+            "spd": 80,
+            "spe": 50
+        },
+        "color": "Green",
+        "eggGroups": [
+            "Water 1",
+            "Fairy"
+        ],
+        "evoLevel": 18,
+        "forme": "Kaskade",
+        "gen": 9,
+        "heightm": 1.1,
+        "name": "Azumarill-Kaskade",
+        "num": 184,
+        "prevo": "Marill-Kaskade",
+        "types": [
+            "Water",
+            "Grass"
+        ],
+        "weightkg": 30
     },
     "azurill": {
         "abilities": {
@@ -2254,6 +2333,10 @@
         "evos": [
             "Marill"
         ],
+        "formeOrder": [
+            "Azurill",
+            "Azurill-Kaskade"
+        ],
         "genderRatio": {
             "F": 0.75,
             "M": 0.25
@@ -2261,9 +2344,47 @@
         "heightm": 0.2,
         "name": "Azurill",
         "num": 298,
+        "otherFormes": [
+            "Azurill-Kaskade"
+        ],
         "types": [
             "Normal",
             "Fairy"
+        ],
+        "weightkg": 2
+    },
+    "azurillkaskade": {
+        "abilities": {
+            "0": "Hydration",
+            "1": "Sticky Hold",
+            "H": "Vegetate"
+        },
+        "baseSpecies": "Azurill",
+        "baseStats": {
+            "atk": 20,
+            "def": 40,
+            "hp": 50,
+            "spa": 20,
+            "spd": 40,
+            "spe": 20
+        },
+        "canHatch": true,
+        "color": "Green",
+        "eggGroups": [
+            "Water 1",
+            "Fairy"
+        ],
+        "evos": [
+            "Marill-Kaskade"
+        ],
+        "forme": "Kaskade",
+        "gen": 9,
+        "heightm": 0.2,
+        "name": "Azurill-Kaskade",
+        "num": 298,
+        "types": [
+            "Water",
+            "Grass"
         ],
         "weightkg": 2
     },
@@ -2872,12 +2993,51 @@
         "evos": [
             "Weepinbell"
         ],
+        "formeOrder": [
+            "Bellsprout",
+            "Bellsprout-Kaskade"
+        ],
         "heightm": 0.7,
         "name": "Bellsprout",
         "num": 69,
+        "otherFormes": [
+            "Bellsprout-Kaskade"
+        ],
         "types": [
             "Grass",
             "Poison"
+        ],
+        "weightkg": 4
+    },
+    "bellsproutkaskade": {
+        "abilities": {
+            "0": "Sweet Veil",
+            "1": "Triage",
+            "H": "Effect Spore"
+        },
+        "baseSpecies": "Bellsprout",
+        "baseStats": {
+            "atk": 70,
+            "def": 40,
+            "hp": 50,
+            "spa": 40,
+            "spd": 30,
+            "spe": 70
+        },
+        "color": "Green",
+        "eggGroups": [
+            "Grass"
+        ],
+        "evos": [
+            "Drosabell"
+        ],
+        "forme": "Kaskade",
+        "gen": 9,
+        "heightm": 0.7,
+        "name": "Bellsprout-Kaskade",
+        "num": 69,
+        "types": [
+            "Grass"
         ],
         "weightkg": 4
     },
@@ -2960,15 +3120,55 @@
             "Field"
         ],
         "evoLevel": 15,
+        "formeOrder": [
+            "Bibarel",
+            "Bibarel-Kaskade"
+        ],
         "heightm": 1,
         "name": "Bibarel",
         "num": 400,
+        "otherFormes": [
+            "Bibarel-Kaskade"
+        ],
         "prevo": "Bidoof",
         "types": [
             "Normal",
             "Water"
         ],
         "weightkg": 31.5
+    },
+    "bibarelkaskade": {
+        "abilities": {
+            "0": "Machine Precision",
+            "1": "Simple",
+            "H": "Magnapult"
+        },
+        "baseSpecies": "Bibarel",
+        "baseStats": {
+            "atk": 50,
+            "def": 55,
+            "hp": 79,
+            "spa": 85,
+            "spd": 70,
+            "spe": 71
+        },
+        "color": "Brown",
+        "eggGroups": [
+            "Water 1",
+            "Field"
+        ],
+        "evoLevel": 15,
+        "forme": "Kaskade",
+        "gen": 9,
+        "heightm": 1.2,
+        "name": "Bibarel-Kaskade",
+        "num": 400,
+        "prevo": "Bidoof-Kaskade",
+        "types": [
+            "Steel",
+            "Psychic"
+        ],
+        "weightkg": 58.5
     },
     "bidoof": {
         "abilities": {
@@ -2992,13 +3192,54 @@
         "evos": [
             "Bibarel"
         ],
+        "formeOrder": [
+            "Bidoof",
+            "Bidoof-Kaskade"
+        ],
         "heightm": 0.5,
         "name": "Bidoof",
         "num": 399,
+        "otherFormes": [
+            "Bidoof-Kaskade"
+        ],
         "types": [
             "Normal"
         ],
         "weightkg": 20
+    },
+    "bidoofkaskade": {
+        "abilities": {
+            "0": "Machine Precision",
+            "1": "Simple",
+            "H": "Magnapult"
+        },
+        "baseSpecies": "Bidoof",
+        "baseStats": {
+            "atk": 40,
+            "def": 40,
+            "hp": 59,
+            "spa": 35,
+            "spd": 45,
+            "spe": 31
+        },
+        "color": "Brown",
+        "eggGroups": [
+            "Water 1",
+            "Field"
+        ],
+        "evos": [
+            "Bibarel-Kaskade"
+        ],
+        "forme": "Kaskade",
+        "gen": 9,
+        "heightm": 0.5,
+        "name": "Bidoof-Kaskade",
+        "num": 399,
+        "types": [
+            "Steel",
+            "Normal"
+        ],
+        "weightkg": 32
     },
     "binacle": {
         "abilities": {
@@ -3329,7 +3570,7 @@
         "abilities": {
             "0": "Sturdy",
             "1": "Weak Armor",
-            "H": "Sand Force"
+            "H": "Earth Force"
         },
         "baseStats": {
             "atk": 105,
@@ -3376,7 +3617,8 @@
             "Undiscovered"
         ],
         "evos": [
-            "Sudowoodo"
+            "Sudowoodo",
+            "Sudowoodo-Amaze-All"
         ],
         "heightm": 0.5,
         "name": "Bonsly",
@@ -3540,7 +3782,7 @@
         ],
         "prevo": "Rufflet",
         "types": [
-            "Normal",
+            "Fighting",
             "Flying"
         ],
         "weightkg": 41
@@ -3564,7 +3806,8 @@
         "eggGroups": [
             "Flying"
         ],
-        "evoLevel": 54,
+        "evoItem": "Mist Stone",
+        "evoType": "useItem",
         "forme": "Hisui",
         "gender": "M",
         "heightm": 1.7,
@@ -3752,12 +3995,48 @@
         "eggGroups": [
             "Water 2"
         ],
+        "formeOrder": [
+            "Bruxish",
+            "Bruxish-Kaskade"
+        ],
         "heightm": 0.9,
         "name": "Bruxish",
         "num": 779,
+        "otherFormes": [
+            "Bruxish-Kaskade"
+        ],
         "types": [
             "Water",
             "Psychic"
+        ],
+        "weightkg": 19
+    },
+    "bruxishkaskade": {
+        "abilities": {
+            "0": "Cheek Pouch",
+            "1": "Strong Jaw",
+            "H": "Moxie"
+        },
+        "baseSpecies": "Bruxish",
+        "baseStats": {
+            "atk": 100,
+            "def": 70,
+            "hp": 78,
+            "spa": 75,
+            "spd": 70,
+            "spe": 82
+        },
+        "color": "Orange",
+        "eggGroups": [
+            "Water 2"
+        ],
+        "forme": "Kaskade",
+        "gen": 9,
+        "heightm": 0.9,
+        "name": "Bruxish-Kaskade",
+        "num": 779,
+        "types": [
+            "Water"
         ],
         "weightkg": 19
     },
@@ -3906,13 +4185,53 @@
         "evos": [
             "Diggersby"
         ],
+        "formeOrder": [
+            "Bunnelby",
+            "Bunnelby-Kaskade"
+        ],
         "heightm": 0.4,
         "name": "Bunnelby",
         "num": 659,
+        "otherFormes": [
+            "Bunnelby-Kaskade"
+        ],
         "types": [
             "Normal"
         ],
         "weightkg": 5
+    },
+    "bunnelbykaskade": {
+        "abilities": {
+            "0": "Slush Rush",
+            "1": "Ice Body",
+            "H": "Huge Power"
+        },
+        "baseSpecies": "Bunnelby",
+        "baseStats": {
+            "atk": 36,
+            "def": 38,
+            "hp": 38,
+            "spa": 32,
+            "spd": 36,
+            "spe": 57
+        },
+        "color": "White",
+        "eggGroups": [
+            "Field"
+        ],
+        "evos": [
+            "Diggersby-Kaskade"
+        ],
+        "forme": "Kaskade",
+        "gen": 9,
+        "heightm": 0.5,
+        "name": "Bunnelby-Kaskade",
+        "num": 659,
+        "types": [
+            "Ice",
+            "Normal"
+        ],
+        "weightkg": 10
     },
     "burmy": {
         "abilities": {
@@ -4410,18 +4729,166 @@
             "Castform",
             "Castform-Sunny",
             "Castform-Rainy",
-            "Castform-Snowy"
+            "Castform-Snowy",
+            "Castform-Shady",
+            "Castform-Sandy",
+            "Castform-Dusty",
+            "Castform-Allergy",
+            "Castform-Swarmy",
+            "Castform-Smoggy",
+            "Castform-Lovely",
+            "Castform-Gutsy",
+            "Castform-Spooky",
+            "Castform-Zenny",
+            "Castform-Sorcery",
+            "Castform-Zappy",
+            "Castform-Windy",
+            "Castform-Whirly"
         ],
         "heightm": 0.3,
         "name": "Castform",
         "num": 351,
         "otherFormes": [
-            "Castform-Sunny",
+            "Castform-Allergy",
+            "Castform-Dusty",
+            "Castform-Gutsy",
+            "Castform-Lovely",
             "Castform-Rainy",
-            "Castform-Snowy"
+            "Castform-Sandy",
+            "Castform-Shady",
+            "Castform-Smoggy",
+            "Castform-Snowy",
+            "Castform-Sorcery",
+            "Castform-Spooky",
+            "Castform-Sunny",
+            "Castform-Swarmy",
+            "Castform-Whirly",
+            "Castform-Windy",
+            "Castform-Zappy",
+            "Castform-Zenny"
         ],
         "types": [
             "Normal"
+        ],
+        "weightkg": 0.8
+    },
+    "castformallergy": {
+        "abilities": {
+            "0": "Forecast"
+        },
+        "baseSpecies": "Castform",
+        "baseStats": {
+            "atk": 85,
+            "def": 85,
+            "hp": 90,
+            "spa": 85,
+            "spd": 85,
+            "spe": 85
+        },
+        "battleOnly": "Castform",
+        "color": "Green",
+        "eggGroups": [
+            "Fairy",
+            "Amorphous"
+        ],
+        "forme": "Allergy",
+        "gen": 9,
+        "heightm": 0.3,
+        "name": "Castform-Allergy",
+        "num": 351,
+        "requiredAbility": "Forecast",
+        "types": [
+            "Grass"
+        ],
+        "weightkg": 0.8
+    },
+    "castformdusty": {
+        "abilities": {
+            "0": "Forecast"
+        },
+        "baseSpecies": "Castform",
+        "baseStats": {
+            "atk": 85,
+            "def": 85,
+            "hp": 90,
+            "spa": 85,
+            "spd": 85,
+            "spe": 85
+        },
+        "battleOnly": "Castform",
+        "color": "Brown",
+        "eggGroups": [
+            "Fairy",
+            "Amorphous"
+        ],
+        "forme": "Dusty",
+        "gen": 9,
+        "heightm": 0.3,
+        "name": "Castform-Dusty",
+        "num": 351,
+        "requiredAbility": "Forecast",
+        "types": [
+            "Ground"
+        ],
+        "weightkg": 0.8
+    },
+    "castformgutsy": {
+        "abilities": {
+            "0": "Forecast"
+        },
+        "baseSpecies": "Castform",
+        "baseStats": {
+            "atk": 85,
+            "def": 85,
+            "hp": 90,
+            "spa": 85,
+            "spd": 85,
+            "spe": 85
+        },
+        "battleOnly": "Castform",
+        "color": "Blue",
+        "eggGroups": [
+            "Fairy",
+            "Amorphous"
+        ],
+        "forme": "Gutsy",
+        "gen": 9,
+        "heightm": 0.3,
+        "name": "Castform-Gutsy",
+        "num": 351,
+        "requiredAbility": "Forecast",
+        "types": [
+            "Fighting"
+        ],
+        "weightkg": 0.8
+    },
+    "castformlovely": {
+        "abilities": {
+            "0": "Forecast"
+        },
+        "baseSpecies": "Castform",
+        "baseStats": {
+            "atk": 85,
+            "def": 85,
+            "hp": 90,
+            "spa": 85,
+            "spd": 85,
+            "spe": 85
+        },
+        "battleOnly": "Castform",
+        "color": "Pink",
+        "eggGroups": [
+            "Fairy",
+            "Amorphous"
+        ],
+        "forme": "Lovely",
+        "gen": 9,
+        "heightm": 0.3,
+        "name": "Castform-Lovely",
+        "num": 351,
+        "requiredAbility": "Forecast",
+        "types": [
+            "Fairy"
         ],
         "weightkg": 0.8
     },
@@ -4454,6 +4921,96 @@
         ],
         "weightkg": 0.8
     },
+    "castformsandy": {
+        "abilities": {
+            "0": "Forecast"
+        },
+        "baseSpecies": "Castform",
+        "baseStats": {
+            "atk": 85,
+            "def": 85,
+            "hp": 90,
+            "spa": 85,
+            "spd": 85,
+            "spe": 85
+        },
+        "battleOnly": "Castform",
+        "color": "Brown",
+        "eggGroups": [
+            "Fairy",
+            "Amorphous"
+        ],
+        "forme": "Sandy",
+        "gen": 9,
+        "heightm": 0.3,
+        "name": "Castform-Sandy",
+        "num": 351,
+        "requiredAbility": "Forecast",
+        "types": [
+            "Rock"
+        ],
+        "weightkg": 0.8
+    },
+    "castformshady": {
+        "abilities": {
+            "0": "Forecast"
+        },
+        "baseSpecies": "Castform",
+        "baseStats": {
+            "atk": 85,
+            "def": 85,
+            "hp": 90,
+            "spa": 85,
+            "spd": 85,
+            "spe": 85
+        },
+        "battleOnly": "Castform",
+        "color": "Red",
+        "eggGroups": [
+            "Fairy",
+            "Amorphous"
+        ],
+        "forme": "Shady",
+        "gen": 9,
+        "heightm": 0.3,
+        "name": "Castform-Shady",
+        "num": 351,
+        "requiredAbility": "Forecast",
+        "types": [
+            "Dark"
+        ],
+        "weightkg": 0.8
+    },
+    "castformsmoggy": {
+        "abilities": {
+            "0": "Forecast"
+        },
+        "baseSpecies": "Castform",
+        "baseStats": {
+            "atk": 85,
+            "def": 85,
+            "hp": 90,
+            "spa": 85,
+            "spd": 85,
+            "spe": 85
+        },
+        "battleOnly": "Castform",
+        "color": "Purple",
+        "eggGroups": [
+            "Fairy",
+            "Amorphous"
+        ],
+        "forme": "Smoggy",
+        "gen": 9,
+        "heightm": 0.3,
+        "name": "Castform-Smoggy",
+        "num": 351,
+        "requiredAbility": "Forecast",
+        "types": [
+            "Poison"
+        ],
+        "weightkg": 0.8
+    },
     "castformsnowy": {
         "abilities": {
             "0": "Forecast"
@@ -4483,6 +5040,66 @@
         ],
         "weightkg": 0.8
     },
+    "castformsorcery": {
+        "abilities": {
+            "0": "Forecast"
+        },
+        "baseSpecies": "Castform",
+        "baseStats": {
+            "atk": 85,
+            "def": 85,
+            "hp": 90,
+            "spa": 85,
+            "spd": 85,
+            "spe": 85
+        },
+        "battleOnly": "Castform",
+        "color": "Red",
+        "eggGroups": [
+            "Fairy",
+            "Amorphous"
+        ],
+        "forme": "Sorcery",
+        "gen": 9,
+        "heightm": 0.3,
+        "name": "Castform-Sorcery",
+        "num": 351,
+        "requiredAbility": "Forecast",
+        "types": [
+            "Dragon"
+        ],
+        "weightkg": 0.8
+    },
+    "castformspooky": {
+        "abilities": {
+            "0": "Forecast"
+        },
+        "baseSpecies": "Castform",
+        "baseStats": {
+            "atk": 85,
+            "def": 85,
+            "hp": 90,
+            "spa": 85,
+            "spd": 85,
+            "spe": 85
+        },
+        "battleOnly": "Castform",
+        "color": "White",
+        "eggGroups": [
+            "Fairy",
+            "Amorphous"
+        ],
+        "forme": "Spooky",
+        "gen": 9,
+        "heightm": 0.3,
+        "name": "Castform-Spooky",
+        "num": 351,
+        "requiredAbility": "Forecast",
+        "types": [
+            "Ghost"
+        ],
+        "weightkg": 0.8
+    },
     "castformsunny": {
         "abilities": {
             "0": "Forecast"
@@ -4509,6 +5126,156 @@
         "requiredAbility": "Forecast",
         "types": [
             "Fire"
+        ],
+        "weightkg": 0.8
+    },
+    "castformswarmy": {
+        "abilities": {
+            "0": "Forecast"
+        },
+        "baseSpecies": "Castform",
+        "baseStats": {
+            "atk": 85,
+            "def": 85,
+            "hp": 90,
+            "spa": 85,
+            "spd": 85,
+            "spe": 85
+        },
+        "battleOnly": "Castform",
+        "color": "Green",
+        "eggGroups": [
+            "Fairy",
+            "Amorphous"
+        ],
+        "forme": "Swarmy",
+        "gen": 9,
+        "heightm": 0.3,
+        "name": "Castform-Swarmy",
+        "num": 351,
+        "requiredAbility": "Forecast",
+        "types": [
+            "Bug"
+        ],
+        "weightkg": 0.8
+    },
+    "castformwhirly": {
+        "abilities": {
+            "0": "Nullify"
+        },
+        "baseSpecies": "Castform",
+        "baseStats": {
+            "atk": 95,
+            "def": 95,
+            "hp": 90,
+            "spa": 95,
+            "spd": 95,
+            "spe": 95
+        },
+        "changesFrom": "Castform",
+        "color": "Gray",
+        "eggGroups": [
+            "Fairy",
+            "Amorphous"
+        ],
+        "forme": "Whirly",
+        "gen": 9,
+        "heightm": 0.3,
+        "name": "Castform-Whirly",
+        "num": 351,
+        "requiredItem": "Whirligig",
+        "types": [
+            "Steel"
+        ],
+        "weightkg": 0.8
+    },
+    "castformwindy": {
+        "abilities": {
+            "0": "Forecast"
+        },
+        "baseSpecies": "Castform",
+        "baseStats": {
+            "atk": 85,
+            "def": 85,
+            "hp": 90,
+            "spa": 85,
+            "spd": 85,
+            "spe": 85
+        },
+        "battleOnly": "Castform",
+        "color": "White",
+        "eggGroups": [
+            "Fairy",
+            "Amorphous"
+        ],
+        "forme": "Windy",
+        "gen": 9,
+        "heightm": 0.3,
+        "name": "Castform-Windy",
+        "num": 351,
+        "requiredAbility": "Forecast",
+        "types": [
+            "Flying"
+        ],
+        "weightkg": 0.8
+    },
+    "castformzappy": {
+        "abilities": {
+            "0": "Forecast"
+        },
+        "baseSpecies": "Castform",
+        "baseStats": {
+            "atk": 85,
+            "def": 85,
+            "hp": 90,
+            "spa": 85,
+            "spd": 85,
+            "spe": 85
+        },
+        "battleOnly": "Castform",
+        "color": "Yellow",
+        "eggGroups": [
+            "Fairy",
+            "Amorphous"
+        ],
+        "forme": "Zappy",
+        "gen": 9,
+        "heightm": 0.3,
+        "name": "Castform-Zappy",
+        "num": 351,
+        "requiredAbility": "Forecast",
+        "types": [
+            "Electric"
+        ],
+        "weightkg": 0.8
+    },
+    "castformzenny": {
+        "abilities": {
+            "0": "Forecast"
+        },
+        "baseSpecies": "Castform",
+        "baseStats": {
+            "atk": 85,
+            "def": 85,
+            "hp": 90,
+            "spa": 85,
+            "spd": 85,
+            "spe": 85
+        },
+        "battleOnly": "Castform",
+        "color": "Purple",
+        "eggGroups": [
+            "Fairy",
+            "Amorphous"
+        ],
+        "forme": "Zenny",
+        "gen": 9,
+        "heightm": 0.3,
+        "name": "Castform-Zenny",
+        "num": 351,
+        "requiredAbility": "Forecast",
+        "types": [
+            "Psychic"
         ],
         "weightkg": 0.8
     },
@@ -7948,9 +8715,16 @@
             "Field"
         ],
         "evoLevel": 20,
+        "formeOrder": [
+            "Diggersby",
+            "Diggersby-Kaskade"
+        ],
         "heightm": 1,
         "name": "Diggersby",
         "num": 660,
+        "otherFormes": [
+            "Diggersby-Kaskade"
+        ],
         "prevo": "Bunnelby",
         "types": [
             "Normal",
@@ -7958,11 +8732,43 @@
         ],
         "weightkg": 42.4
     },
+    "diggersbykaskade": {
+        "abilities": {
+            "0": "Slush Rush",
+            "1": "Ice Body",
+            "H": "Huge Power"
+        },
+        "baseSpecies": "Diggersby",
+        "baseStats": {
+            "atk": 55,
+            "def": 87,
+            "hp": 85,
+            "spa": 54,
+            "spd": 77,
+            "spe": 65
+        },
+        "color": "White",
+        "eggGroups": [
+            "Field"
+        ],
+        "evoLevel": 20,
+        "forme": "Kaskade",
+        "gen": 9,
+        "heightm": 1.1,
+        "name": "Diggersby-Kaskade",
+        "num": 660,
+        "prevo": "Bunnelby-Kaskade",
+        "types": [
+            "Ice",
+            "Normal"
+        ],
+        "weightkg": 44.2
+    },
     "diglett": {
         "abilities": {
             "0": "Sand Veil",
             "1": "Arena Trap",
-            "H": "Sand Force"
+            "H": "Earth Force"
         },
         "baseStats": {
             "atk": 55,
@@ -7998,7 +8804,7 @@
         "abilities": {
             "0": "Sand Veil",
             "1": "Tangling Hair",
-            "H": "Sand Force"
+            "H": "Earth Force"
         },
         "baseSpecies": "Diglett",
         "baseStats": {
@@ -8238,8 +9044,8 @@
     },
     "dragalgemega": {
         "abilities": {
-            "0": "Poison Point",
-            "1": "Poison Touch",
+            "0": "Poison Coat",
+            "1": "Poison Coat",
             "H": "Adaptability"
         },
         "baseSpecies": "Dragalge",
@@ -8542,9 +9348,16 @@
             "Amorphous"
         ],
         "evoLevel": 28,
+        "formeOrder": [
+            "Drifblim",
+            "Drifblim-Amaze-All"
+        ],
         "heightm": 1.2,
         "name": "Drifblim",
         "num": 426,
+        "otherFormes": [
+            "Drifblim-Amaze-All"
+        ],
         "prevo": "Drifloon",
         "types": [
             "Ghost",
@@ -8552,10 +9365,43 @@
         ],
         "weightkg": 15
     },
+    "drifblimamazeall": {
+        "abilities": {
+            "0": "Pickup",
+            "1": "Levitate",
+            "H": "Surveillance"
+        },
+        "baseSpecies": "Drifblim",
+        "baseStats": {
+            "atk": 70,
+            "def": 44,
+            "hp": 150,
+            "spa": 80,
+            "spd": 54,
+            "spe": 100
+        },
+        "color": "Blue",
+        "eggGroups": [
+            "Amorphous"
+        ],
+        "evoItem": "Amaze-Drive",
+        "evoType": "useItem",
+        "forme": "Amaze-All",
+        "gen": 9,
+        "heightm": 1,
+        "name": "Drifblim-Amaze-All",
+        "num": 426,
+        "prevo": "Drifloon",
+        "types": [
+            "Ghost",
+            "Steel"
+        ],
+        "weightkg": 25
+    },
     "drifloon": {
         "abilities": {
             "0": "Aftermath",
-            "1": "Unburden",
+            "1": "Soul Drain",
             "H": "Flare Boost"
         },
         "baseStats": {
@@ -8571,7 +9417,8 @@
             "Amorphous"
         ],
         "evos": [
-            "Drifblim"
+            "Drifblim",
+            "Drifblim-Amaze-All"
         ],
         "heightm": 0.4,
         "name": "Drifloon",
@@ -8585,7 +9432,7 @@
     "drilbur": {
         "abilities": {
             "0": "Sand Rush",
-            "1": "Sand Force",
+            "1": "Earth Force",
             "H": "Mold Breaker"
         },
         "baseStats": {
@@ -8601,7 +9448,8 @@
             "Field"
         ],
         "evos": [
-            "Excadrill"
+            "Excadrill",
+            "Excadrill-Kaskade"
         ],
         "heightm": 0.3,
         "name": "Drilbur",
@@ -8702,7 +9550,7 @@
         "abilities": {
             "0": "Sand Veil",
             "1": "Arena Trap",
-            "H": "Sand Force"
+            "H": "Earth Force"
         },
         "baseStats": {
             "atk": 100,
@@ -8737,7 +9585,7 @@
         "abilities": {
             "0": "Sand Veil",
             "1": "Tangling Hair",
-            "H": "Sand Force"
+            "H": "Earth Force"
         },
         "baseSpecies": "Dugtrio",
         "baseStats": {
@@ -8850,14 +9698,56 @@
         "evos": [
             "Reuniclus"
         ],
+        "formeOrder": [
+            "Duosion",
+            "Duosion-Kaskade"
+        ],
         "heightm": 0.6,
         "name": "Duosion",
         "num": 578,
+        "otherFormes": [
+            "Duosion-Kaskade"
+        ],
         "prevo": "Solosis",
         "types": [
             "Psychic"
         ],
         "weightkg": 8
+    },
+    "duosionkaskade": {
+        "abilities": {
+            "0": "Overcoat",
+            "1": "Carbon Capture",
+            "H": "Magic Guard"
+        },
+        "baseSpecies": "Duosion",
+        "baseStats": {
+            "atk": 40,
+            "def": 55,
+            "hp": 65,
+            "spa": 100,
+            "spd": 80,
+            "spe": 30
+        },
+        "color": "Blue",
+        "eggGroups": [
+            "Amorphous"
+        ],
+        "evoLevel": 32,
+        "evos": [
+            "Reuniclus-Kaskade"
+        ],
+        "forme": "Kaskade",
+        "gen": 9,
+        "heightm": 0.7,
+        "name": "Duosion-Kaskade",
+        "num": 578,
+        "prevo": "Solosis-Kaskade",
+        "types": [
+            "Psychic",
+            "Water"
+        ],
+        "weightkg": 8.3
     },
     "durant": {
         "abilities": {
@@ -9149,7 +10039,8 @@
             "Umbreon",
             "Leafeon",
             "Glaceon",
-            "Sylveon"
+            "Sylveon",
+            "Enigmeon"
         ],
         "formeOrder": [
             "Eevee",
@@ -9798,6 +10689,7 @@
             "Field"
         ],
         "evoCondition": "during the day",
+        "evoItem": "Sun Stone",
         "evoType": "levelFriendship",
         "genderRatio": {
             "F": 0.125,
@@ -9845,7 +10737,7 @@
     "excadrill": {
         "abilities": {
             "0": "Sand Rush",
-            "1": "Sand Force",
+            "1": "Earth Force",
             "H": "Mold Breaker"
         },
         "baseStats": {
@@ -9863,18 +10755,52 @@
         "evoLevel": 31,
         "formeOrder": [
             "Excadrill",
-            "Excadrill-Mega"
+            "Excadrill-Mega",
+            "Excadrill-Kaskade"
         ],
         "heightm": 0.7,
         "name": "Excadrill",
         "num": 530,
         "otherFormes": [
-            "Excadrill-Mega"
+            "Excadrill-Mega",
+            "Excadrill-Kaskade"
         ],
         "prevo": "Drilbur",
         "types": [
             "Ground",
             "Steel"
+        ],
+        "weightkg": 40.4
+    },
+    "excadrillkaskade": {
+        "abilities": {
+            "0": "Sand Rush",
+            "1": "Chakra",
+            "H": "Incantation"
+        },
+        "baseSpecies": "Excadrill",
+        "baseStats": {
+            "atk": 50,
+            "def": 65,
+            "hp": 110,
+            "spa": 135,
+            "spd": 60,
+            "spe": 88
+        },
+        "color": "Pink",
+        "eggGroups": [
+            "Field"
+        ],
+        "evoLevel": 31,
+        "forme": "Kaskade",
+        "gen": 9,
+        "heightm": 0.7,
+        "name": "Excadrill-Kaskade",
+        "num": 530,
+        "prevo": "Drilbur",
+        "types": [
+            "Ground",
+            "Fairy"
         ],
         "weightkg": 40.4
     },
@@ -10459,10 +11385,10 @@
         },
         "color": "White",
         "cosmeticFormes": [
-            "Flabe\u0301be\u0301-Blue",
+            "Flabe\u0301be\u0301-Yellow",
             "Flabe\u0301be\u0301-Orange",
-            "Flabe\u0301be\u0301-White",
-            "Flabe\u0301be\u0301-Yellow"
+            "Flabe\u0301be\u0301-Blue",
+            "Flabe\u0301be\u0301-White"
         ],
         "eggGroups": [
             "Fairy"
@@ -10687,10 +11613,10 @@
         },
         "color": "White",
         "cosmeticFormes": [
-            "Floette-Blue",
+            "Floette-Yellow",
             "Floette-Orange",
-            "Floette-White",
-            "Floette-Yellow"
+            "Floette-Blue",
+            "Floette-White"
         ],
         "eggGroups": [
             "Fairy"
@@ -10796,15 +11722,15 @@
         },
         "color": "White",
         "cosmeticFormes": [
-            "Florges-Blue",
+            "Florges-Yellow",
             "Florges-Orange",
-            "Florges-White",
-            "Florges-Yellow"
+            "Florges-Blue",
+            "Florges-White"
         ],
         "eggGroups": [
             "Fairy"
         ],
-        "evoItem": "Shiny Stone",
+        "evoItem": "Dawn Stone",
         "evoType": "useItem",
         "formeOrder": [
             "Florges",
@@ -10819,7 +11745,8 @@
         "num": 671,
         "prevo": "Floette",
         "types": [
-            "Fairy"
+            "Fairy",
+            "Grass"
         ],
         "weightkg": 10
     },
@@ -11178,15 +12105,15 @@
         },
         "color": "White",
         "cosmeticFormes": [
-            "Furfrou-Dandy",
-            "Furfrou-Debutante",
-            "Furfrou-Diamond",
             "Furfrou-Heart",
-            "Furfrou-Kabuki",
-            "Furfrou-La Reine",
+            "Furfrou-Star",
+            "Furfrou-Diamond",
+            "Furfrou-Debutante",
             "Furfrou-Matron",
-            "Furfrou-Pharaoh",
-            "Furfrou-Star"
+            "Furfrou-Dandy",
+            "Furfrou-La Reine",
+            "Furfrou-Kabuki",
+            "Furfrou-Pharaoh"
         ],
         "eggGroups": [
             "Field"
@@ -11464,7 +12391,7 @@
     },
     "garchompmega": {
         "abilities": {
-            "0": "Sand Force"
+            "0": "Earth Force"
         },
         "baseSpecies": "Garchomp",
         "baseStats": {
@@ -11493,7 +12420,7 @@
     },
     "garchompmegaz": {
         "abilities": {
-            "0": "Sand Force"
+            "0": "Earth Force"
         },
         "baseSpecies": "Garchomp",
         "baseStats": {
@@ -11603,20 +12530,60 @@
         "evos": [
             "Haunter"
         ],
+        "formeOrder": [
+            "Gastly",
+            "Gastly-Kaskade"
+        ],
         "heightm": 1.3,
         "name": "Gastly",
         "num": 92,
+        "otherFormes": [
+            "Gastly-Kaskade"
+        ],
         "types": [
             "Ghost",
             "Poison"
         ],
         "weightkg": 0.1
     },
+    "gastlykaskade": {
+        "abilities": {
+            "0": "Levitate",
+            "1": "Warp Mist",
+            "H": "Carbon Capture"
+        },
+        "baseSpecies": "Gastly",
+        "baseStats": {
+            "atk": 35,
+            "def": 40,
+            "hp": 30,
+            "spa": 80,
+            "spd": 25,
+            "spe": 100
+        },
+        "color": "White",
+        "eggGroups": [
+            "Amorphous"
+        ],
+        "evos": [
+            "Haunter-Kaskade"
+        ],
+        "forme": "Kaskade",
+        "gen": 9,
+        "heightm": 0.9,
+        "name": "Gastly-Kaskade",
+        "num": 92,
+        "types": [
+            "Ghost",
+            "Water"
+        ],
+        "weightkg": 2
+    },
     "gastrodon": {
         "abilities": {
             "0": "Sticky Hold",
             "1": "Storm Drain",
-            "H": "Sand Force"
+            "H": "Earth Force"
         },
         "baseForme": "West",
         "baseStats": {
@@ -11839,13 +12806,15 @@
         "evoType": "trade",
         "formeOrder": [
             "Gengar",
-            "Gengar-Mega"
+            "Gengar-Mega",
+            "Gengar-Kaskade"
         ],
         "heightm": 1.5,
         "name": "Gengar",
         "num": 94,
         "otherFormes": [
-            "Gengar-Mega"
+            "Gengar-Mega",
+            "Gengar-Kaskade"
         ],
         "prevo": "Haunter",
         "types": [
@@ -11881,6 +12850,39 @@
             "Poison"
         ],
         "weightkg": 0
+    },
+    "gengarkaskade": {
+        "abilities": {
+            "0": "Levitate",
+            "1": "Warp Mist",
+            "H": "Carbon Capture"
+        },
+        "baseSpecies": "Gengar",
+        "baseStats": {
+            "atk": 55,
+            "def": 85,
+            "hp": 65,
+            "spa": 110,
+            "spd": 55,
+            "spe": 130
+        },
+        "color": "White",
+        "eggGroups": [
+            "Amorphous"
+        ],
+        "evoCondition": "Fog",
+        "evoType": "weathergy",
+        "forme": "Kaskade",
+        "gen": 9,
+        "heightm": 1.4,
+        "name": "Gengar-Kaskade",
+        "num": 94,
+        "prevo": "Haunter-Kaskade",
+        "types": [
+            "Ghost",
+            "Water"
+        ],
+        "weightkg": 35
     },
     "gengarmega": {
         "abilities": {
@@ -12013,7 +13015,7 @@
         "abilities": {
             "0": "Sturdy",
             "1": "Sand Stream",
-            "H": "Sand Force"
+            "H": "Earth Force"
         },
         "baseStats": {
             "atk": 135,
@@ -12027,6 +13029,7 @@
         "eggGroups": [
             "Mineral"
         ],
+        "evoMove": "Power Gem",
         "evoType": "trade",
         "heightm": 1.7,
         "name": "Gigalith",
@@ -12404,7 +13407,8 @@
         ],
         "evoLevel": 22,
         "evos": [
-            "Crobat"
+            "Crobat",
+            "Probat"
         ],
         "heightm": 1.6,
         "name": "Golbat",
@@ -12724,6 +13728,7 @@
         ],
         "evoCondition": "during rain",
         "evoLevel": 50,
+        "evoType": "weathergy",
         "formeOrder": [
             "Goodra",
             "Goodra-Hisui"
@@ -12759,8 +13764,8 @@
         "eggGroups": [
             "Dragon"
         ],
-        "evoCondition": "during rain",
-        "evoLevel": 50,
+        "evoCondition": "Rain starting at level 50",
+        "evoType": "weathergy",
         "forme": "Hisui",
         "heightm": 1.7,
         "name": "Goodra-Hisui",
@@ -12949,6 +13954,7 @@
         "eggGroups": [
             "Amorphous"
         ],
+        "evoCondition": "Paranormal Activity starting at level 30",
         "evoType": "trade",
         "formeOrder": [
             "Gourgeist",
@@ -12989,6 +13995,7 @@
         "eggGroups": [
             "Amorphous"
         ],
+        "evoCondition": "Paranormal Activity starting at level 30",
         "evoType": "trade",
         "forme": "Large",
         "heightm": 1.1,
@@ -13019,6 +14026,7 @@
         "eggGroups": [
             "Amorphous"
         ],
+        "evoCondition": "Paranormal Activity starting at level 30",
         "evoType": "trade",
         "forme": "Small",
         "heightm": 0.7,
@@ -13050,6 +14058,7 @@
         "eggGroups": [
             "Amorphous"
         ],
+        "evoCondition": "Paranormal Activity starting at level 30",
         "evoType": "trade",
         "forme": "Super",
         "heightm": 1.7,
@@ -13825,7 +14834,7 @@
         "prevo": "Magikarp",
         "types": [
             "Water",
-            "Flying"
+            "Dragon"
         ],
         "weightkg": 235
     },
@@ -13973,15 +14982,56 @@
         "evos": [
             "Gengar"
         ],
+        "formeOrder": [
+            "Haunter",
+            "Haunter-Kaskade"
+        ],
         "heightm": 1.6,
         "name": "Haunter",
         "num": 93,
+        "otherFormes": [
+            "Haunter-Kaskade"
+        ],
         "prevo": "Gastly",
         "types": [
             "Ghost",
             "Poison"
         ],
         "weightkg": 0.1
+    },
+    "haunterkaskade": {
+        "abilities": {
+            "0": "Levitate",
+            "1": "Warp Mist",
+            "H": "Carbon Capture"
+        },
+        "baseSpecies": "Haunter",
+        "baseStats": {
+            "atk": 50,
+            "def": 60,
+            "hp": 45,
+            "spa": 95,
+            "spd": 40,
+            "spe": 115
+        },
+        "color": "White",
+        "eggGroups": [
+            "Amorphous"
+        ],
+        "evos": [
+            "Gengar-Kaskade"
+        ],
+        "forme": "Kaskade",
+        "gen": 9,
+        "heightm": 1.5,
+        "name": "Haunter-Kaskade",
+        "num": 93,
+        "prevo": "Gastly-Kaskade",
+        "types": [
+            "Ghost",
+            "Water"
+        ],
+        "weightkg": 5
     },
     "hawlucha": {
         "abilities": {
@@ -14072,7 +15122,8 @@
         "num": 612,
         "prevo": "Fraxure",
         "types": [
-            "Dragon"
+            "Dragon",
+            "Steel"
         ],
         "weightkg": 105.5
     },
@@ -14366,7 +15417,7 @@
     "hippopotas": {
         "abilities": {
             "0": "Sand Stream",
-            "H": "Sand Force"
+            "H": "Earth Force"
         },
         "baseStats": {
             "atk": 72,
@@ -14394,7 +15445,7 @@
     "hippowdon": {
         "abilities": {
             "0": "Sand Stream",
-            "H": "Sand Force"
+            "H": "Earth Force"
         },
         "baseStats": {
             "atk": 112,
@@ -16598,7 +17649,7 @@
     },
     "landorus": {
         "abilities": {
-            "0": "Sand Force",
+            "0": "Earth Force",
             "H": "Sheer Force"
         },
         "baseForme": "Incarnate",
@@ -17973,12 +19024,53 @@
         "evos": [
             "Luxray"
         ],
+        "formeOrder": [
+            "Luxio",
+            "Luxio-Kaskade"
+        ],
         "heightm": 0.9,
         "name": "Luxio",
         "num": 404,
+        "otherFormes": [
+            "Luxio-Kaskade"
+        ],
         "prevo": "Shinx",
         "types": [
             "Electric"
+        ],
+        "weightkg": 30.5
+    },
+    "luxiokaskade": {
+        "abilities": {
+            "0": "Fur Coat",
+            "1": "Moxie",
+            "H": "Slush Rush"
+        },
+        "baseSpecies": "Luxio",
+        "baseStats": {
+            "atk": 85,
+            "def": 49,
+            "hp": 60,
+            "spa": 60,
+            "spd": 49,
+            "spe": 60
+        },
+        "color": "White",
+        "eggGroups": [
+            "Field"
+        ],
+        "evoLevel": 15,
+        "evos": [
+            "Luxray-Kaskade"
+        ],
+        "forme": "Kaskade",
+        "gen": 9,
+        "heightm": 0.9,
+        "name": "Luxio-Kaskade",
+        "num": 404,
+        "prevo": "Shinx-Kaskade",
+        "types": [
+            "Ice"
         ],
         "weightkg": 30.5
     },
@@ -18001,11 +19093,50 @@
             "Field"
         ],
         "evoLevel": 30,
+        "formeOrder": [
+            "Luxray",
+            "Luxray-Kaskade"
+        ],
         "heightm": 1.4,
         "name": "Luxray",
         "num": 405,
+        "otherFormes": [
+            "Luxray-Kaskade"
+        ],
         "prevo": "Luxio",
         "types": [
+            "Electric"
+        ],
+        "weightkg": 42
+    },
+    "luxraykaskade": {
+        "abilities": {
+            "0": "Fur Coat",
+            "1": "Moxie",
+            "H": "Slush Rush"
+        },
+        "baseSpecies": "Luxray",
+        "baseStats": {
+            "atk": 117,
+            "def": 80,
+            "hp": 80,
+            "spa": 65,
+            "spd": 80,
+            "spe": 101
+        },
+        "color": "White",
+        "eggGroups": [
+            "Field"
+        ],
+        "evoLevel": 30,
+        "forme": "Kaskade",
+        "gen": 9,
+        "heightm": 1.4,
+        "name": "Luxray-Kaskade",
+        "num": 405,
+        "prevo": "Luxio-Kaskade",
+        "types": [
+            "Ice",
             "Electric"
         ],
         "weightkg": 42
@@ -19110,15 +20241,59 @@
         "evos": [
             "Azumarill"
         ],
+        "formeOrder": [
+            "Marill",
+            "Marill-Kaskade"
+        ],
         "heightm": 0.4,
         "name": "Marill",
         "num": 183,
+        "otherFormes": [
+            "Marill-Kaskade"
+        ],
         "prevo": "Azurill",
         "types": [
             "Water",
             "Fairy"
         ],
         "weightkg": 8.5
+    },
+    "marillkaskade": {
+        "abilities": {
+            "0": "Hydration",
+            "1": "Sticky Hold",
+            "H": "Vegetate"
+        },
+        "baseSpecies": "Marill",
+        "baseStats": {
+            "atk": 20,
+            "def": 50,
+            "hp": 70,
+            "spa": 20,
+            "spd": 50,
+            "spe": 40
+        },
+        "canHatch": true,
+        "color": "Green",
+        "eggGroups": [
+            "Water 1",
+            "Fairy"
+        ],
+        "evoType": "levelFriendship",
+        "evos": [
+            "Azumarill-Kaskade"
+        ],
+        "forme": "Kaskade",
+        "gen": 9,
+        "heightm": 0.5,
+        "name": "Marill-Kaskade",
+        "num": 183,
+        "prevo": "Azurill-Kaskade",
+        "types": [
+            "Water",
+            "Grass"
+        ],
+        "weightkg": 8.7
     },
     "marowak": {
         "abilities": {
@@ -20400,6 +21575,7 @@
             "Water 1",
             "Dragon"
         ],
+        "evoCondition": "with high Friendship",
         "evoItem": "Prism Scale",
         "evoType": "trade",
         "heightm": 6.2,
@@ -21048,7 +22224,8 @@
     "mothim": {
         "abilities": {
             "0": "Swarm",
-            "H": "Tinted Lens"
+            "1": "Tinted Lens",
+            "H": "Secretion"
         },
         "baseStats": {
             "atk": 94,
@@ -22219,7 +23396,7 @@
         "abilities": {
             "0": "Sturdy",
             "1": "Magnet Pull",
-            "H": "Sand Force"
+            "H": "Earth Force"
         },
         "baseStats": {
             "atk": 45,
@@ -22828,15 +24005,55 @@
             "Amorphous"
         ],
         "evoLevel": 42,
+        "formeOrder": [
+            "Palossand",
+            "Palossand-Kaskade"
+        ],
         "heightm": 1.3,
         "name": "Palossand",
         "num": 770,
+        "otherFormes": [
+            "Palossand-Kaskade"
+        ],
         "prevo": "Sandygast",
         "types": [
             "Ghost",
             "Ground"
         ],
         "weightkg": 250
+    },
+    "palossandkaskade": {
+        "abilities": {
+            "0": "Solid Rock",
+            "1": "Soul Drain",
+            "H": "Sand Stream"
+        },
+        "baseSpecies": "Palossand",
+        "baseStats": {
+            "atk": 75,
+            "def": 110,
+            "hp": 85,
+            "spa": 90,
+            "spd": 90,
+            "spe": 30
+        },
+        "color": "Brown",
+        "eggGroups": [
+            "Amorphous"
+        ],
+        "evoLevel": 42,
+        "evoRegion": "Kaskade",
+        "forme": "Kaskade",
+        "gen": 9,
+        "heightm": 1.2,
+        "name": "Palossand-Kaskade",
+        "num": 770,
+        "prevo": "Sandygast",
+        "types": [
+            "Ghost",
+            "Rock"
+        ],
+        "weightkg": 275
     },
     "palpitoad": {
         "abilities": {
@@ -23348,14 +24565,55 @@
         "evos": [
             "Trevenant"
         ],
+        "formeOrder": [
+            "Phantump",
+            "Phantump-Kaskade"
+        ],
         "heightm": 0.4,
         "name": "Phantump",
         "num": 708,
+        "otherFormes": [
+            "Phantump-Kaskade"
+        ],
         "types": [
             "Ghost",
             "Grass"
         ],
         "weightkg": 7
+    },
+    "phantumpkaskade": {
+        "abilities": {
+            "0": "Soul Drain",
+            "1": "Poison Coat",
+            "H": "Effect Spore"
+        },
+        "baseSpecies": "Phantump",
+        "baseStats": {
+            "atk": 70,
+            "def": 48,
+            "hp": 43,
+            "spa": 50,
+            "spd": 60,
+            "spe": 38
+        },
+        "color": "Brown",
+        "eggGroups": [
+            "Grass",
+            "Amorphous"
+        ],
+        "evos": [
+            "Trevenant-Kaskade"
+        ],
+        "forme": "Kaskade",
+        "gen": 9,
+        "heightm": 0.5,
+        "name": "Phantump-Kaskade",
+        "num": 708,
+        "types": [
+            "Ghost",
+            "Poison"
+        ],
+        "weightkg": 7.2
     },
     "pheromosa": {
         "abilities": {
@@ -25291,7 +26549,8 @@
         "evoItem": "Up-Grade",
         "evoType": "trade",
         "evos": [
-            "Porygon-Z"
+            "Porygon-Z",
+            "Porygon \u03c9"
         ],
         "gender": "N",
         "heightm": 0.6,
@@ -25467,7 +26726,7 @@
         "abilities": {
             "0": "Sturdy",
             "1": "Magnet Pull",
-            "H": "Sand Force"
+            "H": "Earth Force"
         },
         "baseStats": {
             "atk": 55,
@@ -26918,14 +28177,54 @@
             "Amorphous"
         ],
         "evoLevel": 41,
+        "formeOrder": [
+            "Reuniclus",
+            "Reuniclus-Kaskade"
+        ],
         "heightm": 1,
         "name": "Reuniclus",
         "num": 579,
+        "otherFormes": [
+            "Reuniclus-Kaskade"
+        ],
         "prevo": "Duosion",
         "types": [
             "Psychic"
         ],
         "weightkg": 20.1
+    },
+    "reunicluskaskade": {
+        "abilities": {
+            "0": "Overcoat",
+            "1": "Carbon Capture",
+            "H": "Magic Guard"
+        },
+        "baseSpecies": "Reuniclus",
+        "baseStats": {
+            "atk": 60,
+            "def": 65,
+            "hp": 110,
+            "spa": 100,
+            "spd": 125,
+            "spe": 20
+        },
+        "color": "Blue",
+        "eggGroups": [
+            "Amorphous"
+        ],
+        "evoItem": "Water Stone",
+        "evoType": "useItem",
+        "forme": "Kaskade",
+        "gen": 9,
+        "heightm": 1.2,
+        "name": "Reuniclus-Kaskade",
+        "num": 579,
+        "prevo": "Duosion-Kaskade",
+        "types": [
+            "Psychic",
+            "Water"
+        ],
+        "weightkg": 25.7
     },
     "revenankh": {
         "abilities": {
@@ -27222,7 +28521,7 @@
         "abilities": {
             "0": "Sturdy",
             "1": "Weak Armor",
-            "H": "Sand Force"
+            "H": "Earth Force"
         },
         "baseStats": {
             "atk": 75,
@@ -27335,7 +28634,13 @@
             "Rotom-Wash",
             "Rotom-Frost",
             "Rotom-Fan",
-            "Rotom-Mow"
+            "Rotom-Mow",
+            "Rotom-Stereo",
+            "Rotom-Junk",
+            "Rotom-Sway",
+            "Rotom-Brawl",
+            "Rotom-Web",
+            "Rotom-Sol"
         ],
         "gender": "N",
         "heightm": 0.3,
@@ -27346,11 +28651,49 @@
             "Rotom-Wash",
             "Rotom-Frost",
             "Rotom-Fan",
-            "Rotom-Mow"
+            "Rotom-Mow",
+            "Rotom-Stereo",
+            "Rotom-Junk",
+            "Rotom-Sway",
+            "Rotom-Brawl",
+            "Rotom-Web",
+            "Rotom-Sol"
         ],
         "types": [
             "Electric",
             "Ghost"
+        ],
+        "weightkg": 0.3
+    },
+    "rotombrawl": {
+        "abilities": {
+            "0": "Levitate",
+            "1": "Adaptability",
+            "H": "Rage State"
+        },
+        "baseSpecies": "Rotom",
+        "baseStats": {
+            "atk": 65,
+            "def": 107,
+            "hp": 50,
+            "spa": 105,
+            "spd": 107,
+            "spe": 86
+        },
+        "changesFrom": "Rotom",
+        "color": "Red",
+        "eggGroups": [
+            "Amorphous"
+        ],
+        "forme": "Brawl",
+        "gen": 9,
+        "gender": "N",
+        "heightm": 0.3,
+        "name": "Rotom-Brawl",
+        "num": 479,
+        "types": [
+            "Electric",
+            "Fighting"
         ],
         "weightkg": 0.3
     },
@@ -27441,6 +28784,38 @@
         ],
         "weightkg": 0.3
     },
+    "rotomjunk": {
+        "abilities": {
+            "0": "Levitate",
+            "1": "Adaptability",
+            "H": "Poison Coat"
+        },
+        "baseSpecies": "Rotom",
+        "baseStats": {
+            "atk": 65,
+            "def": 107,
+            "hp": 50,
+            "spa": 105,
+            "spd": 107,
+            "spe": 86
+        },
+        "changesFrom": "Rotom",
+        "color": "Red",
+        "eggGroups": [
+            "Amorphous"
+        ],
+        "forme": "Junk",
+        "gen": 9,
+        "gender": "N",
+        "heightm": 0.3,
+        "name": "Rotom-Junk",
+        "num": 479,
+        "types": [
+            "Electric",
+            "Poison"
+        ],
+        "weightkg": 0.3
+    },
     "rotommow": {
         "abilities": {
             "0": "Levitate"
@@ -27470,6 +28845,102 @@
         ],
         "weightkg": 0.3
     },
+    "rotomsol": {
+        "abilities": {
+            "0": "Levitate",
+            "1": "Adaptability",
+            "H": "Solar Power"
+        },
+        "baseSpecies": "Rotom",
+        "baseStats": {
+            "atk": 65,
+            "def": 107,
+            "hp": 50,
+            "spa": 105,
+            "spd": 107,
+            "spe": 86
+        },
+        "changesFrom": "Rotom",
+        "color": "Red",
+        "eggGroups": [
+            "Amorphous"
+        ],
+        "forme": "Sol",
+        "gen": 9,
+        "gender": "N",
+        "heightm": 0.3,
+        "name": "Rotom-Sol",
+        "num": 479,
+        "types": [
+            "Electric",
+            "Dragon"
+        ],
+        "weightkg": 0.3
+    },
+    "rotomstereo": {
+        "abilities": {
+            "0": "Levitate",
+            "1": "Adaptability",
+            "H": "Echolocation"
+        },
+        "baseSpecies": "Rotom",
+        "baseStats": {
+            "atk": 65,
+            "def": 107,
+            "hp": 50,
+            "spa": 105,
+            "spd": 107,
+            "spe": 86
+        },
+        "changesFrom": "Rotom",
+        "color": "Red",
+        "eggGroups": [
+            "Amorphous"
+        ],
+        "forme": "Stereo",
+        "gen": 9,
+        "gender": "N",
+        "heightm": 0.3,
+        "name": "Rotom-Stereo",
+        "num": 479,
+        "types": [
+            "Electric",
+            "Normal"
+        ],
+        "weightkg": 0.3
+    },
+    "rotomsway": {
+        "abilities": {
+            "0": "Levitate",
+            "1": "Adaptability",
+            "H": "Sweet Dreams"
+        },
+        "baseSpecies": "Rotom",
+        "baseStats": {
+            "atk": 65,
+            "def": 107,
+            "hp": 50,
+            "spa": 105,
+            "spd": 107,
+            "spe": 86
+        },
+        "changesFrom": "Rotom",
+        "color": "Red",
+        "eggGroups": [
+            "Amorphous"
+        ],
+        "forme": "Sway",
+        "gen": 9,
+        "gender": "N",
+        "heightm": 0.3,
+        "name": "Rotom-Sway",
+        "num": 479,
+        "types": [
+            "Electric",
+            "Psychic"
+        ],
+        "weightkg": 0.3
+    },
     "rotomwash": {
         "abilities": {
             "0": "Levitate"
@@ -27496,6 +28967,38 @@
         "types": [
             "Electric",
             "Water"
+        ],
+        "weightkg": 0.3
+    },
+    "rotomweb": {
+        "abilities": {
+            "0": "Levitate",
+            "1": "Adaptability",
+            "H": "Infiltrator"
+        },
+        "baseSpecies": "Rotom",
+        "baseStats": {
+            "atk": 65,
+            "def": 107,
+            "hp": 50,
+            "spa": 105,
+            "spd": 107,
+            "spe": 86
+        },
+        "changesFrom": "Rotom",
+        "color": "Red",
+        "eggGroups": [
+            "Amorphous"
+        ],
+        "forme": "Web",
+        "gen": 9,
+        "gender": "N",
+        "heightm": 0.3,
+        "name": "Rotom-Web",
+        "num": 479,
+        "types": [
+            "Electric",
+            "Dark"
         ],
         "weightkg": 0.3
     },
@@ -28100,7 +29603,8 @@
             "Amorphous"
         ],
         "evos": [
-            "Palossand"
+            "Palossand",
+            "Palossand-Kaskade"
         ],
         "heightm": 0.5,
         "name": "Sandygast",
@@ -28155,8 +29659,8 @@
         },
         "color": "Brown",
         "cosmeticFormes": [
-            "Sawsbuck-Summer",
             "Sawsbuck-Autumn",
+            "Sawsbuck-Summer",
             "Sawsbuck-Winter"
         ],
         "eggGroups": [
@@ -28385,7 +29889,7 @@
     },
     "scolipede": {
         "abilities": {
-            "0": "Poison Point",
+            "0": "Poison Touch",
             "1": "Swarm",
             "H": "Speed Boost"
         },
@@ -28421,7 +29925,7 @@
     },
     "scolipedemega": {
         "abilities": {
-            "0": "Poison Point",
+            "0": "Poison Coat",
             "1": "Swarm",
             "H": "Speed Boost"
         },
@@ -29077,7 +30581,8 @@
     },
     "shedinja": {
         "abilities": {
-            "0": "Wonder Guard"
+            "0": "Wonder Guard",
+            "H": "Soul Drain"
         },
         "baseStats": {
             "atk": 90,
@@ -29167,7 +30672,7 @@
         "abilities": {
             "0": "Sticky Hold",
             "1": "Storm Drain",
-            "H": "Sand Force"
+            "H": "Earth Force"
         },
         "baseForme": "West",
         "baseStats": {
@@ -29351,11 +30856,50 @@
         "evos": [
             "Luxio"
         ],
+        "formeOrder": [
+            "Shinx",
+            "Shinx-Kaskade"
+        ],
         "heightm": 0.5,
         "name": "Shinx",
         "num": 403,
+        "otherFormes": [
+            "Shinx-Kaskade"
+        ],
         "types": [
             "Electric"
+        ],
+        "weightkg": 9.5
+    },
+    "shinxkaskade": {
+        "abilities": {
+            "0": "Fur Coat",
+            "1": "Moxie",
+            "H": "Slush Rush"
+        },
+        "baseSpecies": "Shinx",
+        "baseStats": {
+            "atk": 65,
+            "def": 34,
+            "hp": 45,
+            "spa": 40,
+            "spd": 39,
+            "spe": 45
+        },
+        "color": "White",
+        "eggGroups": [
+            "Field"
+        ],
+        "evos": [
+            "Luxio-Kaskade"
+        ],
+        "forme": "Kaskade",
+        "gen": 9,
+        "heightm": 0.5,
+        "name": "Shinx-Kaskade",
+        "num": 403,
+        "types": [
+            "Ice"
         ],
         "weightkg": 9.5
     },
@@ -29477,9 +31021,9 @@
     },
     "sigilyph": {
         "abilities": {
-            "0": "Wonder Skin",
+            "0": "Tinted Lens",
             "1": "Magic Guard",
-            "H": "Tinted Lens"
+            "H": "Smoke and Mirrors"
         },
         "baseStats": {
             "atk": 58,
@@ -29533,7 +31077,8 @@
     },
     "silvally": {
         "abilities": {
-            "0": "RKS System"
+            "0": "RKS System",
+            "H": "Nanomachines"
         },
         "baseForme": "Normal",
         "baseStats": {
@@ -30549,7 +32094,8 @@
         "eggGroups": [
             "Dragon"
         ],
-        "evoLevel": 40,
+        "evoItem": "Mist Stone",
+        "evoType": "useItem",
         "evos": [
             "Goodra-Hisui"
         ],
@@ -31267,6 +32813,7 @@
             "0": "Snow Warning",
             "H": "Soundproof"
         },
+        "baseForme": "Highland",
         "baseStats": {
             "atk": 62,
             "def": 50,
@@ -31283,14 +32830,56 @@
         "evos": [
             "Abomasnow"
         ],
+        "formeOrder": [
+            "Snover",
+            "Snover-Lowland"
+        ],
         "heightm": 1,
         "name": "Snover",
         "num": 459,
+        "otherFormes": [
+            "Snover-Lowland"
+        ],
         "types": [
             "Grass",
             "Ice"
         ],
         "weightkg": 50.5
+    },
+    "snoverlowland": {
+        "abilities": {
+            "0": "Evergreen",
+            "1": "Chlorophyll",
+            "H": "Soundproof"
+        },
+        "baseSpecies": "Snover",
+        "baseStats": {
+            "atk": 62,
+            "def": 62,
+            "hp": 60,
+            "spa": 55,
+            "spd": 60,
+            "spe": 35
+        },
+        "changesFrom": "Snover",
+        "color": "Brown",
+        "eggGroups": [
+            "Monster",
+            "Grass"
+        ],
+        "evos": [
+            "Abomasnow-Lowland"
+        ],
+        "forme": "Lowland",
+        "gen": 9,
+        "heightm": 1,
+        "name": "Snover-Lowland",
+        "num": 459,
+        "types": [
+            "Grass",
+            "Ground"
+        ],
+        "weightkg": 43.5
     },
     "snubbull": {
         "abilities": {
@@ -31410,13 +32999,53 @@
         "evos": [
             "Duosion"
         ],
+        "formeOrder": [
+            "Solosis",
+            "Solosis-Kaskade"
+        ],
         "heightm": 0.3,
         "name": "Solosis",
         "num": 577,
+        "otherFormes": [
+            "Solosis-Kaskade"
+        ],
         "types": [
             "Psychic"
         ],
         "weightkg": 1
+    },
+    "solosiskaskade": {
+        "abilities": {
+            "0": "Overcoat",
+            "1": "Carbon Capture",
+            "H": "Magic Guard"
+        },
+        "baseSpecies": "Solosis",
+        "baseStats": {
+            "atk": 30,
+            "def": 30,
+            "hp": 45,
+            "spa": 100,
+            "spd": 65,
+            "spe": 20
+        },
+        "color": "Blue",
+        "eggGroups": [
+            "Amorphous"
+        ],
+        "evos": [
+            "Duosion-Kaskade"
+        ],
+        "forme": "Kaskade",
+        "gen": 9,
+        "heightm": 0.3,
+        "name": "Solosis-Kaskade",
+        "num": 577,
+        "types": [
+            "Psychic",
+            "Water"
+        ],
+        "weightkg": 1.2
     },
     "solotl": {
         "abilities": {
@@ -32059,7 +33688,7 @@
     },
     "steelixmega": {
         "abilities": {
-            "0": "Sand Force"
+            "0": "Earth Force"
         },
         "baseSpecies": "Steelix",
         "baseStats": {
@@ -32319,14 +33948,54 @@
         ],
         "evoMove": "Mimic",
         "evoType": "levelMove",
+        "formeOrder": [
+            "Sudowoodo",
+            "Sudowoodo-Amaze-All"
+        ],
         "heightm": 1.2,
         "name": "Sudowoodo",
         "num": 185,
+        "otherFormes": [
+            "Sudowoodo-Amaze-All"
+        ],
         "prevo": "Bonsly",
         "types": [
             "Rock"
         ],
         "weightkg": 38
+    },
+    "sudowoodoamazeall": {
+        "abilities": {
+            "0": "Lightning Rod",
+            "1": "Surveillance",
+            "H": "Nanomachines"
+        },
+        "baseSpecies": "Sudowoodo",
+        "baseStats": {
+            "atk": 40,
+            "def": 75,
+            "hp": 70,
+            "spa": 100,
+            "spd": 105,
+            "spe": 20
+        },
+        "color": "Gray",
+        "eggGroups": [
+            "Mineral"
+        ],
+        "evoItem": "Amaze-Drive",
+        "evoType": "useItem",
+        "forme": "Amaze-All",
+        "gen": 9,
+        "heightm": 8,
+        "name": "Sudowoodo-Amaze-All",
+        "num": 185,
+        "prevo": "Bonsly",
+        "types": [
+            "Steel",
+            "Psychic"
+        ],
+        "weightkg": 115
     },
     "suicune": {
         "abilities": {
@@ -32867,6 +34536,7 @@
             "Field"
         ],
         "evoCondition": "with a Fairy-type move and two levels of Affection",
+        "evoItem": "Shiny Stone",
         "evoType": "levelExtra",
         "genderRatio": {
             "F": 0.125,
@@ -34207,15 +35877,56 @@
             "Amorphous"
         ],
         "evoType": "trade",
+        "formeOrder": [
+            "Trevenant",
+            "Trevenant-Kaskade"
+        ],
         "heightm": 1.5,
         "name": "Trevenant",
         "num": 709,
+        "otherFormes": [
+            "Trevenant-Kaskade"
+        ],
         "prevo": "Phantump",
         "types": [
             "Ghost",
             "Grass"
         ],
         "weightkg": 71
+    },
+    "trevenantkaskade": {
+        "abilities": {
+            "0": "Soul Drain",
+            "1": "Poison Coat",
+            "H": "Effect Spore"
+        },
+        "baseSpecies": "Trevenant",
+        "baseStats": {
+            "atk": 110,
+            "def": 76,
+            "hp": 85,
+            "spa": 65,
+            "spd": 82,
+            "spe": 56
+        },
+        "color": "Brown",
+        "eggGroups": [
+            "Grass",
+            "Amorphous"
+        ],
+        "evoCondition": "Paranormal Activity starting at level 30",
+        "evoType": "weathergy",
+        "forme": "Kaskade",
+        "gen": 9,
+        "heightm": 1.6,
+        "name": "Trevenant-Kaskade",
+        "num": 709,
+        "prevo": "Phantump-Kaskade",
+        "types": [
+            "Ghost",
+            "Poison"
+        ],
+        "weightkg": 72
     },
     "tropius": {
         "abilities": {
@@ -34236,14 +35947,52 @@
             "Monster",
             "Grass"
         ],
+        "formeOrder": [
+            "Tropius",
+            "Tropius-Kaskade"
+        ],
         "heightm": 2,
         "name": "Tropius",
         "num": 357,
+        "otherFormes": [
+            "Tropius-Kaskade"
+        ],
         "types": [
             "Grass",
             "Flying"
         ],
         "weightkg": 100
+    },
+    "tropiuskaskade": {
+        "abilities": {
+            "0": "Root Control",
+            "1": "Arena Trap",
+            "H": "Harvest"
+        },
+        "baseSpecies": "Tropius",
+        "baseStats": {
+            "atk": 75,
+            "def": 110,
+            "hp": 110,
+            "spa": 55,
+            "spd": 90,
+            "spe": 20
+        },
+        "color": "Green",
+        "eggGroups": [
+            "Monster",
+            "Grass"
+        ],
+        "forme": "Kaskade",
+        "gen": 9,
+        "heightm": 3.3,
+        "name": "Tropius-Kaskade",
+        "num": 357,
+        "types": [
+            "Grass",
+            "Ground"
+        ],
+        "weightkg": 193.5
     },
     "trubbish": {
         "abilities": {
@@ -34453,7 +36202,8 @@
     },
     "typenull": {
         "abilities": {
-            "0": "Battle Armor"
+            "0": "Battle Armor",
+            "H": "Rock Head"
         },
         "baseStats": {
             "atk": 95,
@@ -34736,6 +36486,7 @@
             "Field"
         ],
         "evoCondition": "at night",
+        "evoItem": "Moon Stone",
         "evoType": "levelFriendship",
         "genderRatio": {
             "F": 0.125,
@@ -35045,7 +36796,7 @@
     },
     "venipede": {
         "abilities": {
-            "0": "Poison Point",
+            "0": "Poison Touch",
             "1": "Swarm",
             "H": "Speed Boost"
         },
@@ -35616,7 +37367,7 @@
             "1": "Compound Eyes",
             "H": "Friend Guard"
         },
-        "baseForme": "Meadow",
+        "baseForme": "Icy Snow",
         "baseStats": {
             "atk": 52,
             "def": 50,
@@ -35625,16 +37376,16 @@
             "spd": 50,
             "spe": 89
         },
-        "color": "Pink",
+        "color": "White",
         "cosmeticFormes": [
             "Vivillon-Archipelago",
             "Vivillon-Continental",
             "Vivillon-Elegant",
             "Vivillon-Garden",
             "Vivillon-High Plains",
-            "Vivillon-Icy Snow",
             "Vivillon-Jungle",
             "Vivillon-Marine",
+            "Vivillon-Meadow",
             "Vivillon-Modern",
             "Vivillon-Monsoon",
             "Vivillon-Ocean",
@@ -35650,13 +37401,13 @@
         ],
         "evoLevel": 12,
         "formeOrder": [
-            "Vivillon-Icy Snow",
+            "Vivillon",
             "Vivillon-Polar",
             "Vivillon-Tundra",
             "Vivillon-Continental",
             "Vivillon-Garden",
             "Vivillon-Elegant",
-            "Vivillon",
+            "Vivillon-Meadow",
             "Vivillon-Modern",
             "Vivillon-Marine",
             "Vivillon-Archipelago",
@@ -35750,13 +37501,6 @@
         "isCosmeticForme": true,
         "name": "Vivillon-High Plains"
     },
-    "vivillonicysnow": {
-        "baseSpecies": "Vivillon",
-        "color": "White",
-        "forme": "Icy Snow",
-        "isCosmeticForme": true,
-        "name": "Vivillon-Icy Snow"
-    },
     "vivillonjungle": {
         "baseSpecies": "Vivillon",
         "color": "White",
@@ -35770,6 +37514,13 @@
         "forme": "Marine",
         "isCosmeticForme": true,
         "name": "Vivillon-Marine"
+    },
+    "vivillonmeadow": {
+        "baseSpecies": "Vivillon",
+        "color": "White",
+        "forme": "Meadow",
+        "isCosmeticForme": true,
+        "name": "Vivillon-Meadow"
     },
     "vivillonmodern": {
         "baseSpecies": "Vivillon",
@@ -36588,7 +38339,7 @@
     },
     "whirlipede": {
         "abilities": {
-            "0": "Poison Point",
+            "0": "Poison Touch",
             "1": "Swarm",
             "H": "Speed Boost"
         },
@@ -36929,7 +38680,7 @@
     },
     "wooperpaldea": {
         "abilities": {
-            "0": "Poison Point",
+            "0": "Poison Coat",
             "1": "Water Absorb",
             "H": "Unaware"
         },
@@ -37326,12 +39077,52 @@
         "evos": [
             "Yanmega"
         ],
+        "formeOrder": [
+            "Yanma",
+            "Yanma-Kaskade"
+        ],
         "heightm": 1.2,
         "name": "Yanma",
         "num": 193,
+        "otherFormes": [
+            "Yanma-Kaskade"
+        ],
         "types": [
             "Bug",
             "Flying"
+        ],
+        "weightkg": 38
+    },
+    "yanmakaskade": {
+        "abilities": {
+            "0": "Power Within",
+            "1": "Magic Guard",
+            "H": "Arcanum"
+        },
+        "baseSpecies": "Yanma",
+        "baseStats": {
+            "atk": 65,
+            "def": 45,
+            "hp": 65,
+            "spa": 75,
+            "spd": 45,
+            "spe": 95
+        },
+        "color": "Purple",
+        "eggGroups": [
+            "Bug"
+        ],
+        "evos": [
+            "Yanmage"
+        ],
+        "forme": "Kaskade",
+        "gen": 9,
+        "heightm": 1.2,
+        "name": "Yanma-Kaskade",
+        "num": 193,
+        "types": [
+            "Bug",
+            "Dragon"
         ],
         "weightkg": 38
     },

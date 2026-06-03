@@ -98,6 +98,7 @@
             "protect": 1,
             "wind": 1
         },
+        "isNonstandard": "Past",
         "name": "Aeroblast",
         "num": 177,
         "pp": 5,
@@ -201,7 +202,7 @@
     },
     "armthrust": {
         "accuracy": 100,
-        "basePower": 15,
+        "basePower": 25,
         "category": "Physical",
         "contestType": "Tough",
         "flags": {
@@ -308,7 +309,6 @@
         },
         "name": "Attract",
         "num": 213,
-        "onTryImmunity": "onTryImmunity",
         "pp": 15,
         "priority": 0,
         "target": "normal",
@@ -588,8 +588,8 @@
         "pp": 5,
         "priority": 0,
         "secondary": {
-            "chance": 10,
-            "status": "frz"
+            "chance": 20,
+            "onHit": "onHit"
         },
         "target": "allAdjacentFoes",
         "type": "Ice"
@@ -1344,9 +1344,10 @@
     },
     "cut": {
         "accuracy": 95,
-        "basePower": 50,
+        "basePower": 70,
         "category": "Physical",
         "contestType": "Cool",
+        "critRatio": 2,
         "flags": {
             "contact": 1,
             "metronome": 1,
@@ -1360,7 +1361,7 @@
         "pp": 30,
         "priority": 0,
         "target": "normal",
-        "type": "Normal"
+        "type": "Steel"
     },
     "defensecurl": {
         "accuracy": true,
@@ -1564,6 +1565,7 @@
             "futuremove": 1,
             "metronome": 1
         },
+        "isNonstandard": "Past",
         "name": "Doom Desire",
         "num": 353,
         "onTry": "onTry",
@@ -1651,6 +1653,7 @@
             "metronome": 1,
             "snatch": 1
         },
+        "isNonstandard": "Past",
         "name": "Double Team",
         "num": 104,
         "pp": 15,
@@ -2098,7 +2101,7 @@
     },
     "falseswipe": {
         "accuracy": 100,
-        "basePower": 40,
+        "basePower": 60,
         "category": "Physical",
         "contestType": "Cool",
         "flags": {
@@ -2470,6 +2473,7 @@
         "contestType": "Cute",
         "flags": {
             "failcopycat": 1,
+            "influencing": 1,
             "noassist": 1
         },
         "name": "Follow Me",
@@ -2852,6 +2856,7 @@
         "accuracy": true,
         "basePower": 0,
         "category": "Status",
+        "climateWeather": "hail",
         "contestType": "Beautiful",
         "flags": {
             "metronome": 1
@@ -2863,7 +2868,6 @@
         "priority": 0,
         "target": "all",
         "type": "Ice",
-        "weather": "hail",
         "zMove": {
             "boost": {
                 "spe": 1
@@ -2994,6 +2998,7 @@
         "flags": {
             "bypasssub": 1,
             "failcopycat": 1,
+            "influencing": 1,
             "noassist": 1
         },
         "name": "Helping Hand",
@@ -3414,6 +3419,7 @@
             "metronome": 1,
             "mirror": 1,
             "protect": 1,
+            "pulse": 1,
             "recharge": 1
         },
         "name": "Hydro Cannon",
@@ -3600,7 +3606,7 @@
         "priority": 0,
         "secondary": {
             "chance": 10,
-            "status": "frz"
+            "status": "fst"
         },
         "target": "normal",
         "type": "Ice"
@@ -3645,6 +3651,7 @@
         },
         "name": "Icy Wind",
         "num": 196,
+        "onModifyMove": "onModifyMove",
         "pp": 15,
         "priority": 0,
         "secondary": {
@@ -4082,6 +4089,7 @@
             "mirror": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "name": "Luster Purge",
         "num": 295,
         "pp": 5,
@@ -4529,6 +4537,7 @@
             "metronome": 1,
             "snatch": 1
         },
+        "isNonstandard": "Past",
         "name": "Minimize",
         "num": 107,
         "pp": 20,
@@ -4631,6 +4640,7 @@
             "mirror": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "name": "Mist Ball",
         "num": 296,
         "pp": 5,
@@ -5029,6 +5039,7 @@
             "mirror": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "name": "Pay Day",
         "num": 6,
         "onHit": "onHit",
@@ -5306,7 +5317,7 @@
         "priority": 0,
         "secondary": {
             "chance": 10,
-            "status": "frz"
+            "status": "fst"
         },
         "target": "allAdjacentFoes",
         "type": "Ice"
@@ -5539,6 +5550,7 @@
         "accuracy": true,
         "basePower": 0,
         "category": "Status",
+        "climateWeather": "RainDance",
         "contestType": "Beautiful",
         "flags": {
             "metronome": 1
@@ -5549,7 +5561,6 @@
         "priority": 0,
         "target": "all",
         "type": "Water",
-        "weather": "RainDance",
         "zMove": {
             "boost": {
                 "spe": 1
@@ -5899,7 +5910,7 @@
             "boosts": {
                 "def": -1
             },
-            "chance": 50
+            "chance": 100
         },
         "target": "normal",
         "type": "Fighting"
@@ -6031,6 +6042,7 @@
             "mirror": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "name": "Sacred Fire",
         "num": 221,
         "pp": 5,
@@ -6099,18 +6111,19 @@
         "accuracy": true,
         "basePower": 0,
         "category": "Status",
+        "climateWeather": "Sandstorm",
         "contestType": "Tough",
         "flags": {
             "metronome": 1,
             "wind": 1
         },
+        "irritantWeather": null,
         "name": "Sandstorm",
         "num": 201,
-        "pp": 10,
+        "pp": 5,
         "priority": 0,
         "target": "all",
         "type": "Rock",
-        "weather": "Sandstorm",
         "zMove": {
             "boost": {
                 "spe": 1
@@ -6264,6 +6277,7 @@
             "noparentalbond": 1,
             "protect": 1
         },
+        "irritantWeather": "DustStorm",
         "name": "Self-Destruct",
         "num": 120,
         "pp": 5,
@@ -6566,7 +6580,6 @@
         "basePower": 140,
         "category": "Physical",
         "contestType": "Cool",
-        "critRatio": 2,
         "flags": {
             "charge": 1,
             "distance": 1,
@@ -6576,13 +6589,15 @@
             "nosleeptalk": 1,
             "protect": 1
         },
+        "hasCrashDamage": true,
         "name": "Sky Attack",
         "num": 143,
+        "onMoveFail": "onMoveFail",
         "onTryMove": "onTryMove",
         "pp": 5,
         "priority": 0,
         "secondary": {
-            "chance": 30,
+            "chance": 10,
             "volatileStatus": "flinch"
         },
         "target": "any",
@@ -6798,6 +6813,7 @@
         },
         "name": "Smog",
         "num": 123,
+        "onModifyMove": "onModifyMove",
         "pp": 20,
         "priority": 0,
         "secondary": {
@@ -6899,6 +6915,7 @@
             1,
             2
         ],
+        "isNonstandard": null,
         "name": "Soft-Boiled",
         "num": 135,
         "pp": 10,
@@ -7230,7 +7247,7 @@
         "pp": 15,
         "priority": 0,
         "target": "normal",
-        "type": "Normal"
+        "type": "Fighting"
     },
     "stringshot": {
         "accuracy": 95,
@@ -7271,6 +7288,7 @@
             "nosketch": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "name": "Struggle",
         "noPPBoosts": true,
         "num": 165,
@@ -7365,6 +7383,7 @@
         "accuracy": true,
         "basePower": 0,
         "category": "Status",
+        "climateWeather": "sunnyday",
         "contestType": "Beautiful",
         "flags": {
             "metronome": 1
@@ -7375,7 +7394,6 @@
         "priority": 0,
         "target": "all",
         "type": "Fire",
-        "weather": "sunnyday",
         "zMove": {
             "boost": {
                 "spe": 1
@@ -7804,6 +7822,7 @@
         "name": "Thief",
         "num": 168,
         "onAfterHit": "onAfterHit",
+        "onModifyPriority": "onModifyPriority",
         "pp": 10,
         "priority": 0,
         "target": "normal",
@@ -7865,6 +7884,7 @@
         },
         "name": "Thunderbolt",
         "num": 85,
+        "onModifyMove": "onModifyMove",
         "pp": 15,
         "priority": 0,
         "secondary": {
@@ -8066,6 +8086,7 @@
         },
         "name": "Tri Attack",
         "num": 161,
+        "onModifyMove": "onModifyMove",
         "pp": 10,
         "priority": 0,
         "secondary": {
@@ -8103,7 +8124,7 @@
     },
     "triplekick": {
         "accuracy": 90,
-        "basePower": 10,
+        "basePower": 20,
         "basePowerCallback": "basePowerCallback",
         "category": "Physical",
         "contestType": "Cool",
@@ -8260,7 +8281,7 @@
     },
     "volttackle": {
         "accuracy": 100,
-        "basePower": 120,
+        "basePower": 150,
         "category": "Physical",
         "contestType": "Cool",
         "flags": {
@@ -8271,6 +8292,7 @@
         },
         "name": "Volt Tackle",
         "num": 344,
+        "onTry": "onTry",
         "pp": 15,
         "priority": 0,
         "recoil": [
@@ -8608,10 +8630,12 @@
             "bullet": 1,
             "metronome": 1,
             "mirror": 1,
-            "protect": 1
+            "protect": 1,
+            "pulse": 1
         },
         "name": "Zap Cannon",
         "num": 192,
+        "onModifyMove": "onModifyMove",
         "pp": 5,
         "priority": 0,
         "secondary": {

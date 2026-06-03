@@ -31,10 +31,13 @@ def clean_ps_data_text(data: str, deserialize: bool = True):
         return {}
 
     # Remove start and end of the file
-    data = "{" + "= {".join(data.split("= {")[1:])[:-2]
+    data = "{" + "= {".join(data.split("= {")[1:]).rstrip().rstrip(";")
 
     # Transform tabs into spaces
     data = data.replace("\t", " ")
+
+    # Remove block comments
+    data = re.sub(r"/\*.*?\*/", "", data, flags=re.DOTALL)
 
     # Callback and handlers must be normalized before key quoting so typed
     # arguments such as `target: Pokemon` do not get rewritten as JSON keys.
@@ -62,13 +65,13 @@ def clean_ps_data_text(data: str, deserialize: bool = True):
     data = re.sub(r": undefined", r": null", data)
 
     # Remove incorrect commas
-    data = re.sub(r",\n( *)\}", r"\n\1}", data)
+    data = re.sub(r",\s*\}", "}", data)
 
     # Null arrow functions
     data = re.sub(r"\(\) => null", r"null", data)
 
     # Remove incorrect commas
-    data = re.sub(r",\n( *)\}", r"\n\1}", data)
+    data = re.sub(r",\s*\}", "}", data)
     data = re.sub(r",\n( +)\]", r"\n\1]", data)
     # Correct malformed values that start with an accidental extra quote.
     # The broader historical fixer was greedy enough to strip quotes from
@@ -89,7 +92,7 @@ def clean_ps_data_text(data: str, deserialize: bool = True):
         else:
             return data
     except Exception:
-        with open("out.json", "w+") as f:
+        with open("out.json", "w+", encoding="utf-8") as f:
             f.write(data)
         raise
 

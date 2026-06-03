@@ -272,8 +272,8 @@
         "pp": 5,
         "priority": 0,
         "secondary": {
-            "chance": 10,
-            "status": "frz"
+            "chance": 20,
+            "onHit": "onHit"
         },
         "target": "normal",
         "type": "Ice"
@@ -585,9 +585,10 @@
     },
     "cut": {
         "accuracy": 95,
-        "basePower": 50,
+        "basePower": 70,
         "category": "Physical",
         "contestType": "Cool",
+        "critRatio": 2,
         "flags": {
             "contact": 1,
             "metronome": 1,
@@ -601,7 +602,7 @@
         "pp": 30,
         "priority": 0,
         "target": "normal",
-        "type": "Normal"
+        "type": "Steel"
     },
     "defensecurl": {
         "accuracy": true,
@@ -787,6 +788,7 @@
             "metronome": 1,
             "snatch": 1
         },
+        "isNonstandard": "Past",
         "name": "Double Team",
         "num": 104,
         "pp": 15,
@@ -1549,7 +1551,7 @@
         "priority": 0,
         "secondary": {
             "chance": 10,
-            "status": "frz"
+            "status": "fst"
         },
         "target": "normal",
         "type": "Ice"
@@ -1944,6 +1946,7 @@
             "metronome": 1,
             "snatch": 1
         },
+        "isNonstandard": "Past",
         "name": "Minimize",
         "num": 107,
         "pp": 20,
@@ -2058,6 +2061,7 @@
             "mirror": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "name": "Pay Day",
         "num": 6,
         "onHit": "onHit",
@@ -2666,6 +2670,7 @@
             "nosketch": 1,
             "protect": 1
         },
+        "irritantWeather": "DustStorm",
         "name": "Self-Destruct",
         "num": 120,
         "pp": 5,
@@ -2787,8 +2792,10 @@
             "nosleeptalk": 1,
             "protect": 1
         },
+        "hasCrashDamage": true,
         "name": "Sky Attack",
         "num": 143,
+        "onMoveFail": "onMoveFail",
         "onPrepareHit": "onPrepareHit",
         "onTryMove": "onTryMove",
         "pp": 5,
@@ -2895,6 +2902,7 @@
         },
         "name": "Smog",
         "num": 123,
+        "onModifyMove": "onModifyMove",
         "pp": 20,
         "priority": 0,
         "secondary": {
@@ -2941,6 +2949,7 @@
             "snatch": 1
         },
         "heal": null,
+        "isNonstandard": null,
         "name": "Soft-Boiled",
         "num": 135,
         "onHit": "onHit",
@@ -3107,7 +3116,7 @@
         "pp": 15,
         "priority": 0,
         "target": "normal",
-        "type": "Normal"
+        "type": "Fighting"
     },
     "stringshot": {
         "accuracy": 95,
@@ -3148,6 +3157,7 @@
             "nosketch": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "name": "Struggle",
         "noPPBoosts": true,
         "num": 165,
@@ -3487,6 +3497,7 @@
         },
         "name": "Thunderbolt",
         "num": 85,
+        "onModifyMove": "onModifyMove",
         "pp": 15,
         "priority": 0,
         "secondary": {
@@ -3633,6 +3644,7 @@
         "name": "Tri Attack",
         "num": 161,
         "onHit": null,
+        "onModifyMove": "onModifyMove",
         "pp": 10,
         "priority": 0,
         "secondary": null,

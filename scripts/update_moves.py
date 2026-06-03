@@ -17,13 +17,13 @@ except ImportError:
 
 data_by_gen = {
     CURRENT_GEN: fetch_and_clean_ps_data(
-        "https://raw.githubusercontent.com/smogon/pokemon-showdown/master/data/moves.ts"
+        "https://raw.githubusercontent.com/ry4242/kaskade-showdown/master/data/moves.ts"
     )
 }
 
 for gen in range(1, CURRENT_GEN):
     data_by_gen[gen] = fetch_and_clean_ps_data(
-        f"https://raw.githubusercontent.com/smogon/pokemon-showdown/master/data/mods/gen{gen}/moves.ts"
+        f"https://raw.githubusercontent.com/ry4242/kaskade-showdown/master/data/mods/gen{gen}/moves.ts"
     )
 
 if "block" in data_by_gen[2]:

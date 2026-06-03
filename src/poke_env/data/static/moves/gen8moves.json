@@ -211,6 +211,7 @@
             "protect": 1,
             "wind": 1
         },
+        "isNonstandard": "Past",
         "name": "Aeroblast",
         "num": 177,
         "pp": 5,
@@ -225,7 +226,8 @@
         "contestType": "Cute",
         "flags": {
             "allyanim": 1,
-            "bypasssub": 1
+            "bypasssub": 1,
+            "influencing": 1
         },
         "name": "After You",
         "num": 495,
@@ -508,7 +510,7 @@
     },
     "armthrust": {
         "accuracy": 100,
-        "basePower": 15,
+        "basePower": 25,
         "category": "Physical",
         "contestType": "Tough",
         "flags": {
@@ -645,6 +647,7 @@
             "mirror": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "name": "Astral Barrage",
         "num": 825,
         "pp": 5,
@@ -692,7 +695,6 @@
         },
         "name": "Attract",
         "num": 213,
-        "onTryImmunity": "onTryImmunity",
         "pp": 15,
         "priority": 0,
         "target": "normal",
@@ -701,6 +703,21 @@
         "zMove": {
             "effect": "clearnegativeboost"
         }
+    },
+    "auraprojection": {
+        "accuracy": true,
+        "basePower": 0,
+        "category": "Status",
+        "energyWeather": "AuraProjection",
+        "flags": {
+            "metronome": 1
+        },
+        "name": "Aura Projection",
+        "num": 10008,
+        "pp": 5,
+        "priority": 0,
+        "target": "all",
+        "type": "Fighting"
     },
     "aurasphere": {
         "accuracy": true,
@@ -730,6 +747,7 @@
             "mirror": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "name": "Aura Wheel",
         "num": 783,
         "onModifyType": "onModifyType",
@@ -1015,6 +1033,24 @@
             "effect": "clearnegativeboost"
         }
     },
+    "battlecry": {
+        "accuracy": 100,
+        "basePower": 40,
+        "category": "Special",
+        "flags": {
+            "bypasssub": 1,
+            "metronome": 1,
+            "mirror": 1,
+            "protect": 1,
+            "sound": 1
+        },
+        "name": "Battle Cry",
+        "num": 10015,
+        "pp": 35,
+        "priority": 0,
+        "target": "allAdjacentFoes",
+        "type": "Normal"
+    },
     "beakblast": {
         "accuracy": 100,
         "basePower": 100,
@@ -1043,6 +1079,24 @@
         "priorityChargeCallback": "priorityChargeCallback",
         "target": "normal",
         "type": "Flying"
+    },
+    "bearhug": {
+        "accuracy": 85,
+        "basePower": 30,
+        "category": "Physical",
+        "flags": {
+            "contact": 1,
+            "metronome": 1,
+            "mirror": 1,
+            "protect": 1
+        },
+        "name": "Bear Hug",
+        "num": 10062,
+        "pp": 15,
+        "priority": 0,
+        "target": "normal",
+        "type": "Fairy",
+        "volatileStatus": "partiallytrapped"
     },
     "beatup": {
         "accuracy": 100,
@@ -1075,6 +1129,7 @@
             "mirror": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "name": "Behemoth Bash",
         "num": 782,
         "pp": 5,
@@ -1094,6 +1149,7 @@
             "protect": 1,
             "slicing": 1
         },
+        "isNonstandard": "Past",
         "name": "Behemoth Blade",
         "num": 781,
         "pp": 5,
@@ -1246,7 +1302,7 @@
     },
     "bittermalice": {
         "accuracy": 100,
-        "basePower": 75,
+        "basePower": 60,
         "category": "Special",
         "flags": {
             "metronome": 1,
@@ -1255,16 +1311,32 @@
         },
         "name": "Bitter Malice",
         "num": 841,
-        "pp": 10,
+        "onBasePower": "onBasePower",
+        "pp": 15,
         "priority": 0,
         "secondary": {
-            "boosts": {
-                "atk": -1
-            },
-            "chance": 100
+            "chance": 30,
+            "status": "fst"
         },
         "target": "normal",
         "type": "Ghost"
+    },
+    "blackhole": {
+        "accuracy": 80,
+        "basePower": 120,
+        "category": "Special",
+        "flags": {
+            "metronome": 1,
+            "mirror": 1,
+            "protect": 1
+        },
+        "name": "Black Hole",
+        "num": 10061,
+        "pp": 5,
+        "priority": 0,
+        "pseudoWeather": "gravity",
+        "target": "normal",
+        "type": "Dark"
     },
     "blackholeeclipse": {
         "accuracy": true,
@@ -1335,6 +1407,7 @@
             "protect": 1,
             "wind": 1
         },
+        "isNonstandard": "Past",
         "name": "Bleakwind Storm",
         "num": 846,
         "onModifyMove": "onModifyMove",
@@ -1366,8 +1439,8 @@
         "pp": 5,
         "priority": 0,
         "secondary": {
-            "chance": 10,
-            "status": "frz"
+            "chance": 20,
+            "onHit": "onHit"
         },
         "target": "allAdjacentFoes",
         "type": "Ice"
@@ -1395,6 +1468,21 @@
             }
         }
     },
+    "bloodmoon": {
+        "accuracy": true,
+        "basePower": 0,
+        "category": "Status",
+        "climateWeather": "BloodMoon",
+        "flags": {
+            "metronome": 1
+        },
+        "name": "Blood Moon",
+        "num": 10001,
+        "pp": 5,
+        "priority": 0,
+        "target": "all",
+        "type": "Dark"
+    },
     "bloomdoom": {
         "accuracy": true,
         "basePower": 1,
@@ -1420,6 +1508,7 @@
             "mirror": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "name": "Blue Flare",
         "num": 551,
         "pp": 5,
@@ -1502,6 +1591,7 @@
             "mirror": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "name": "Bolt Strike",
         "num": 550,
         "pp": 5,
@@ -1659,6 +1749,21 @@
         "target": "normal",
         "type": "Water"
     },
+    "brainstorm": {
+        "accuracy": true,
+        "basePower": 0,
+        "category": "Status",
+        "climateWeather": "RainDance",
+        "energyWeather": "Daydream",
+        "flags": {},
+        "name": "Brainstorm",
+        "num": 10073,
+        "pp": 5,
+        "priority": 0,
+        "target": "self",
+        "type": "Psychic",
+        "volatileStatus": "confusion"
+    },
     "branchpoke": {
         "accuracy": 100,
         "basePower": 40,
@@ -1668,6 +1773,7 @@
             "mirror": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "name": "Branch Poke",
         "num": 785,
         "pp": 40,
@@ -1800,7 +1906,6 @@
             "mirror": 1,
             "protect": 1
         },
-        "isNonstandard": "Past",
         "name": "Bubble",
         "num": 145,
         "pp": 30,
@@ -2165,6 +2270,7 @@
             "noassist": 1,
             "nosleeptalk": 1
         },
+        "isNonstandard": "Past",
         "name": "Celebrate",
         "num": 606,
         "onTryHit": "onTryHit",
@@ -2325,8 +2431,31 @@
             "mirror": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "name": "Chloroblast",
         "num": 835,
+        "pp": 5,
+        "priority": 0,
+        "target": "normal",
+        "type": "Grass"
+    },
+    "cidercannon": {
+        "accuracy": true,
+        "basePower": 0,
+        "boosts": {
+            "evasion": -1
+        },
+        "category": "Status",
+        "flags": {
+            "heal": 1,
+            "metronome": 1,
+            "mirror": 1,
+            "protect": 1,
+            "reflectable": 1
+        },
+        "name": "Cider Cannon",
+        "num": 10044,
+        "onHit": "onHit",
         "pp": 5,
         "priority": 0,
         "target": "normal",
@@ -2385,6 +2514,7 @@
             "protect": 1,
             "sound": 1
         },
+        "isNonstandard": "Past",
         "name": "Clanging Scales",
         "num": 691,
         "pp": 5,
@@ -2413,6 +2543,7 @@
             "snatch": 1,
             "sound": 1
         },
+        "isNonstandard": "Past",
         "name": "Clangorous Soul",
         "num": 775,
         "onHit": "onHit",
@@ -2563,6 +2694,25 @@
         "priority": 0,
         "target": "normal",
         "type": "Normal"
+    },
+    "conduction": {
+        "accuracy": 100,
+        "basePower": 80,
+        "category": "Special",
+        "flags": {
+            "metronome": 1,
+            "mirror": 1,
+            "protect": 1
+        },
+        "name": "Conduction",
+        "num": 10033,
+        "onBasePower": "onBasePower",
+        "onModifyMove": "onModifyMove",
+        "pp": 10,
+        "priority": 0,
+        "secondary": {},
+        "target": "normal",
+        "type": "Steel"
     },
     "confide": {
         "accuracy": true,
@@ -2919,6 +3069,7 @@
             "metronome": 1,
             "mirror": 1
         },
+        "isNonstandard": "Past",
         "name": "Court Change",
         "num": 756,
         "onHitField": "onHitField",
@@ -3098,6 +3249,7 @@
             "mirror": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "maxMove": {
             "basePower": 140
         },
@@ -3110,6 +3262,26 @@
         "zMove": {
             "basePower": 190
         }
+    },
+    "crystalforce": {
+        "accuracy": 80,
+        "basePower": 120,
+        "category": "Special",
+        "flags": {
+            "metronome": 1,
+            "mirror": 1,
+            "protect": 1
+        },
+        "name": "Crystal Force",
+        "num": 10027,
+        "pp": 5,
+        "priority": 0,
+        "recoil": [
+            33,
+            100
+        ],
+        "target": "normal",
+        "type": "Rock"
     },
     "curse": {
         "accuracy": true,
@@ -3142,9 +3314,10 @@
     },
     "cut": {
         "accuracy": 95,
-        "basePower": 50,
+        "basePower": 70,
         "category": "Physical",
         "contestType": "Cool",
+        "critRatio": 2,
         "flags": {
             "contact": 1,
             "metronome": 1,
@@ -3158,7 +3331,7 @@
         "pp": 30,
         "priority": 0,
         "target": "normal",
-        "type": "Normal"
+        "type": "Steel"
     },
     "darkestlariat": {
         "accuracy": 100,
@@ -3173,6 +3346,7 @@
         },
         "ignoreDefensive": true,
         "ignoreEvasion": true,
+        "isNonstandard": "Past",
         "name": "Darkest Lariat",
         "num": 663,
         "pp": 10,
@@ -3204,7 +3378,7 @@
         "type": "Dark"
     },
     "darkvoid": {
-        "accuracy": 50,
+        "accuracy": 80,
         "basePower": 0,
         "category": "Status",
         "contestType": "Clever",
@@ -3227,6 +3401,21 @@
             "effect": "clearnegativeboost"
         }
     },
+    "daydream": {
+        "accuracy": true,
+        "basePower": 0,
+        "category": "Status",
+        "energyWeather": "Daydream",
+        "flags": {
+            "metronome": 1
+        },
+        "name": "Daydream",
+        "num": 10010,
+        "pp": 5,
+        "priority": 0,
+        "target": "all",
+        "type": "Psychic"
+    },
     "dazzlinggleam": {
         "accuracy": 100,
         "basePower": 80,
@@ -3243,6 +3432,24 @@
         "priority": 0,
         "target": "allAdjacentFoes",
         "type": "Fairy"
+    },
+    "deception": {
+        "accuracy": 90,
+        "basePower": 80,
+        "category": "Special",
+        "flags": {
+            "metronome": 1,
+            "mirror": 1,
+            "protect": 1
+        },
+        "name": "Deception",
+        "num": 10060,
+        "onBasePower": "onBasePower",
+        "onEffectiveness": "onEffectiveness",
+        "pp": 10,
+        "priority": 0,
+        "target": "normal",
+        "type": "Dark"
     },
     "decorate": {
         "accuracy": true,
@@ -3411,10 +3618,34 @@
         "target": "normal",
         "type": "Dragon"
     },
+    "deviledyolk": {
+        "accuracy": 100,
+        "basePower": 25,
+        "category": "Special",
+        "flags": {
+            "mirror": 1,
+            "protect": 1
+        },
+        "multihit": [
+            2,
+            5
+        ],
+        "name": "Deviled Yolk",
+        "num": 10091,
+        "pp": 20,
+        "priority": 0,
+        "secondary": {
+            "chance": 10,
+            "status": "brn"
+        },
+        "target": "normal",
+        "thawsTarget": true,
+        "type": "Grass"
+    },
     "diamondstorm": {
         "accuracy": 95,
         "basePower": 100,
-        "category": "Physical",
+        "category": "Special",
         "contestType": "Beautiful",
         "flags": {
             "mirror": 1,
@@ -3474,6 +3705,7 @@
             "mirror": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "name": "Dire Claw",
         "num": 827,
         "pp": 15,
@@ -3623,6 +3855,7 @@
             "futuremove": 1,
             "metronome": 1
         },
+        "isNonstandard": "Past",
         "name": "Doom Desire",
         "num": 353,
         "onTry": "onTry",
@@ -3765,6 +3998,7 @@
             "metronome": 1,
             "snatch": 1
         },
+        "isNonstandard": "Past",
         "name": "Double Team",
         "num": 104,
         "pp": 15,
@@ -3797,6 +4031,45 @@
         "target": "normal",
         "type": "Dragon"
     },
+    "draconicorb": {
+        "accuracy": 90,
+        "basePower": 60,
+        "category": "Special",
+        "flags": {
+            "bullet": 1,
+            "metronome": 1,
+            "mirror": 1,
+            "protect": 1
+        },
+        "name": "Draconic Orb",
+        "num": 10055,
+        "pp": 10,
+        "priority": 0,
+        "secondary": {
+            "chance": 20,
+            "onHit": "onHit"
+        },
+        "target": "normal",
+        "type": "Dragon"
+    },
+    "draconicroar": {
+        "accuracy": 100,
+        "basePower": 90,
+        "category": "Special",
+        "flags": {
+            "bypasssub": 1,
+            "metronome": 1,
+            "mirror": 1,
+            "protect": 1,
+            "sound": 1
+        },
+        "name": "Draconic Roar",
+        "num": 10056,
+        "pp": 15,
+        "priority": 0,
+        "target": "allAdjacentFoes",
+        "type": "Dragon"
+    },
     "dragonascent": {
         "accuracy": 100,
         "basePower": 120,
@@ -3808,6 +4081,7 @@
             "mirror": 1,
             "protect": 1
         },
+        "isNonstandard": null,
         "name": "Dragon Ascent",
         "num": 620,
         "pp": 5,
@@ -3894,6 +4168,7 @@
             "noparentalbond": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "maxMove": {
             "basePower": 130
         },
@@ -3920,6 +4195,21 @@
         "pp": 5,
         "priority": 0,
         "target": "allAdjacentFoes",
+        "type": "Dragon"
+    },
+    "dragonforce": {
+        "accuracy": true,
+        "basePower": 0,
+        "category": "Status",
+        "energyWeather": "DragonForce",
+        "flags": {
+            "metronome": 1
+        },
+        "name": "Dragon Force",
+        "num": 10011,
+        "pp": 5,
+        "priority": 0,
+        "target": "all",
         "type": "Dragon"
     },
     "dragonhammer": {
@@ -3991,12 +4281,30 @@
         },
         "name": "Dragon Rush",
         "num": 407,
+        "onModifyMove": "onModifyMove",
         "pp": 10,
         "priority": 0,
         "secondary": {
             "chance": 20,
             "volatileStatus": "flinch"
         },
+        "target": "normal",
+        "type": "Dragon"
+    },
+    "dragonsdice": {
+        "accuracy": 100,
+        "basePower": 0,
+        "basePowerCallback": "basePowerCallback",
+        "category": "Special",
+        "flags": {
+            "mirror": 1,
+            "protect": 1
+        },
+        "name": "Dragon's Dice",
+        "num": 10090,
+        "ohko": false,
+        "pp": 20,
+        "priority": 0,
         "target": "normal",
         "type": "Dragon"
     },
@@ -4137,6 +4445,7 @@
             "mirror": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "name": "Drum Beating",
         "num": 778,
         "pp": 10,
@@ -4194,6 +4503,22 @@
         "target": "normal",
         "type": "Flying"
     },
+    "duststorm": {
+        "accuracy": true,
+        "basePower": 0,
+        "category": "Status",
+        "flags": {
+            "metronome": 1,
+            "wind": 1
+        },
+        "irritantWeather": "DustStorm",
+        "name": "Dust Storm",
+        "num": 1003,
+        "pp": 5,
+        "priority": 0,
+        "target": "all",
+        "type": "Ground"
+    },
     "dynamaxcannon": {
         "accuracy": 100,
         "basePower": 100,
@@ -4207,6 +4532,7 @@
             "nosleeptalk": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "name": "Dynamax Cannon",
         "num": 744,
         "pp": 5,
@@ -4279,6 +4605,31 @@
         "target": "allAdjacent",
         "type": "Ground"
     },
+    "earthrush": {
+        "accuracy": 100,
+        "basePower": 50,
+        "category": "Physical",
+        "flags": {
+            "contact": 1,
+            "metronome": 1,
+            "mirror": 1,
+            "protect": 1
+        },
+        "name": "Earth Rush",
+        "num": 10023,
+        "pp": 20,
+        "priority": 0,
+        "secondary": {
+            "chance": 100,
+            "self": {
+                "boosts": {
+                    "spe": 1
+                }
+            }
+        },
+        "target": "normal",
+        "type": "Ground"
+    },
     "echoedvoice": {
         "accuracy": 100,
         "basePower": 40,
@@ -4304,6 +4655,23 @@
         "priority": 0,
         "target": "normal",
         "type": "Normal"
+    },
+    "ectoplasma": {
+        "accuracy": 80,
+        "basePower": 120,
+        "category": "Special",
+        "flags": {
+            "metronome": 1,
+            "mirror": 1,
+            "protect": 1
+        },
+        "name": "Ectoplasma",
+        "num": 10030,
+        "onTry": "onTry",
+        "pp": 5,
+        "priority": 0,
+        "target": "normal",
+        "type": "Ghost"
     },
     "eerieimpulse": {
         "accuracy": 100,
@@ -4394,6 +4762,7 @@
             "metronome": 1,
             "nonsky": 1
         },
+        "isNonstandard": "Past",
         "name": "Electric Terrain",
         "num": 604,
         "pp": 10,
@@ -4539,6 +4908,24 @@
         "target": "normal",
         "type": "Fire"
     },
+    "emberplume": {
+        "accuracy": 70,
+        "basePower": 100,
+        "category": "Special",
+        "flags": {
+            "metronome": 1,
+            "mirror": 1,
+            "protect": 1
+        },
+        "name": "Ember Plume",
+        "num": 10039,
+        "onEffectiveness": "onEffectiveness",
+        "onModifyMove": "onModifyMove",
+        "pp": 10,
+        "priority": 0,
+        "target": "normal",
+        "type": "Fire"
+    },
     "encore": {
         "accuracy": 100,
         "basePower": 0,
@@ -4557,6 +4944,7 @@
         "flags": {
             "bypasssub": 1,
             "failencore": 1,
+            "influencing": 1,
             "metronome": 1,
             "mirror": 1,
             "protect": 1,
@@ -4699,6 +5087,29 @@
         "target": "allAdjacentFoes",
         "type": "Fire"
     },
+    "escaperoot": {
+        "accuracy": true,
+        "basePower": 0,
+        "category": "Status",
+        "condition": {
+            "onBeforeSwitchOut": "onBeforeSwitchOut",
+            "onSwap": "onSwap"
+        },
+        "flags": {
+            "metronome": 1,
+            "snatch": 1
+        },
+        "name": "Escape Root",
+        "num": 10043,
+        "onHit": "onHit",
+        "onTryHit": "onTryHit",
+        "pp": 10,
+        "priority": 0,
+        "selfSwitch": true,
+        "slotCondition": "escaperoot",
+        "target": "self",
+        "type": "Grass"
+    },
     "esperwing": {
         "accuracy": 100,
         "basePower": 80,
@@ -4744,6 +5155,49 @@
         },
         "target": "normal",
         "type": "Dragon"
+    },
+    "evoboost": {
+        "accuracy": true,
+        "basePower": 0,
+        "boosts": {
+            "atk": 2,
+            "def": 2,
+            "spa": 2,
+            "spd": 2,
+            "spe": 2
+        },
+        "category": "Status",
+        "flags": {
+            "snatch": 1
+        },
+        "name": "Evoboost",
+        "noPPBoosts": true,
+        "num": 10075,
+        "onTry": "onTry",
+        "pp": 1,
+        "priority": 0,
+        "target": "self",
+        "type": "Normal"
+    },
+    "excalibur": {
+        "accuracy": 100,
+        "basePower": 120,
+        "category": "Physical",
+        "flags": {
+            "cantusetwice": 1,
+            "contact": 1,
+            "metronome": 1,
+            "mirror": 1,
+            "protect": 1,
+            "slicing": 1
+        },
+        "name": "Excalibur",
+        "num": 10065,
+        "onTryHit": "onTryHit",
+        "pp": 5,
+        "priority": 0,
+        "target": "normal",
+        "type": "Fairy"
     },
     "expandingforce": {
         "accuracy": 100,
@@ -4976,7 +5430,7 @@
     },
     "falseswipe": {
         "accuracy": 100,
-        "basePower": 40,
+        "basePower": 60,
         "category": "Physical",
         "contestType": "Cool",
         "flags": {
@@ -5112,6 +5566,7 @@
             "mirror": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "name": "Fiery Wrath",
         "num": 822,
         "pp": 10,
@@ -5533,7 +5988,8 @@
         "flags": {
             "metronome": 1,
             "mirror": 1,
-            "protect": 1
+            "protect": 1,
+            "pulse": 1
         },
         "name": "Flash Cannon",
         "num": 430,
@@ -5585,6 +6041,7 @@
             "mirror": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "name": "Fleur Cannon",
         "num": 705,
         "pp": 5,
@@ -5706,6 +6163,24 @@
                 "def": 1
             }
         }
+    },
+    "fluffbuff": {
+        "accuracy": true,
+        "basePower": 0,
+        "boosts": {
+            "def": 2
+        },
+        "category": "Status",
+        "flags": {
+            "snatch": 1
+        },
+        "irritantWeather": "Pollinate",
+        "name": "Fluff Buff",
+        "num": 10070,
+        "pp": 10,
+        "priority": 0,
+        "target": "self",
+        "type": "Grass"
     },
     "fly": {
         "accuracy": 95,
@@ -5843,6 +6318,21 @@
         "target": "normal",
         "type": "Fighting"
     },
+    "foghorn": {
+        "accuracy": true,
+        "basePower": 0,
+        "category": "Status",
+        "climateWeather": "Foghorn",
+        "flags": {
+            "metronome": 1
+        },
+        "name": "Foghorn",
+        "num": 10002,
+        "pp": 5,
+        "priority": 0,
+        "target": "all",
+        "type": "Normal"
+    },
     "followme": {
         "accuracy": true,
         "basePower": 0,
@@ -5856,6 +6346,7 @@
         "contestType": "Cute",
         "flags": {
             "failcopycat": 1,
+            "influencing": 1,
             "noassist": 1
         },
         "name": "Follow Me",
@@ -5935,6 +6426,7 @@
             "protect": 1,
             "reflectable": 1
         },
+        "isNonstandard": "Past",
         "name": "Forest's Curse",
         "num": 571,
         "onHit": "onHit",
@@ -6005,6 +6497,7 @@
             "nosleeptalk": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "name": "Freeze Shock",
         "num": 553,
         "onTryMove": "onTryMove",
@@ -6025,6 +6518,7 @@
             "mirror": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "name": "Freezing Glare",
         "num": 821,
         "pp": 10,
@@ -6086,6 +6580,7 @@
             "mirror": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "name": "Frost Breath",
         "num": 524,
         "pp": 10,
@@ -6093,6 +6588,28 @@
         "target": "normal",
         "type": "Ice",
         "willCrit": true
+    },
+    "frostkick": {
+        "accuracy": 90,
+        "basePower": 85,
+        "category": "Physical",
+        "critRatio": 2,
+        "flags": {
+            "contact": 1,
+            "metronome": 1,
+            "mirror": 1,
+            "protect": 1
+        },
+        "name": "Frost Kick",
+        "num": 10051,
+        "pp": 10,
+        "priority": 0,
+        "secondary": {
+            "chance": 10,
+            "status": "fst"
+        },
+        "target": "normal",
+        "type": "Ice"
     },
     "frustration": {
         "accuracy": 100,
@@ -6106,7 +6623,6 @@
             "mirror": 1,
             "protect": 1
         },
-        "isNonstandard": "Past",
         "maxMove": {
             "basePower": 130
         },
@@ -6202,6 +6718,7 @@
             "mirror": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "name": "Fusion Bolt",
         "num": 559,
         "onBasePower": "onBasePower",
@@ -6221,6 +6738,7 @@
             "mirror": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "name": "Fusion Flare",
         "num": 558,
         "onBasePower": "onBasePower",
@@ -6265,6 +6783,7 @@
         },
         "name": "Gastro Acid",
         "num": 380,
+        "onModifyMove": "onModifyMove",
         "onTryHit": "onTryHit",
         "pp": 10,
         "priority": 0,
@@ -6450,6 +6969,7 @@
             "mirror": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "name": "Glacial Lance",
         "num": 824,
         "pp": 5,
@@ -6467,6 +6987,7 @@
             "mirror": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "name": "Glaciate",
         "num": 549,
         "pp": 10,
@@ -7281,6 +7802,7 @@
             "metronome": 1,
             "nonsky": 1
         },
+        "isNonstandard": "Past",
         "name": "Grassy Terrain",
         "num": 580,
         "pp": 10,
@@ -7591,6 +8113,7 @@
         "accuracy": true,
         "basePower": 0,
         "category": "Status",
+        "climateWeather": "hail",
         "contestType": "Beautiful",
         "flags": {
             "metronome": 1
@@ -7602,7 +8125,6 @@
         "priority": 0,
         "target": "all",
         "type": "Ice",
-        "weather": "hail",
         "zMove": {
             "boost": {
                 "spe": 1
@@ -7641,6 +8163,7 @@
         "flags": {
             "metronome": 1
         },
+        "isNonstandard": null,
         "name": "Happy Hour",
         "num": 603,
         "onTryHit": "onTryHit",
@@ -7681,6 +8204,21 @@
                 "def": 1
             }
         }
+    },
+    "haunt": {
+        "accuracy": true,
+        "basePower": 0,
+        "category": "Status",
+        "energyWeather": "Haunt",
+        "flags": {
+            "metronome": 1
+        },
+        "name": "Haunt",
+        "num": 10009,
+        "pp": 5,
+        "priority": 0,
+        "target": "all",
+        "type": "Ghost"
     },
     "haze": {
         "accuracy": true,
@@ -7892,7 +8430,6 @@
             1,
             2
         ],
-        "isNonstandard": "Past",
         "name": "Heal Order",
         "num": 456,
         "pp": 10,
@@ -8068,6 +8605,7 @@
         "flags": {
             "bypasssub": 1,
             "failcopycat": 1,
+            "influencing": 1,
             "noassist": 1
         },
         "name": "Helping Hand",
@@ -8449,6 +8987,31 @@
         "target": "normal",
         "type": "Fighting"
     },
+    "hiveshriek": {
+        "accuracy": 70,
+        "basePower": 120,
+        "category": "Special",
+        "flags": {
+            "bypasssub": 1,
+            "metronome": 1,
+            "mirror": 1,
+            "protect": 1,
+            "sound": 1
+        },
+        "name": "Hive Shriek",
+        "num": 10028,
+        "onTryHit": "onTryHit",
+        "pp": 5,
+        "priority": 0,
+        "secondary": {
+            "boosts": {
+                "def": -1
+            },
+            "chance": 30
+        },
+        "target": "normal",
+        "type": "Bug"
+    },
     "holdback": {
         "accuracy": 100,
         "basePower": 40,
@@ -8639,6 +9202,24 @@
         "target": "any",
         "type": "Flying"
     },
+    "hydraulicjaw": {
+        "accuracy": 90,
+        "basePower": 90,
+        "category": "Physical",
+        "flags": {
+            "bite": 1,
+            "contact": 1,
+            "metronome": 1,
+            "mirror": 1,
+            "protect": 1
+        },
+        "name": "Hydraulic Jaw",
+        "num": 10031,
+        "pp": 15,
+        "priority": 0,
+        "target": "normal",
+        "type": "Steel"
+    },
     "hydrocannon": {
         "accuracy": 90,
         "basePower": 150,
@@ -8648,6 +9229,7 @@
             "metronome": 1,
             "mirror": 1,
             "protect": 1,
+            "pulse": 1,
             "recharge": 1
         },
         "name": "Hydro Cannon",
@@ -8658,6 +9240,22 @@
             "volatileStatus": "mustrecharge"
         },
         "target": "normal",
+        "type": "Water"
+    },
+    "hydrocharge": {
+        "accuracy": 95,
+        "basePower": 100,
+        "category": "Special",
+        "flags": {
+            "mirror": 1,
+            "protect": 1
+        },
+        "name": "Hydrocharge",
+        "num": 10080,
+        "onEffectiveness": "onEffectiveness",
+        "pp": 10,
+        "priority": 0,
+        "target": "any",
         "type": "Water"
     },
     "hydropump": {
@@ -8725,7 +9323,6 @@
             "mirror": 1,
             "protect": 1
         },
-        "isNonstandard": "Past",
         "name": "Hyper Fang",
         "num": 158,
         "pp": 15,
@@ -8874,6 +9471,26 @@
         "target": "normal",
         "type": "Ice"
     },
+    "icebreak": {
+        "accuracy": 100,
+        "basePower": 50,
+        "category": "Physical",
+        "flags": {
+            "contact": 1,
+            "metronome": 1,
+            "mirror": 1,
+            "protect": 1
+        },
+        "name": "Ice Break",
+        "num": 10050,
+        "onBasePower": "onBasePower",
+        "onEffectiveness": "onEffectiveness",
+        "pp": 20,
+        "priority": 0,
+        "target": "normal",
+        "thawsTarget": true,
+        "type": "Ice"
+    },
     "iceburn": {
         "accuracy": 90,
         "basePower": 140,
@@ -8886,6 +9503,7 @@
             "nosleeptalk": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "name": "Ice Burn",
         "num": 554,
         "onTryMove": "onTryMove",
@@ -8917,7 +9535,7 @@
         "secondaries": [
             {
                 "chance": 10,
-                "status": "frz"
+                "status": "fst"
             },
             {
                 "chance": 10,
@@ -8970,7 +9588,7 @@
         "priority": 0,
         "secondary": {
             "chance": 10,
-            "status": "frz"
+            "status": "fst"
         },
         "target": "normal",
         "type": "Ice"
@@ -9053,6 +9671,7 @@
         },
         "name": "Icy Wind",
         "num": 196,
+        "onModifyMove": "onModifyMove",
         "pp": 15,
         "priority": 0,
         "secondary": {
@@ -9063,6 +9682,28 @@
         },
         "target": "allAdjacentFoes",
         "type": "Ice"
+    },
+    "ignition": {
+        "accuracy": 100,
+        "basePower": 90,
+        "category": "Physical",
+        "flags": {
+            "contact": 1,
+            "defrost": 1,
+            "metronome": 1,
+            "mirror": 1,
+            "protect": 1
+        },
+        "name": "Ignition",
+        "num": 10038,
+        "pp": 15,
+        "priority": 0,
+        "secondary": {
+            "chance": 10,
+            "status": "brn"
+        },
+        "target": "normal",
+        "type": "Fire"
     },
     "imprison": {
         "accuracy": true,
@@ -9123,6 +9764,7 @@
             "mirror": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "name": "Infernal Parade",
         "num": 844,
         "pp": 15,
@@ -9219,6 +9861,25 @@
             }
         }
     },
+    "initiative": {
+        "accuracy": true,
+        "basePower": 0,
+        "category": "Status",
+        "flags": {
+            "metronome": 1,
+            "mirror": 1,
+            "protect": 1,
+            "reflectable": 1,
+            "snatch": 1
+        },
+        "name": "Initiative",
+        "num": 10057,
+        "onHit": "onHit",
+        "pp": 10,
+        "priority": 0,
+        "target": "normal",
+        "type": "Dragon"
+    },
     "instruct": {
         "accuracy": true,
         "basePower": 0,
@@ -9228,6 +9889,7 @@
             "allyanim": 1,
             "bypasssub": 1,
             "failinstruct": 1,
+            "influencing": 1,
             "protect": 1
         },
         "name": "Instruct",
@@ -9408,6 +10070,7 @@
             "bypasssub": 1,
             "heal": 1
         },
+        "isNonstandard": "Past",
         "name": "Jungle Healing",
         "num": 816,
         "onHit": "onHit",
@@ -9435,6 +10098,50 @@
         "priority": 0,
         "target": "normal",
         "type": "Fighting"
+    },
+    "kihop": {
+        "accuracy": 100,
+        "basePower": 65,
+        "category": "Special",
+        "flags": {
+            "bypasssub": 1,
+            "metronome": 1,
+            "mirror": 1,
+            "protect": 1,
+            "sound": 1
+        },
+        "name": "Ki-hop",
+        "num": 10017,
+        "pp": 20,
+        "priority": 0,
+        "secondary": {
+            "boosts": {
+                "spe": -1
+            }
+        },
+        "target": "normal",
+        "type": "Fighting"
+    },
+    "kindle": {
+        "accuracy": 100,
+        "basePower": 40,
+        "category": "Physical",
+        "flags": {
+            "contact": 1,
+            "metronome": 1,
+            "mirror": 1,
+            "protect": 1
+        },
+        "name": "Kindle",
+        "num": 10036,
+        "pp": 35,
+        "priority": 0,
+        "secondary": {
+            "chance": 10,
+            "status": "brn"
+        },
+        "target": "normal",
+        "type": "Fire"
     },
     "kinesis": {
         "accuracy": 80,
@@ -9603,6 +10310,24 @@
         "priority": 0,
         "target": "normal",
         "type": "Normal"
+    },
+    "lavajet": {
+        "accuracy": 100,
+        "basePower": 40,
+        "category": "Physical",
+        "flags": {
+            "contact": 1,
+            "defrost": 1,
+            "metronome": 1,
+            "mirror": 1,
+            "protect": 1
+        },
+        "name": "Lava Jet",
+        "num": 10037,
+        "pp": 20,
+        "priority": 1,
+        "target": "normal",
+        "type": "Fire"
     },
     "lavaplume": {
         "accuracy": 100,
@@ -9853,14 +10578,13 @@
             "mirror": 1,
             "protect": 1
         },
-        "isNonstandard": "Past",
         "name": "Light of Ruin",
         "num": 617,
         "pp": 5,
         "priority": 0,
         "recoil": [
-            1,
-            2
+            33,
+            100
         ],
         "target": "normal",
         "type": "Fairy"
@@ -9993,6 +10717,30 @@
             }
         }
     },
+    "lovespray": {
+        "accuracy": 85,
+        "basePower": 0,
+        "category": "Status",
+        "flags": {
+            "metronome": 1,
+            "mirror": 1,
+            "protect": 1,
+            "reflectable": 1
+        },
+        "name": "Lovespray",
+        "num": 10069,
+        "onModifyMove": "onModifyMove",
+        "pp": 10,
+        "priority": 0,
+        "secondary": {
+            "boosts": {
+                "spa": -1
+            }
+        },
+        "target": "normal",
+        "type": "Fairy",
+        "volatileStatus": "attract"
+    },
     "lowkick": {
         "accuracy": 100,
         "basePower": 0,
@@ -10027,6 +10775,7 @@
             "mirror": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "name": "Low Sweep",
         "num": 490,
         "pp": 20,
@@ -10080,6 +10829,7 @@
             "metronome": 1,
             "snatch": 1
         },
+        "isNonstandard": "Past",
         "name": "Lunar Blessing",
         "num": 849,
         "onHit": "onHit",
@@ -10103,6 +10853,7 @@
             "metronome": 1,
             "snatch": 1
         },
+        "isNonstandard": "Past",
         "name": "Lunar Dance",
         "num": 461,
         "onTryHit": "onTryHit",
@@ -10112,6 +10863,26 @@
         "slotCondition": "lunardance",
         "target": "self",
         "type": "Psychic"
+    },
+    "lunarsurge": {
+        "accuracy": 100,
+        "basePower": 120,
+        "category": "Special",
+        "flags": {
+            "charge": 1,
+            "failinstruct": 1,
+            "metronome": 1,
+            "mirror": 1,
+            "nosleeptalk": 1,
+            "protect": 1
+        },
+        "name": "Lunar Surge",
+        "num": 10068,
+        "onTryMove": "onTryMove",
+        "pp": 10,
+        "priority": 0,
+        "target": "normal",
+        "type": "Fairy"
     },
     "lunge": {
         "accuracy": 100,
@@ -10147,6 +10918,7 @@
             "mirror": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "name": "Luster Purge",
         "num": 295,
         "pp": 5,
@@ -10225,6 +10997,26 @@
             }
         }
     },
+    "magicmissile": {
+        "accuracy": true,
+        "basePower": 30,
+        "category": "Special",
+        "flags": {
+            "metronome": 1,
+            "mirror": 1,
+            "noparentalbond": 1,
+            "protect": 1,
+            "pulse": 1
+        },
+        "multihit": 3,
+        "name": "Magic Missile",
+        "num": 10066,
+        "pp": 10,
+        "priority": 0,
+        "smartTarget": true,
+        "target": "normal",
+        "type": "Fairy"
+    },
     "magicpowder": {
         "accuracy": 100,
         "basePower": 0,
@@ -10237,6 +11029,7 @@
             "protect": 1,
             "reflectable": 1
         },
+        "isNonstandard": "Past",
         "name": "Magic Powder",
         "num": 750,
         "onHit": "onHit",
@@ -10286,6 +11079,7 @@
             "mirror": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "name": "Magma Storm",
         "num": 463,
         "pp": 5,
@@ -10337,12 +11131,28 @@
             }
         }
     },
+    "magnetize": {
+        "accuracy": true,
+        "basePower": 0,
+        "category": "Status",
+        "energyWeather": "Magnetize",
+        "flags": {
+            "metronome": 1
+        },
+        "name": "Magnetize",
+        "num": 10013,
+        "pp": 5,
+        "priority": 0,
+        "target": "all",
+        "type": "Steel"
+    },
     "magnetrise": {
         "accuracy": true,
         "basePower": 0,
         "category": "Status",
         "condition": {
             "duration": 5,
+            "durationCallback": "durationCallback",
             "onEnd": "onEnd",
             "onImmunity": "onImmunity",
             "onResidualOrder": 18,
@@ -10864,7 +11674,6 @@
             "nosleeptalk": 1,
             "protect": 1
         },
-        "isNonstandard": "Past",
         "name": "Me First",
         "num": 382,
         "onTryHit": "onTryHit",
@@ -11106,6 +11915,7 @@
             "mirror": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "name": "Meteor Beam",
         "num": 800,
         "onTryMove": "onTryMove",
@@ -11234,6 +12044,27 @@
         "target": "allAdjacent",
         "type": "Fire"
     },
+    "mindmeld": {
+        "accuracy": 80,
+        "basePower": 120,
+        "category": "Special",
+        "flags": {
+            "metronome": 1,
+            "mirror": 1,
+            "protect": 1
+        },
+        "name": "Mind Meld",
+        "num": 10048,
+        "onModifyMove": "onModifyMove",
+        "pp": 5,
+        "priority": 0,
+        "secondary": {
+            "chance": 10,
+            "volatileStatus": "confusion"
+        },
+        "target": "normal",
+        "type": "Psychic"
+    },
     "mindreader": {
         "accuracy": true,
         "basePower": 0,
@@ -11277,6 +12108,7 @@
             "metronome": 1,
             "snatch": 1
         },
+        "isNonstandard": "Past",
         "name": "Minimize",
         "num": 107,
         "pp": 10,
@@ -11407,6 +12239,7 @@
         "category": "Status",
         "condition": {
             "duration": 5,
+            "durationCallback": "durationCallback",
             "onSideEnd": "onSideEnd",
             "onSideResidualOrder": 26,
             "onSideResidualSubOrder": 4,
@@ -11440,6 +12273,7 @@
             "mirror": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "name": "Mist Ball",
         "num": 296,
         "pp": 5,
@@ -11485,6 +12319,7 @@
             "onFieldResidualOrder": 27,
             "onFieldResidualSubOrder": 7,
             "onFieldStart": "onFieldStart",
+            "onModifyDamage": "onModifyDamage",
             "onSetStatus": "onSetStatus",
             "onTryAddVolatile": "onTryAddVolatile"
         },
@@ -11493,6 +12328,7 @@
             "metronome": 1,
             "nonsky": 1
         },
+        "isNonstandard": "Past",
         "name": "Misty Terrain",
         "num": 581,
         "pp": 10,
@@ -11506,6 +12342,35 @@
             }
         }
     },
+    "mockery": {
+        "accuracy": true,
+        "basePower": 20,
+        "category": "Special",
+        "flags": {
+            "bypasssub": 1,
+            "metronome": 1,
+            "mirror": 1,
+            "protect": 1,
+            "sound": 1
+        },
+        "multihit": [
+            1,
+            2
+        ],
+        "name": "Mockery",
+        "num": 10058,
+        "pp": 15,
+        "priority": 0,
+        "secondary": {
+            "boosts": {
+                "spd": -1,
+                "spe": -1
+            },
+            "chance": 100
+        },
+        "target": "normal",
+        "type": "Dark"
+    },
     "moonblast": {
         "accuracy": 100,
         "basePower": 95,
@@ -11518,6 +12383,7 @@
         },
         "name": "Moonblast",
         "num": 585,
+        "onModifyMove": "onModifyMove",
         "pp": 15,
         "priority": 0,
         "secondary": {
@@ -11539,6 +12405,7 @@
             "protect": 1
         },
         "ignoreAbility": true,
+        "isNonstandard": null,
         "name": "Moongeist Beam",
         "num": 714,
         "pp": 5,
@@ -11607,6 +12474,25 @@
         },
         "target": "normal",
         "type": "Ice"
+    },
+    "muckvolley": {
+        "accuracy": 90,
+        "basePower": 20,
+        "basePowerCallback": "basePowerCallback",
+        "category": "Special",
+        "flags": {
+            "metronome": 1,
+            "mirror": 1,
+            "protect": 1
+        },
+        "multiaccuracy": true,
+        "multihit": 3,
+        "name": "Muck Volley",
+        "num": 10021,
+        "pp": 10,
+        "priority": 0,
+        "target": "normal",
+        "type": "Poison"
     },
     "mudbomb": {
         "accuracy": 85,
@@ -11793,6 +12679,7 @@
             "mirror": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "name": "Mystical Power",
         "num": 832,
         "pp": 10,
@@ -11973,7 +12860,6 @@
             "mirror": 1,
             "protect": 1
         },
-        "isNonstandard": "Past",
         "name": "Nightmare",
         "num": 171,
         "pp": 15,
@@ -12287,11 +13173,33 @@
             "protect": 1,
             "pulse": 1
         },
+        "isNonstandard": null,
         "name": "Origin Pulse",
         "num": 618,
         "pp": 10,
         "priority": 0,
         "target": "allAdjacentFoes",
+        "type": "Water"
+    },
+    "osmosis": {
+        "accuracy": 100,
+        "basePower": 75,
+        "category": "Special",
+        "drain": [
+            1,
+            2
+        ],
+        "flags": {
+            "heal": 1,
+            "metronome": 1,
+            "mirror": 1,
+            "protect": 1
+        },
+        "name": "Osmosis",
+        "num": 10042,
+        "pp": 10,
+        "priority": 0,
+        "target": "normal",
         "type": "Water"
     },
     "outrage": {
@@ -12354,6 +13262,23 @@
         },
         "target": "normal",
         "type": "Fire"
+    },
+    "paddle": {
+        "accuracy": 100,
+        "basePower": 40,
+        "category": "Physical",
+        "flags": {
+            "contact": 1,
+            "metronome": 1,
+            "mirror": 1,
+            "protect": 1
+        },
+        "name": "Paddle",
+        "num": 10041,
+        "pp": 35,
+        "priority": 0,
+        "target": "normal",
+        "type": "Water"
     },
     "painsplit": {
         "accuracy": true,
@@ -12478,6 +13403,7 @@
             "mirror": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "name": "Pay Day",
         "num": 6,
         "pp": 20,
@@ -12504,12 +13430,35 @@
         "target": "any",
         "type": "Flying"
     },
+    "peekaboo": {
+        "accuracy": 100,
+        "basePower": 60,
+        "category": "Physical",
+        "flags": {
+            "contact": 1,
+            "metronome": 1,
+            "mirror": 1,
+            "protect": 1
+        },
+        "name": "Peek-a-Boo",
+        "num": 10064,
+        "onBasePower": "onBasePower",
+        "pp": 10,
+        "priority": 0,
+        "secondary": {
+            "chance": 20,
+            "volatileStatus": "flinch"
+        },
+        "target": "normal",
+        "type": "Fairy"
+    },
     "perishsong": {
         "accuracy": true,
         "basePower": 0,
         "category": "Status",
         "condition": {
             "duration": 4,
+            "durationCallback": "durationCallback",
             "onEnd": "onEnd",
             "onResidual": "onResidual",
             "onResidualOrder": 24
@@ -12531,6 +13480,31 @@
         "zMove": {
             "effect": "clearnegativeboost"
         }
+    },
+    "permafrost": {
+        "accuracy": 100,
+        "basePower": 120,
+        "category": "Physical",
+        "flags": {
+            "contact": 1,
+            "metronome": 1,
+            "mirror": 1,
+            "protect": 1
+        },
+        "name": "Permafrost",
+        "num": 10052,
+        "pp": 15,
+        "priority": 0,
+        "recoil": [
+            33,
+            100
+        ],
+        "secondary": {
+            "chance": 10,
+            "status": "fst"
+        },
+        "target": "normal",
+        "type": "Ice"
     },
     "petalblizzard": {
         "accuracy": 100,
@@ -12580,7 +13554,8 @@
         "category": "Physical",
         "condition": {
             "duration": 2,
-            "onInvulnerability": false
+            "onInvulnerability": "onInvulnerability",
+            "onSourceModifyDamage": "onSourceModifyDamage"
         },
         "contestType": "Cool",
         "flags": {
@@ -12610,6 +13585,7 @@
             "protect": 1
         },
         "ignoreAbility": true,
+        "isNonstandard": "Past",
         "name": "Photon Geyser",
         "num": 722,
         "onModifyMove": "onModifyMove",
@@ -12662,6 +13638,31 @@
         "zMove": {
             "basePower": 140
         }
+    },
+    "pixiepunch": {
+        "accuracy": 100,
+        "basePower": 65,
+        "category": "Physical",
+        "flags": {
+            "contact": 1,
+            "metronome": 1,
+            "mirror": 1,
+            "protect": 1,
+            "punch": 1
+        },
+        "name": "Pixie Punch",
+        "num": 10063,
+        "onModifyMove": "onModifyMove",
+        "pp": 20,
+        "priority": 0,
+        "secondary": {
+            "boosts": {
+                "atk": -1
+            },
+            "chance": 30
+        },
+        "target": "normal",
+        "type": "Fairy"
     },
     "plasmafists": {
         "accuracy": 100,
@@ -12809,7 +13810,8 @@
             "contact": 1,
             "metronome": 1,
             "mirror": 1,
-            "protect": 1
+            "protect": 1,
+            "punch": 1
         },
         "name": "Poison Jab",
         "num": 398,
@@ -12929,6 +13931,7 @@
         },
         "name": "Pollen Puff",
         "num": 676,
+        "onBasePower": "onBasePower",
         "onHit": "onHit",
         "onTryHit": "onTryHit",
         "onTryMove": "onTryMove",
@@ -12936,6 +13939,23 @@
         "priority": 0,
         "target": "normal",
         "type": "Bug"
+    },
+    "pollinate": {
+        "accuracy": true,
+        "basePower": 0,
+        "category": "Status",
+        "flags": {
+            "metronome": 1,
+            "powder": 1,
+            "wind": 1
+        },
+        "irritantWeather": "Pollinate",
+        "name": "Pollinate",
+        "num": 10004,
+        "pp": 5,
+        "priority": 0,
+        "target": "all",
+        "type": "Grass"
     },
     "poltergeist": {
         "accuracy": 90,
@@ -12954,6 +13974,23 @@
         "priority": 0,
         "target": "normal",
         "type": "Ghost"
+    },
+    "possess": {
+        "accuracy": 100,
+        "basePower": 35,
+        "category": "Special",
+        "flags": {
+            "metronome": 1,
+            "mirror": 1,
+            "protect": 1
+        },
+        "name": "Possess",
+        "num": 10074,
+        "pp": 15,
+        "priority": 0,
+        "target": "normal",
+        "type": "Ghost",
+        "volatileStatus": "partiallytrapped"
     },
     "pound": {
         "accuracy": 100,
@@ -12992,7 +14029,6 @@
             "protect": 1,
             "reflectable": 1
         },
-        "isNonstandard": "Past",
         "name": "Powder",
         "num": 600,
         "pp": 20,
@@ -13022,7 +14058,7 @@
         "priority": 0,
         "secondary": {
             "chance": 10,
-            "status": "frz"
+            "status": "fst"
         },
         "target": "allAdjacentFoes",
         "type": "Ice"
@@ -13057,7 +14093,7 @@
         "flags": {
             "snatch": 1
         },
-        "isNonstandard": "Unobtainable",
+        "isNonstandard": "Past",
         "name": "Power Shift",
         "num": 829,
         "pp": 10,
@@ -13223,6 +14259,7 @@
             "nonsky": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "name": "Precipice Blades",
         "num": 619,
         "pp": 10,
@@ -13248,6 +14285,29 @@
         "target": "normal",
         "type": "Normal"
     },
+    "pricklypear": {
+        "accuracy": 80,
+        "basePower": 0,
+        "category": "Status",
+        "condition": {
+            "onResidual": "onResidual",
+            "onResidualOrder": 8,
+            "onStart": "onStart"
+        },
+        "flags": {
+            "mirror": 1,
+            "protect": 1,
+            "reflectable": 1
+        },
+        "name": "Prickly Pear",
+        "num": 10078,
+        "onTryImmunity": "onTryImmunity",
+        "pp": 10,
+        "priority": 0,
+        "target": "normal",
+        "type": "Grass",
+        "volatileStatus": "pricklypear"
+    },
     "prismaticlaser": {
         "accuracy": 100,
         "basePower": 160,
@@ -13259,6 +14319,7 @@
             "protect": 1,
             "recharge": 1
         },
+        "isNonstandard": "Past",
         "name": "Prismatic Laser",
         "num": 711,
         "pp": 10,
@@ -13297,6 +14358,30 @@
         "zMove": {
             "effect": "clearnegativeboost"
         }
+    },
+    "psionrush": {
+        "accuracy": 100,
+        "basePower": 120,
+        "category": "Physical",
+        "flags": {
+            "cantusetwice": 1,
+            "contact": 1,
+            "metronome": 1,
+            "mirror": 1,
+            "protect": 1
+        },
+        "name": "Psion Rush",
+        "num": 10047,
+        "pp": 5,
+        "priority": 0,
+        "self": {
+            "boosts": {
+                "def": -1,
+                "spd": -1
+            }
+        },
+        "target": "normal",
+        "type": "Psychic"
     },
     "psybeam": {
         "accuracy": 100,
@@ -13342,6 +14427,23 @@
         "target": "normal",
         "type": "Psychic"
     },
+    "psychicclap": {
+        "accuracy": true,
+        "basePower": 40,
+        "category": "Physical",
+        "flags": {
+            "contact": 1,
+            "metronome": 1,
+            "mirror": 1,
+            "protect": 1
+        },
+        "name": "Psychic Clap",
+        "num": 10046,
+        "pp": 35,
+        "priority": 0,
+        "target": "normal",
+        "type": "Psychic"
+    },
     "psychicfangs": {
         "accuracy": 100,
         "basePower": 85,
@@ -13384,6 +14486,7 @@
             "metronome": 1,
             "nonsky": 1
         },
+        "isNonstandard": "Past",
         "name": "Psychic Terrain",
         "num": 678,
         "pp": 10,
@@ -13417,6 +14520,24 @@
                 "spa": -2
             }
         },
+        "target": "normal",
+        "type": "Psychic"
+    },
+    "psychocannon": {
+        "accuracy": 100,
+        "basePower": 150,
+        "category": "Special",
+        "flags": {
+            "metronome": 1,
+            "mirror": 1,
+            "protect": 1,
+            "pulse": 1,
+            "recharge": 1
+        },
+        "name": "Psycho Cannon",
+        "num": 10049,
+        "pp": 5,
+        "priority": 0,
         "target": "normal",
         "type": "Psychic"
     },
@@ -13540,6 +14661,7 @@
             "mirror": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "name": "Psystrike",
         "num": 540,
         "overrideDefensiveStat": "def",
@@ -13656,7 +14778,6 @@
             "mirror": 1,
             "protect": 1
         },
-        "isNonstandard": "Past",
         "name": "Pursuit",
         "num": 228,
         "onModifyMove": "onModifyMove",
@@ -13675,6 +14796,7 @@
             "mirror": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "name": "Pyro Ball",
         "num": 780,
         "pp": 5,
@@ -13844,6 +14966,7 @@
             "mirror": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "name": "Raging Fury",
         "num": 833,
         "pp": 10,
@@ -13858,6 +14981,7 @@
         "accuracy": true,
         "basePower": 0,
         "category": "Status",
+        "climateWeather": "RainDance",
         "contestType": "Beautiful",
         "flags": {
             "metronome": 1
@@ -13868,7 +14992,6 @@
         "priority": 0,
         "target": "all",
         "type": "Water",
-        "weather": "RainDance",
         "zMove": {
             "boost": {
                 "spe": 1
@@ -14058,6 +15181,7 @@
             "metronome": 1,
             "protect": 1
         },
+        "isNonstandard": null,
         "name": "Reflect Type",
         "num": 513,
         "onHit": "onHit",
@@ -14116,6 +15240,27 @@
         "target": "allAdjacentFoes",
         "type": "Normal"
     },
+    "resilientoil": {
+        "accuracy": true,
+        "basePower": 0,
+        "category": "Status",
+        "condition": {
+            "onResidual": "onResidual",
+            "onResidualOrder": 6,
+            "onStart": "onStart",
+            "onTryBoost": "onTryBoost"
+        },
+        "flags": {
+            "snatch": 1
+        },
+        "name": "Resilient Oil",
+        "num": 10094,
+        "pp": 20,
+        "priority": 0,
+        "target": "self",
+        "type": "Rock",
+        "volatileStatus": "resilientoil"
+    },
     "rest": {
         "accuracy": true,
         "basePower": 0,
@@ -14169,7 +15314,6 @@
             "mirror": 1,
             "protect": 1
         },
-        "isNonstandard": "Past",
         "maxMove": {
             "basePower": 130
         },
@@ -14304,6 +15448,7 @@
             "protect": 1,
             "recharge": 1
         },
+        "isNonstandard": "Past",
         "name": "Roar of Time",
         "num": 459,
         "pp": 5,
@@ -14364,6 +15509,24 @@
         },
         "target": "normal",
         "type": "Normal"
+    },
+    "rockjaw": {
+        "accuracy": 100,
+        "basePower": 80,
+        "category": "Physical",
+        "flags": {
+            "bite": 1,
+            "contact": 1,
+            "metronome": 1,
+            "mirror": 1,
+            "protect": 1
+        },
+        "name": "Rock Jaw",
+        "num": 10025,
+        "pp": 15,
+        "priority": 0,
+        "target": "normal",
+        "type": "Rock"
     },
     "rockpolish": {
         "accuracy": true,
@@ -14427,7 +15590,7 @@
             "boosts": {
                 "def": -1
             },
-            "chance": 50
+            "chance": 100
         },
         "target": "normal",
         "type": "Fighting"
@@ -14660,6 +15823,7 @@
             "mirror": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "name": "Sacred Fire",
         "num": 221,
         "pp": 5,
@@ -14750,6 +15914,23 @@
             }
         }
     },
+    "sandblast": {
+        "accuracy": 100,
+        "basePower": 50,
+        "basePowerCallback": "basePowerCallback",
+        "category": "Special",
+        "flags": {
+            "metronome": 1,
+            "mirror": 1,
+            "protect": 1
+        },
+        "name": "Sandblast",
+        "num": 10024,
+        "pp": 15,
+        "priority": 0,
+        "target": "normal",
+        "type": "Ground"
+    },
     "sandsearstorm": {
         "accuracy": 80,
         "basePower": 100,
@@ -14760,6 +15941,7 @@
             "protect": 1,
             "wind": 1
         },
+        "isNonstandard": "Past",
         "name": "Sandsear Storm",
         "num": 848,
         "onModifyMove": "onModifyMove",
@@ -14772,22 +15954,40 @@
         "target": "allAdjacentFoes",
         "type": "Ground"
     },
+    "sandstonesweep": {
+        "accuracy": 80,
+        "basePower": 100,
+        "category": "Physical",
+        "flags": {
+            "mirror": 1,
+            "protect": 1
+        },
+        "name": "Sandstone Sweep",
+        "num": 10079,
+        "onAfterHit": "onAfterHit",
+        "onAfterSubDamage": "onAfterSubDamage",
+        "pp": 5,
+        "priority": 0,
+        "target": "normal",
+        "type": "Rock"
+    },
     "sandstorm": {
         "accuracy": true,
         "basePower": 0,
         "category": "Status",
+        "climateWeather": "Sandstorm",
         "contestType": "Tough",
         "flags": {
             "metronome": 1,
             "wind": 1
         },
+        "irritantWeather": null,
         "name": "Sandstorm",
         "num": 201,
-        "pp": 10,
+        "pp": 5,
         "priority": 0,
         "target": "all",
         "type": "Rock",
-        "weather": "Sandstorm",
         "zMove": {
             "boost": {
                 "spe": 1
@@ -15156,6 +16356,7 @@
             "noparentalbond": 1,
             "protect": 1
         },
+        "irritantWeather": "DustStorm",
         "name": "Self-Destruct",
         "num": 120,
         "pp": 5,
@@ -15163,6 +16364,27 @@
         "selfdestruct": "always",
         "target": "allAdjacent",
         "type": "Normal"
+    },
+    "shade": {
+        "accuracy": 100,
+        "basePower": 50,
+        "category": "Special",
+        "flags": {
+            "metronome": 1,
+            "mirror": 1,
+            "protect": 1
+        },
+        "name": "Shade",
+        "num": 10059,
+        "onBasePower": "onBasePower",
+        "pp": 15,
+        "priority": 0,
+        "secondary": {
+            "chance": 10,
+            "volatileStatus": "flinch"
+        },
+        "target": "normal",
+        "type": "Dark"
     },
     "shadowball": {
         "accuracy": 100,
@@ -15231,6 +16453,24 @@
         "target": "normal",
         "type": "Ghost"
     },
+    "shadowfang": {
+        "accuracy": 100,
+        "basePower": 85,
+        "category": "Physical",
+        "flags": {
+            "bite": 1,
+            "contact": 1,
+            "mirror": 1,
+            "protect": 1
+        },
+        "name": "Shadow Fang",
+        "num": 10077,
+        "onTryHit": "onTryHit",
+        "pp": 10,
+        "priority": 0,
+        "target": "normal",
+        "type": "Ghost"
+    },
     "shadowforce": {
         "accuracy": 100,
         "basePower": 120,
@@ -15238,7 +16478,8 @@
         "category": "Physical",
         "condition": {
             "duration": 2,
-            "onInvulnerability": false
+            "onInvulnerability": "onInvulnerability",
+            "onSourceModifyDamage": "onSourceModifyDamage"
         },
         "contestType": "Cool",
         "flags": {
@@ -15250,6 +16491,7 @@
             "noassist": 1,
             "nosleeptalk": 1
         },
+        "isNonstandard": "Past",
         "name": "Shadow Force",
         "num": 467,
         "onTryMove": "onTryMove",
@@ -15292,6 +16534,26 @@
         "num": 425,
         "pp": 30,
         "priority": 1,
+        "target": "normal",
+        "type": "Ghost"
+    },
+    "shadowspit": {
+        "accuracy": 100,
+        "basePower": 40,
+        "category": "Special",
+        "flags": {
+            "metronome": 1,
+            "mirror": 1,
+            "protect": 1
+        },
+        "name": "Shadow Spit",
+        "num": 10029,
+        "pp": 35,
+        "priority": 0,
+        "secondary": {
+            "chance": 30,
+            "status": "par"
+        },
         "target": "normal",
         "type": "Ghost"
     },
@@ -15392,6 +16654,7 @@
             "mirror": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "name": "Shell Side Arm",
         "num": 801,
         "onAfterSubDamage": "onAfterSubDamage",
@@ -15468,6 +16731,7 @@
             "def": 2
         },
         "category": "Status",
+        "climateWeather": "RainDance",
         "flags": {
             "metronome": 1,
             "snatch": 1
@@ -15540,6 +16804,30 @@
             "effect": "clearnegativeboost"
         }
     },
+    "shreddingriff": {
+        "accuracy": 80,
+        "basePower": 110,
+        "category": "Special",
+        "flags": {
+            "bypasssub": 1,
+            "metronome": 1,
+            "mirror": 1,
+            "protect": 1,
+            "sound": 1
+        },
+        "name": "Shredding Riff",
+        "num": 10034,
+        "onTryHit": "onTryHit",
+        "pp": 5,
+        "priority": 0,
+        "self": {
+            "boosts": {
+                "spd": -1
+            }
+        },
+        "target": "allAdjacent",
+        "type": "Steel"
+    },
     "signalbeam": {
         "accuracy": 100,
         "basePower": 75,
@@ -15550,7 +16838,6 @@
             "mirror": 1,
             "protect": 1
         },
-        "isNonstandard": "Past",
         "name": "Signal Beam",
         "num": 324,
         "pp": 15,
@@ -15604,6 +16891,7 @@
             "protect": 1,
             "reflectable": 1
         },
+        "isNonstandard": "Past",
         "name": "Simple Beam",
         "num": 493,
         "onHit": "onHit",
@@ -15793,7 +17081,6 @@
         "basePower": 140,
         "category": "Physical",
         "contestType": "Cool",
-        "critRatio": 2,
         "flags": {
             "charge": 1,
             "distance": 1,
@@ -15803,13 +17090,15 @@
             "nosleeptalk": 1,
             "protect": 1
         },
+        "hasCrashDamage": true,
         "name": "Sky Attack",
         "num": 143,
+        "onMoveFail": "onMoveFail",
         "onTryMove": "onTryMove",
         "pp": 5,
         "priority": 0,
         "secondary": {
-            "chance": 30,
+            "chance": 10,
             "volatileStatus": "flinch"
         },
         "target": "any",
@@ -16056,6 +17345,25 @@
         "target": "allAdjacent",
         "type": "Poison"
     },
+    "slushball": {
+        "accuracy": 100,
+        "basePower": 60,
+        "category": "Special",
+        "flags": {
+            "bullet": 1,
+            "metronome": 1,
+            "mirror": 1,
+            "protect": 1
+        },
+        "name": "Slushball",
+        "num": 10053,
+        "onBasePower": "onBasePower",
+        "onEffectiveness": "onEffectiveness",
+        "pp": 25,
+        "priority": 0,
+        "target": "normal",
+        "type": "Ice"
+    },
     "smackdown": {
         "accuracy": 100,
         "basePower": 50,
@@ -16131,6 +17439,7 @@
         },
         "name": "Smog",
         "num": 123,
+        "onModifyMove": "onModifyMove",
         "pp": 20,
         "priority": 0,
         "secondary": {
@@ -16138,6 +17447,22 @@
             "status": "psn"
         },
         "target": "normal",
+        "type": "Poison"
+    },
+    "smogspread": {
+        "accuracy": true,
+        "basePower": 0,
+        "category": "Status",
+        "flags": {
+            "metronome": 1,
+            "wind": 1
+        },
+        "irritantWeather": "SmogSpread",
+        "name": "Smog Spread",
+        "num": 10006,
+        "pp": 5,
+        "priority": 0,
+        "target": "all",
         "type": "Poison"
     },
     "smokescreen": {
@@ -16249,6 +17574,7 @@
             "mirror": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "name": "Snipe Shot",
         "num": 745,
         "pp": 15,
@@ -16256,6 +17582,26 @@
         "target": "normal",
         "tracksTarget": true,
         "type": "Water"
+    },
+    "snooze": {
+        "accuracy": true,
+        "basePower": 0,
+        "category": "Status",
+        "flags": {
+            "bypasssub": 1,
+            "heal": 1,
+            "metronome": 1,
+            "protect": 1,
+            "reflectable": 1,
+            "sound": 1
+        },
+        "name": "Snooze",
+        "num": 10016,
+        "onHitField": "onHitField",
+        "pp": 5,
+        "priority": 0,
+        "target": "all",
+        "type": "Normal"
     },
     "snore": {
         "accuracy": 100,
@@ -16320,6 +17666,7 @@
             1,
             2
         ],
+        "isNonstandard": null,
         "name": "Soft-Boiled",
         "num": 135,
         "pp": 10,
@@ -16423,6 +17770,7 @@
             "mirror": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "name": "Spacial Rend",
         "num": 460,
         "pp": 5,
@@ -16515,6 +17863,28 @@
         "stealsBoosts": true,
         "target": "normal",
         "type": "Ghost"
+    },
+    "spectrum": {
+        "accuracy": 100,
+        "basePower": 40,
+        "category": "Special",
+        "flags": {
+            "metronome": 1,
+            "mirror": 1,
+            "protect": 1
+        },
+        "name": "Spectrum",
+        "num": 10032,
+        "pp": 35,
+        "priority": 0,
+        "secondary": {
+            "boosts": {
+                "accuracy": -1
+            },
+            "chance": 30
+        },
+        "target": "normal",
+        "type": "Steel"
     },
     "speedswap": {
         "accuracy": true,
@@ -16661,6 +18031,7 @@
             "mirror": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "name": "Spirit Break",
         "num": 789,
         "pp": 15,
@@ -16684,6 +18055,7 @@
             "mirror": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "name": "Spirit Shackle",
         "num": 662,
         "pp": 10,
@@ -16864,6 +18236,7 @@
             "protect": 1,
             "wind": 1
         },
+        "isNonstandard": "Past",
         "name": "Springtide Storm",
         "num": 831,
         "pp": 5,
@@ -16875,6 +18248,22 @@
             "chance": 30
         },
         "target": "allAdjacentFoes",
+        "type": "Fairy"
+    },
+    "sprinkle": {
+        "accuracy": true,
+        "basePower": 0,
+        "category": "Status",
+        "flags": {
+            "metronome": 1,
+            "wind": 1
+        },
+        "irritantWeather": "Sprinkle",
+        "name": "Sprinkle",
+        "num": 10007,
+        "pp": 5,
+        "priority": 0,
+        "target": "all",
         "type": "Fairy"
     },
     "stealthrock": {
@@ -16950,6 +18339,27 @@
         "target": "normal",
         "type": "Bug"
     },
+    "steelbarbs": {
+        "accuracy": true,
+        "basePower": 0,
+        "category": "Status",
+        "condition": {
+            "onSideStart": "onSideStart",
+            "onSwitchIn": "onSwitchIn"
+        },
+        "flags": {
+            "metronome": 1,
+            "mustpressure": 1,
+            "reflectable": 1
+        },
+        "name": "Steel Barbs",
+        "num": 10035,
+        "pp": 20,
+        "priority": 0,
+        "sideCondition": "steelbarbs",
+        "target": "foeSide",
+        "type": "Steel"
+    },
     "steelbeam": {
         "accuracy": 95,
         "basePower": 140,
@@ -16977,6 +18387,7 @@
             "mirror": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "name": "Steel Roller",
         "num": 798,
         "onAfterSubDamage": "onAfterSubDamage",
@@ -17167,6 +18578,23 @@
         "target": "normal",
         "type": "Rock"
     },
+    "stonestorm": {
+        "accuracy": 100,
+        "basePower": 50,
+        "category": "Special",
+        "flags": {
+            "metronome": 1,
+            "mirror": 1,
+            "protect": 1
+        },
+        "name": "Stone Storm",
+        "num": 10026,
+        "onModifyMove": "onModifyMove",
+        "pp": 10,
+        "priority": 0,
+        "target": "normal",
+        "type": "Rock"
+    },
     "storedpower": {
         "accuracy": 100,
         "basePower": 20,
@@ -17219,6 +18647,7 @@
             "mirror": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "name": "Strange Steam",
         "num": 790,
         "pp": 10,
@@ -17246,7 +18675,7 @@
         "pp": 15,
         "priority": 0,
         "target": "normal",
-        "type": "Normal"
+        "type": "Fighting"
     },
     "strengthsap": {
         "accuracy": 100,
@@ -17299,6 +18728,22 @@
             }
         }
     },
+    "strongwinds": {
+        "accuracy": true,
+        "basePower": 0,
+        "category": "Status",
+        "clearingWeather": "StrongWinds",
+        "flags": {
+            "metronome": 1,
+            "wind": 1
+        },
+        "name": "Strong Winds",
+        "num": 10014,
+        "pp": 5,
+        "priority": 0,
+        "target": "all",
+        "type": "Flying"
+    },
     "struggle": {
         "accuracy": true,
         "basePower": 50,
@@ -17316,6 +18761,7 @@
             "nosleeptalk": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "name": "Struggle",
         "noPPBoosts": true,
         "num": 165,
@@ -17482,6 +18928,7 @@
         "accuracy": true,
         "basePower": 0,
         "category": "Status",
+        "climateWeather": "sunnyday",
         "contestType": "Beautiful",
         "flags": {
             "metronome": 1
@@ -17492,12 +18939,32 @@
         "priority": 0,
         "target": "all",
         "type": "Fire",
-        "weather": "sunnyday",
         "zMove": {
             "boost": {
                 "spe": 1
             }
         }
+    },
+    "sunscreen": {
+        "accuracy": true,
+        "basePower": 0,
+        "category": "Status",
+        "condition": {
+            "onTryHitSide": "onTryHitSide"
+        },
+        "flags": {
+            "bypasssub": 1,
+            "metronome": 1,
+            "snatch": 1
+        },
+        "name": "Sunscreen",
+        "num": 10040,
+        "onTry": "onTry",
+        "pp": 15,
+        "priority": 0,
+        "target": "allySide",
+        "type": "Fire",
+        "volatileStatus": "sunscreen"
     },
     "sunsteelstrike": {
         "accuracy": 100,
@@ -17510,12 +18977,28 @@
             "protect": 1
         },
         "ignoreAbility": true,
+        "isNonstandard": "Past",
         "name": "Sunsteel Strike",
         "num": 713,
         "pp": 5,
         "priority": 0,
         "target": "normal",
         "type": "Steel"
+    },
+    "supercell": {
+        "accuracy": true,
+        "basePower": 0,
+        "category": "Status",
+        "energyWeather": "Supercell",
+        "flags": {
+            "metronome": 1
+        },
+        "name": "Supercell",
+        "num": 10012,
+        "pp": 5,
+        "priority": 0,
+        "target": "all",
+        "type": "Electric"
     },
     "superfang": {
         "accuracy": 90,
@@ -17629,6 +19112,7 @@
             "protect": 1,
             "punch": 1
         },
+        "isNonstandard": "Past",
         "maxMove": {
             "basePower": 130
         },
@@ -17691,6 +19175,22 @@
         "zMove": {
             "effect": "clearnegativeboost"
         }
+    },
+    "swarmsignal": {
+        "accuracy": true,
+        "basePower": 0,
+        "category": "Status",
+        "flags": {
+            "metronome": 1,
+            "wind": 1
+        },
+        "irritantWeather": "SwarmSignal",
+        "name": "Swarm Signal",
+        "num": 10005,
+        "pp": 5,
+        "priority": 0,
+        "target": "all",
+        "type": "Bug"
     },
     "sweetkiss": {
         "accuracy": 75,
@@ -18003,6 +19503,7 @@
             "metronome": 1,
             "snatch": 1
         },
+        "isNonstandard": "Past",
         "name": "Take Heart",
         "num": 850,
         "onHit": "onHit",
@@ -18105,6 +19606,7 @@
             "bypasssub": 1,
             "metronome": 1
         },
+        "isNonstandard": "Past",
         "name": "Teatime",
         "num": 752,
         "onHitField": "onHitField",
@@ -18238,6 +19740,7 @@
             "protect": 1,
             "pulse": 1
         },
+        "isNonstandard": "Past",
         "maxMove": {
             "basePower": 130
         },
@@ -18252,6 +19755,22 @@
         "zMove": {
             "basePower": 160
         }
+    },
+    "thermalvortex": {
+        "accuracy": 100,
+        "basePower": 70,
+        "category": "Physical",
+        "climateWeather": "SunnyDay",
+        "flags": {
+            "mirror": 1,
+            "protect": 1
+        },
+        "name": "Thermal Vortex",
+        "num": 10071,
+        "pp": 10,
+        "priority": 0,
+        "target": "allAdjacentFoes",
+        "type": "Fire"
     },
     "thief": {
         "accuracy": 100,
@@ -18269,6 +19788,7 @@
         "name": "Thief",
         "num": 168,
         "onAfterHit": "onAfterHit",
+        "onModifyPriority": "onModifyPriority",
         "pp": 25,
         "priority": 0,
         "target": "normal",
@@ -18407,6 +19927,7 @@
         },
         "name": "Thunderbolt",
         "num": 85,
+        "onModifyMove": "onModifyMove",
         "pp": 15,
         "priority": 0,
         "secondary": {
@@ -18424,6 +19945,7 @@
             "mirror": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "name": "Thunder Cage",
         "num": 819,
         "pp": 15,
@@ -18470,6 +19992,7 @@
             "mirror": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "name": "Thunderous Kick",
         "num": 823,
         "pp": 10,
@@ -18753,6 +20276,7 @@
         },
         "name": "Tri Attack",
         "num": 161,
+        "onModifyMove": "onModifyMove",
         "pp": 10,
         "priority": 0,
         "secondary": {
@@ -18859,6 +20383,7 @@
             "mirror": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "name": "Triple Arrows",
         "num": 843,
         "pp": 10,
@@ -18906,7 +20431,7 @@
     },
     "triplekick": {
         "accuracy": 90,
-        "basePower": 10,
+        "basePower": 20,
         "basePowerCallback": "basePowerCallback",
         "category": "Physical",
         "contestType": "Cool",
@@ -19244,6 +20769,26 @@
         "target": "normal",
         "type": "Grass"
     },
+    "viralblast": {
+        "accuracy": 70,
+        "basePower": 120,
+        "category": "Special",
+        "flags": {
+            "metronome": 1,
+            "mirror": 1,
+            "protect": 1
+        },
+        "name": "Viral Blast",
+        "num": 10022,
+        "pp": 5,
+        "priority": 0,
+        "secondary": {
+            "chance": 30,
+            "status": "psn"
+        },
+        "target": "normal",
+        "type": "Poison"
+    },
     "visegrip": {
         "accuracy": 100,
         "basePower": 55,
@@ -19281,6 +20826,28 @@
         "target": "normal",
         "type": "Fighting"
     },
+    "voltkick": {
+        "accuracy": 90,
+        "basePower": 85,
+        "category": "Physical",
+        "critRatio": 2,
+        "flags": {
+            "contact": 1,
+            "metronome": 1,
+            "mirror": 1,
+            "protect": 1
+        },
+        "name": "Volt Kick",
+        "num": 10045,
+        "pp": 10,
+        "priority": 0,
+        "secondary": {
+            "chance": 10,
+            "status": "par"
+        },
+        "target": "normal",
+        "type": "Electric"
+    },
     "voltswitch": {
         "accuracy": 100,
         "basePower": 70,
@@ -19301,7 +20868,7 @@
     },
     "volttackle": {
         "accuracy": 100,
-        "basePower": 120,
+        "basePower": 150,
         "category": "Physical",
         "contestType": "Cool",
         "flags": {
@@ -19312,6 +20879,7 @@
         },
         "name": "Volt Tackle",
         "num": 344,
+        "onTry": "onTry",
         "pp": 15,
         "priority": 0,
         "recoil": [
@@ -19449,6 +21017,7 @@
             "mirror": 1,
             "protect": 1
         },
+        "isNonstandard": "Past",
         "multihit": [
             2,
             5
@@ -19557,6 +21126,46 @@
             "basePower": 160
         }
     },
+    "whipup": {
+        "accuracy": 100,
+        "basePower": 90,
+        "category": "Special",
+        "flags": {
+            "metronome": 1,
+            "mirror": 1,
+            "protect": 1,
+            "wind": 1
+        },
+        "name": "Whip Up",
+        "num": 10020,
+        "pp": 10,
+        "priority": 0,
+        "secondary": {
+            "boosts": {
+                "spe": -1
+            },
+            "chance": 10
+        },
+        "target": "normal",
+        "type": "Flying"
+    },
+    "whirlduel": {
+        "accuracy": 90,
+        "basePower": 80,
+        "category": "Special",
+        "climateWeather": "RainDance",
+        "flags": {
+            "mirror": 1,
+            "protect": 1
+        },
+        "name": "Whirlduel",
+        "num": 10072,
+        "pp": 10,
+        "priority": 0,
+        "target": "normal",
+        "type": "Water",
+        "volatileStatus": "partiallytrapped"
+    },
     "whirlpool": {
         "accuracy": 85,
         "basePower": 35,
@@ -19603,6 +21212,24 @@
             }
         }
     },
+    "whitewand": {
+        "accuracy": 85,
+        "basePower": 0,
+        "category": "Status",
+        "flags": {
+            "metronome": 1,
+            "mirror": 1,
+            "protect": 1,
+            "reflectable": 1
+        },
+        "name": "White Wand",
+        "num": 10054,
+        "pp": 15,
+        "priority": 0,
+        "status": "fst",
+        "target": "normal",
+        "type": "Ice"
+    },
     "wickedblow": {
         "accuracy": 100,
         "basePower": 80,
@@ -19613,6 +21240,7 @@
             "protect": 1,
             "punch": 1
         },
+        "isNonstandard": "Past",
         "name": "Wicked Blow",
         "num": 817,
         "pp": 5,
@@ -19660,6 +21288,7 @@
             "protect": 1,
             "wind": 1
         },
+        "isNonstandard": "Past",
         "name": "Wildbolt Storm",
         "num": 847,
         "onModifyMove": "onModifyMove",
@@ -19674,7 +21303,7 @@
     },
     "wildcharge": {
         "accuracy": 100,
-        "basePower": 90,
+        "basePower": 100,
         "category": "Physical",
         "contestType": "Tough",
         "flags": {
@@ -19688,11 +21317,33 @@
         "pp": 15,
         "priority": 0,
         "recoil": [
-            1,
-            4
+            33,
+            100
         ],
+        "secondary": {
+            "chance": 10,
+            "status": "par"
+        },
         "target": "normal",
         "type": "Electric"
+    },
+    "wildmagic": {
+        "accuracy": 90,
+        "basePower": 60,
+        "basePowerCallback": "basePowerCallback",
+        "category": "Special",
+        "flags": {
+            "metronome": 1,
+            "mirror": 1,
+            "protect": 1
+        },
+        "name": "Wild Magic",
+        "num": 10067,
+        "onModifyMove": "onModifyMove",
+        "pp": 10,
+        "priority": 0,
+        "target": "normal",
+        "type": "Fairy"
     },
     "willowisp": {
         "accuracy": 85,
@@ -19717,6 +21368,46 @@
                 "atk": 1
             }
         }
+    },
+    "windrage": {
+        "accuracy": true,
+        "basePower": 110,
+        "category": "Physical",
+        "flags": {
+            "contact": 1,
+            "metronome": 1,
+            "mirror": 1,
+            "protect": 1,
+            "wind": 1
+        },
+        "name": "Windrage",
+        "num": 10019,
+        "onAfterHit": "onAfterHit",
+        "onAfterSubDamage": "onAfterSubDamage",
+        "onTry": "onTry",
+        "pp": 5,
+        "priority": 0,
+        "target": "normal",
+        "type": "Flying"
+    },
+    "windtunnel": {
+        "accuracy": 100,
+        "basePower": 60,
+        "category": "Physical",
+        "flags": {
+            "contact": 1,
+            "metronome": 1,
+            "mirror": 1,
+            "protect": 1,
+            "wind": 1
+        },
+        "name": "Wind Tunnel",
+        "num": 10018,
+        "onModifyPriority": "onModifyPriority",
+        "pp": 15,
+        "priority": 0,
+        "target": "normal",
+        "type": "Flying"
     },
     "wingattack": {
         "accuracy": 100,
@@ -19896,6 +21587,22 @@
             }
         }
     },
+    "wrangle": {
+        "accuracy": 95,
+        "basePower": 80,
+        "category": "Physical",
+        "flags": {
+            "mirror": 1,
+            "protect": 1
+        },
+        "name": "Wrangle",
+        "num": 10076,
+        "pp": 15,
+        "priority": 0,
+        "target": "normal",
+        "type": "Fighting",
+        "volatileStatus": "partiallytrapped"
+    },
     "wrap": {
         "accuracy": 90,
         "basePower": 15,
@@ -20001,10 +21708,12 @@
             "bullet": 1,
             "metronome": 1,
             "mirror": 1,
-            "protect": 1
+            "protect": 1,
+            "pulse": 1
         },
         "name": "Zap Cannon",
         "num": 192,
+        "onModifyMove": "onModifyMove",
         "pp": 5,
         "priority": 0,
         "secondary": {

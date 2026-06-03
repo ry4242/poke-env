@@ -628,14 +628,53 @@
             "Fairy"
         ],
         "evoLevel": 18,
+        "formeOrder": [
+            "Azumarill",
+            "Azumarill-Kaskade"
+        ],
         "heightm": 0.8,
         "name": "Azumarill",
         "num": 184,
+        "otherFormes": [
+            "Azumarill-Kaskade"
+        ],
         "prevo": "Marill",
         "types": [
             "Water"
         ],
         "weightkg": 28.5
+    },
+    "azumarillkaskade": {
+        "abilities": {
+            "0": "Drizzle",
+            "1": "Sticky Hold"
+        },
+        "baseSpecies": "Azumarill",
+        "baseStats": {
+            "atk": 20,
+            "def": 80,
+            "hp": 100,
+            "spa": 90,
+            "spd": 80,
+            "spe": 50
+        },
+        "color": "Green",
+        "eggGroups": [
+            "Water 1",
+            "Fairy"
+        ],
+        "evoLevel": 18,
+        "forme": "Kaskade",
+        "gen": 9,
+        "heightm": 1.1,
+        "name": "Azumarill-Kaskade",
+        "num": 184,
+        "prevo": "Marill-Kaskade",
+        "types": [
+            "Water",
+            "Grass"
+        ],
+        "weightkg": 30
     },
     "bayleef": {
         "abilities": {
@@ -780,12 +819,50 @@
         "evos": [
             "Weepinbell"
         ],
+        "formeOrder": [
+            "Bellsprout",
+            "Bellsprout-Kaskade"
+        ],
         "heightm": 0.7,
         "name": "Bellsprout",
         "num": 69,
+        "otherFormes": [
+            "Bellsprout-Kaskade"
+        ],
         "types": [
             "Grass",
             "Poison"
+        ],
+        "weightkg": 4
+    },
+    "bellsproutkaskade": {
+        "abilities": {
+            "0": "Sweet Veil",
+            "1": "Triage"
+        },
+        "baseSpecies": "Bellsprout",
+        "baseStats": {
+            "atk": 70,
+            "def": 40,
+            "hp": 50,
+            "spa": 40,
+            "spd": 30,
+            "spe": 70
+        },
+        "color": "Green",
+        "eggGroups": [
+            "Grass"
+        ],
+        "evos": [
+            "Drosabell"
+        ],
+        "forme": "Kaskade",
+        "gen": 9,
+        "heightm": 0.7,
+        "name": "Bellsprout-Kaskade",
+        "num": 69,
+        "types": [
+            "Grass"
         ],
         "weightkg": 4
     },
@@ -2835,7 +2912,8 @@
             "Umbreon",
             "Leafeon",
             "Glaceon",
-            "Sylveon"
+            "Sylveon",
+            "Enigmeon"
         ],
         "formeOrder": [
             "Eevee",
@@ -3222,6 +3300,7 @@
             "Field"
         ],
         "evoCondition": "during the day",
+        "evoItem": "Sun Stone",
         "evoType": "levelFriendship",
         "genderRatio": {
             "F": 0.125,
@@ -3783,14 +3862,53 @@
         "evos": [
             "Haunter"
         ],
+        "formeOrder": [
+            "Gastly",
+            "Gastly-Kaskade"
+        ],
         "heightm": 1.3,
         "name": "Gastly",
         "num": 92,
+        "otherFormes": [
+            "Gastly-Kaskade"
+        ],
         "types": [
             "Ghost",
             "Poison"
         ],
         "weightkg": 0.1
+    },
+    "gastlykaskade": {
+        "abilities": {
+            "0": "Levitate",
+            "1": "Warp Mist"
+        },
+        "baseSpecies": "Gastly",
+        "baseStats": {
+            "atk": 35,
+            "def": 40,
+            "hp": 30,
+            "spa": 80,
+            "spd": 25,
+            "spe": 100
+        },
+        "color": "White",
+        "eggGroups": [
+            "Amorphous"
+        ],
+        "evos": [
+            "Haunter-Kaskade"
+        ],
+        "forme": "Kaskade",
+        "gen": 9,
+        "heightm": 0.9,
+        "name": "Gastly-Kaskade",
+        "num": 92,
+        "types": [
+            "Ghost",
+            "Water"
+        ],
+        "weightkg": 2
     },
     "gengar": {
         "abilities": {
@@ -3812,13 +3930,15 @@
         "evoType": "trade",
         "formeOrder": [
             "Gengar",
-            "Gengar-Mega"
+            "Gengar-Mega",
+            "Gengar-Kaskade"
         ],
         "heightm": 1.5,
         "name": "Gengar",
         "num": 94,
         "otherFormes": [
-            "Gengar-Mega"
+            "Gengar-Mega",
+            "Gengar-Kaskade"
         ],
         "prevo": "Haunter",
         "types": [
@@ -3854,6 +3974,38 @@
             "Poison"
         ],
         "weightkg": 0
+    },
+    "gengarkaskade": {
+        "abilities": {
+            "0": "Levitate",
+            "1": "Warp Mist"
+        },
+        "baseSpecies": "Gengar",
+        "baseStats": {
+            "atk": 55,
+            "def": 85,
+            "hp": 65,
+            "spa": 110,
+            "spd": 55,
+            "spe": 130
+        },
+        "color": "White",
+        "eggGroups": [
+            "Amorphous"
+        ],
+        "evoCondition": "Fog",
+        "evoType": "weathergy",
+        "forme": "Kaskade",
+        "gen": 9,
+        "heightm": 1.4,
+        "name": "Gengar-Kaskade",
+        "num": 94,
+        "prevo": "Haunter-Kaskade",
+        "types": [
+            "Ghost",
+            "Water"
+        ],
+        "weightkg": 35
     },
     "gengarmega": {
         "abilities": {
@@ -4057,7 +4209,8 @@
         ],
         "evoLevel": 22,
         "evos": [
-            "Crobat"
+            "Crobat",
+            "Probat"
         ],
         "heightm": 1.6,
         "name": "Golbat",
@@ -4464,7 +4617,7 @@
         "prevo": "Magikarp",
         "types": [
             "Water",
-            "Flying"
+            "Dragon"
         ],
         "weightkg": 235
     },
@@ -4517,15 +4670,55 @@
         "evos": [
             "Gengar"
         ],
+        "formeOrder": [
+            "Haunter",
+            "Haunter-Kaskade"
+        ],
         "heightm": 1.6,
         "name": "Haunter",
         "num": 93,
+        "otherFormes": [
+            "Haunter-Kaskade"
+        ],
         "prevo": "Gastly",
         "types": [
             "Ghost",
             "Poison"
         ],
         "weightkg": 0.1
+    },
+    "haunterkaskade": {
+        "abilities": {
+            "0": "Levitate",
+            "1": "Warp Mist"
+        },
+        "baseSpecies": "Haunter",
+        "baseStats": {
+            "atk": 50,
+            "def": 60,
+            "hp": 45,
+            "spa": 95,
+            "spd": 40,
+            "spe": 115
+        },
+        "color": "White",
+        "eggGroups": [
+            "Amorphous"
+        ],
+        "evos": [
+            "Gengar-Kaskade"
+        ],
+        "forme": "Kaskade",
+        "gen": 9,
+        "heightm": 1.5,
+        "name": "Haunter-Kaskade",
+        "num": 93,
+        "prevo": "Gastly-Kaskade",
+        "types": [
+            "Ghost",
+            "Water"
+        ],
+        "weightkg": 5
     },
     "hemogoblin": {
         "abilities": {
@@ -6306,14 +6499,57 @@
         "evos": [
             "Azumarill"
         ],
+        "formeOrder": [
+            "Marill",
+            "Marill-Kaskade"
+        ],
         "heightm": 0.4,
         "name": "Marill",
         "num": 183,
+        "otherFormes": [
+            "Marill-Kaskade"
+        ],
         "prevo": "Azurill",
         "types": [
             "Water"
         ],
         "weightkg": 8.5
+    },
+    "marillkaskade": {
+        "abilities": {
+            "0": "Hydration",
+            "1": "Sticky Hold"
+        },
+        "baseSpecies": "Marill",
+        "baseStats": {
+            "atk": 20,
+            "def": 50,
+            "hp": 70,
+            "spa": 20,
+            "spd": 50,
+            "spe": 40
+        },
+        "canHatch": true,
+        "color": "Green",
+        "eggGroups": [
+            "Water 1",
+            "Fairy"
+        ],
+        "evoType": "levelFriendship",
+        "evos": [
+            "Azumarill-Kaskade"
+        ],
+        "forme": "Kaskade",
+        "gen": 9,
+        "heightm": 0.5,
+        "name": "Marill-Kaskade",
+        "num": 183,
+        "prevo": "Azurill-Kaskade",
+        "types": [
+            "Water",
+            "Grass"
+        ],
+        "weightkg": 8.7
     },
     "marowak": {
         "abilities": {
@@ -9605,7 +9841,8 @@
         "evoItem": "Up-Grade",
         "evoType": "trade",
         "evos": [
-            "Porygon-Z"
+            "Porygon-Z",
+            "Porygon \u03c9"
         ],
         "gender": "N",
         "heightm": 0.6,
@@ -12099,7 +12336,7 @@
     },
     "steelixmega": {
         "abilities": {
-            "0": "Sand Force"
+            "0": "Earth Force"
         },
         "baseSpecies": "Steelix",
         "baseStats": {
@@ -12174,14 +12411,53 @@
         ],
         "evoMove": "Mimic",
         "evoType": "levelMove",
+        "formeOrder": [
+            "Sudowoodo",
+            "Sudowoodo-Amaze-All"
+        ],
         "heightm": 1.2,
         "name": "Sudowoodo",
         "num": 185,
+        "otherFormes": [
+            "Sudowoodo-Amaze-All"
+        ],
         "prevo": "Bonsly",
         "types": [
             "Rock"
         ],
         "weightkg": 38
+    },
+    "sudowoodoamazeall": {
+        "abilities": {
+            "0": "Lightning Rod",
+            "1": "Surveillance"
+        },
+        "baseSpecies": "Sudowoodo",
+        "baseStats": {
+            "atk": 40,
+            "def": 75,
+            "hp": 70,
+            "spa": 100,
+            "spd": 105,
+            "spe": 20
+        },
+        "color": "Gray",
+        "eggGroups": [
+            "Mineral"
+        ],
+        "evoItem": "Amaze-Drive",
+        "evoType": "useItem",
+        "forme": "Amaze-All",
+        "gen": 9,
+        "heightm": 8,
+        "name": "Sudowoodo-Amaze-All",
+        "num": 185,
+        "prevo": "Bonsly",
+        "types": [
+            "Steel",
+            "Psychic"
+        ],
+        "weightkg": 115
     },
     "suicune": {
         "abilities": {
@@ -12972,6 +13248,7 @@
             "Field"
         ],
         "evoCondition": "at night",
+        "evoItem": "Moon Stone",
         "evoType": "levelFriendship",
         "genderRatio": {
             "F": 0.125,
@@ -13965,7 +14242,7 @@
     },
     "wooperpaldea": {
         "abilities": {
-            "0": "Poison Point",
+            "0": "Poison Coat",
             "1": "Water Absorb"
         },
         "baseSpecies": "Wooper",
@@ -14043,12 +14320,51 @@
         "evos": [
             "Yanmega"
         ],
+        "formeOrder": [
+            "Yanma",
+            "Yanma-Kaskade"
+        ],
         "heightm": 1.2,
         "name": "Yanma",
         "num": 193,
+        "otherFormes": [
+            "Yanma-Kaskade"
+        ],
         "types": [
             "Bug",
             "Flying"
+        ],
+        "weightkg": 38
+    },
+    "yanmakaskade": {
+        "abilities": {
+            "0": "Power Within",
+            "1": "Magic Guard"
+        },
+        "baseSpecies": "Yanma",
+        "baseStats": {
+            "atk": 65,
+            "def": 45,
+            "hp": 65,
+            "spa": 75,
+            "spd": 45,
+            "spe": 95
+        },
+        "color": "Purple",
+        "eggGroups": [
+            "Bug"
+        ],
+        "evos": [
+            "Yanmage"
+        ],
+        "forme": "Kaskade",
+        "gen": 9,
+        "heightm": 1.2,
+        "name": "Yanma-Kaskade",
+        "num": 193,
+        "types": [
+            "Bug",
+            "Dragon"
         ],
         "weightkg": 38
     },
