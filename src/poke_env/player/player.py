@@ -57,7 +57,7 @@ class Player(ABC):
         account_configuration: Optional[AccountConfiguration] = None,
         *,
         avatar: Optional[str] = None,
-        battle_format: str = "gen9randombattle",
+        battle_format: str = "gen9swserandombattle",
         log_level: Optional[int] = None,
         max_concurrent_battles: int = 1,
         accept_open_team_sheet: bool = False,
@@ -80,7 +80,7 @@ class Player(ABC):
         :param avatar: Player avatar name. Optional.
         :type avatar: str, optional
         :param battle_format: Name of the battle format this player plays. Defaults to
-            gen9randombattle.
+            gen9swserandombattle.
         :type battle_format: str
         :param log_level: The player's logger level.
         :type log_level: int. Defaults to logging's default level.

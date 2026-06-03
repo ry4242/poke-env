@@ -20,6 +20,153 @@ from poke_env.battle import (
 )
 from poke_env.data import GenData
 
+FOGHORN_NO_TYPE_CHANGE_MOVES = {
+    "judgment",
+    "multiattack",
+    "naturalgift",
+    "revelationdance",
+    "technoblast",
+    "terrainpulse",
+    "weatherball",
+}
+
+WEATHER_BALL_TYPES = {
+    Weather.SUNNYDAY: PokemonType.FIRE,
+    Weather.DESOLATELAND: PokemonType.FIRE,
+    Weather.RAINDANCE: PokemonType.WATER,
+    Weather.PRIMORDIALSEA: PokemonType.WATER,
+    Weather.HAIL: PokemonType.ICE,
+    Weather.SNOWSCAPE: PokemonType.ICE,
+    Weather.BLOODMOON: PokemonType.DARK,
+    Weather.FOGHORN: PokemonType.NORMAL,
+    Weather.SANDSTORM: PokemonType.ROCK,
+    Weather.DUSTSTORM: PokemonType.GROUND,
+    Weather.POLLINATE: PokemonType.GRASS,
+    Weather.SWARMSIGNAL: PokemonType.BUG,
+    Weather.SMOGSPREAD: PokemonType.POISON,
+    Weather.SPRINKLE: PokemonType.FAIRY,
+    Weather.AURAPROJECTION: PokemonType.FIGHTING,
+    Weather.HAUNT: PokemonType.GHOST,
+    Weather.DAYDREAM: PokemonType.PSYCHIC,
+    Weather.DRAGONFORCE: PokemonType.DRAGON,
+    Weather.SUPERCELL: PokemonType.ELECTRIC,
+    Weather.MAGNETIZE: PokemonType.STEEL,
+    Weather.STRONGWINDS: PokemonType.FLYING,
+    Weather.DELTASTREAM: PokemonType.FLYING,
+    Weather.CATACLYSMICLIGHT: PokemonType.THREE_QUESTION_MARKS,
+}
+
+SOLAR_WEAKENING_WEATHERS = {
+    Weather.RAINDANCE,
+    Weather.PRIMORDIALSEA,
+    Weather.HAIL,
+    Weather.SNOWSCAPE,
+    Weather.BLOODMOON,
+    Weather.FOGHORN,
+}
+
+
+def _weather_active(battle: Union[Battle, DoubleBattle], *weathers: Weather) -> bool:
+    return any(weather in battle.weather for weather in weathers)
+
+
+def _weather_is_boosted(battle: Union[Battle, DoubleBattle]) -> bool:
+    return Weather.STRONGWINDS in battle.weather
+
+
+def _ability_active(battle: Union[Battle, DoubleBattle], ability: str) -> bool:
+    neutralizing_gas = any(
+        pokemon and pokemon.ability == "neutralizinggas"
+        for pokemon in battle.all_active_pokemons
+    )
+    return any(
+        pokemon
+        and pokemon.ability == ability
+        and (ability == "neutralizinggas" or not neutralizing_gas)
+        for pokemon in battle.all_active_pokemons
+    )
+
+
+def _weather_suppressed(battle: Union[Battle, DoubleBattle]) -> bool:
+    return _ability_active(battle, "airlock")
+
+
+def _effective_climate_weather(
+    battle: Union[Battle, DoubleBattle], pokemon: Pokemon
+) -> Optional[Weather]:
+    if _weather_suppressed(battle) or _ability_active(battle, "cloudnine"):
+        return None
+    if pokemon.item == "utilityumbrella":
+        return None
+    return max(
+        (weather for weather in battle.weather if weather in Weather.CLIMATE_WEATHERS),
+        key=lambda weather: battle.weather[weather],
+        default=None,
+    )
+
+
+def _effective_irritant_weather(
+    battle: Union[Battle, DoubleBattle], pokemon: Pokemon
+) -> Optional[Weather]:
+    if _weather_suppressed(battle):
+        return None
+    if pokemon.item == "safetygoggles" or pokemon.ability == "overcoat":
+        return None
+    return max(
+        (weather for weather in battle.weather if weather in Weather.IRRITANT_WEATHERS),
+        key=lambda weather: battle.weather[weather],
+        default=None,
+    )
+
+
+def _effective_energy_weather(
+    battle: Union[Battle, DoubleBattle], pokemon: Pokemon
+) -> Optional[Weather]:
+    if _weather_suppressed(battle) or pokemon.item == "energynullifier":
+        return None
+    return max(
+        (weather for weather in battle.weather if weather in Weather.ENERGY_WEATHERS),
+        key=lambda weather: battle.weather[weather],
+        default=None,
+    )
+
+
+def _effective_clearing_weather(
+    battle: Union[Battle, DoubleBattle], pokemon: Pokemon
+) -> Optional[Weather]:
+    if _weather_suppressed(battle):
+        return None
+    return max(
+        (weather for weather in battle.weather if weather in Weather.CLEARING_WEATHERS),
+        key=lambda weather: battle.weather[weather],
+        default=None,
+    )
+
+
+def _weather_ball_weather(
+    battle: Union[Battle, DoubleBattle], attacker: Pokemon
+) -> Optional[Weather]:
+    effective_weathers = {
+        _effective_climate_weather(battle, attacker),
+        _effective_irritant_weather(battle, attacker),
+        _effective_energy_weather(battle, attacker),
+        _effective_clearing_weather(battle, attacker),
+        max(
+            (
+                weather
+                for weather in battle.weather
+                if weather in Weather.CATACLYSM_WEATHERS
+            ),
+            key=lambda weather: battle.weather[weather],
+            default=None,
+        ),
+    }
+    return max(
+        (weather for weather in effective_weathers if weather in WEATHER_BALL_TYPES),
+        key=lambda weather: battle.weather[weather],
+        default=None,
+    )
+
 
 # Source: https://github.com/smogon/damage-calc/blob/master/calc/src/mechanics/gen789.ts#L52
 # NOTE: dont deal with multihits (just take average)
@@ -148,6 +295,7 @@ def calculate_damage(
     elif attacker_ability == "merciless" and defender.status in [
         Status.PSN,
         Status.TOX,
+        Status.BLT,
     ]:
         is_critical = True
 
@@ -163,16 +311,18 @@ def calculate_damage(
     move_type: Optional[PokemonType] = move.type
     move_target: Target = move.target if move.target is not None else Target.SELF
     if move.id == "weatherball":
-        if Weather.SUNNYDAY in battle.weather and attacker.item != "utilityumbrella":
-            move_type = PokemonType.FIRE
-        elif Weather.RAINDANCE in battle.weather and attacker.item != "utilityumbrella":
-            move_type = PokemonType.WATER
-        elif Weather.SANDSTORM in battle.weather:
-            move_type = PokemonType.ROCK
-        elif Weather.HAIL in battle.weather or Weather.SNOW in battle.weather:
-            move_type = PokemonType.ICE
-        else:
-            move_type = PokemonType.NORMAL
+        active_weather = _weather_ball_weather(battle, attacker)
+        move_type = WEATHER_BALL_TYPES.get(active_weather, PokemonType.NORMAL)
+    elif (
+        move.category != MoveCategory.STATUS
+        and (
+            _weather_active(battle, Weather.DESOLATELAND)
+            and move_type == PokemonType.WATER
+            or _weather_active(battle, Weather.PRIMORDIALSEA)
+            and move_type == PokemonType.FIRE
+        )
+    ):
+        return 0, 0
     elif move.id == "judgment" and attacker.item and attacker.item.endswith("plate"):
         move_type = get_item_boost_type(attacker.item)
     elif move.id == "naturepower" or (
@@ -262,9 +412,11 @@ def calculate_damage(
         move,
         move_type or move.type,
         defender.type_1,
+        battle,
         attacker_ability in ["scrappy", "mindseye"],
         Field.GRAVITY in battle.fields,
         defender.item == "ringtarget",
+        defender.item,
     )
     second_type_effectiveness = (
         1
@@ -273,9 +425,11 @@ def calculate_damage(
             move,
             move_type or move.type,
             defender.type_2,  # type: ignore
+            battle,
             attacker_ability in ["scrappy", "mindseye"],
             Field.GRAVITY in battle.fields,
             defender.item == "ringtarget",
+            defender.item,
         )
     )
 
@@ -401,6 +555,7 @@ def calculate_damage(
         move,
         battle,
         has_ate_ability_type_change,
+        move_type,
     )
 
     # NOTE: I don't want to deal with multihit complexity so I calculate the average damage expected
@@ -433,14 +588,21 @@ def calculate_damage(
 
     # the random factor is applied between the crit mod and the stab mod, so don't apply anything
     # below this until we're inside the loop
-    pre_stellar_stab_mod = get_stab_mod(attacker, move, move_type)
+    pre_stellar_stab_mod = get_stab_mod(attacker, move, move_type, battle)
     stab_mod = get_stellar_stab_mod(attacker, move, pre_stellar_stab_mod)
 
     apply_burn = (
-        attacker.status == Status.BRN
-        and move_category == MoveCategory.PHYSICAL
-        and not attacker_ability == "guts"
-        and not move.id == "facade"
+        (
+            attacker.status == Status.BRN
+            and move_category == MoveCategory.PHYSICAL
+            and not attacker_ability == "guts"
+            and not move.id == "facade"
+        ) or (
+            attacker.status == Status.FST
+            and move_category == MoveCategory.SPECIAL
+            and not attacker_ability == "guts"
+            and not move.id == "facade"
+        )
     )
 
     final_mods = calculate_final_mods(
@@ -472,6 +634,7 @@ def calculate_base_power(
     move: Move,
     battle: Union[Battle, DoubleBattle],
     has_ate_ability_type_change: bool,
+    move_type: Optional[PokemonType],
 ):
     assert battle.player_role is not None and battle.opponent_role is not None
     attacker = battle.get_pokemon(attacker_identifier)
@@ -595,11 +758,9 @@ def calculate_base_power(
     elif move.id == "smellsalts":
         base_power = base_power * (2 if defender.status == Status.PAR else 1)
     elif move.id == "weatherball":
-        base_power = base_power * (2 if len(battle.weather) > 0 else 1)
-        if attacker.item == "utilityumbrella" and (
-            Weather.SUNNYDAY in battle.weather or Weather.RAINDANCE in battle.weather
-        ):
-            base_power = move.base_power
+        base_power = base_power * (
+            2 if _weather_ball_weather(battle, attacker) is not None else 1
+        )
     elif move.id == "terrainpulse":
         base_power = base_power * (
             2
@@ -664,6 +825,7 @@ def calculate_base_power(
         battle,
         base_power,
         has_ate_ability_type_change,
+        move_type,
         attacker_first,
     )
     base_power = max(
@@ -689,6 +851,7 @@ def calculate_base_power_mods(
     battle: Union[Battle, DoubleBattle],
     base_power: float,
     has_ate_ability_type_change: bool,
+    move_type: Optional[PokemonType],
     attacker_first: bool,  # replaces turn_order
 ):
     assert battle.player_role
@@ -729,10 +892,21 @@ def calculate_base_power_mods(
     if (
         (
             move.id == "facade"
-            and attacker.status in {Status.BRN, Status.PAR, Status.PSN, Status.TOX}
+            and attacker.status is not None
+            and attacker.status != Status.SLP
         )
         or (move.id == "brine" and defender.current_hp_fraction <= 0.5)
-        or (move.id == "venoshock" and defender.status in {Status.PSN, Status.TOX})
+        or (
+            move.id == "venoshock"
+            and defender.status in {Status.PSN, Status.TOX, Status.BLT}
+        )
+        or (
+            move.id == "barbarrage"
+            and (
+                defender.status in {Status.PSN, Status.TOX}
+                or attacker.status == Status.BLT
+            )
+        )
         or (move.id == "lashout" and sum(attacker.boosts.values()) < 0)
     ):
         bp_mods.append(8192)
@@ -754,8 +928,7 @@ def calculate_base_power_mods(
         bp_mods.append(6144)
     elif (
         move.id in ["solarbeam", "solarblade"]
-        and len(battle.weather) > 0
-        and Weather.SUNNYDAY not in battle.fields
+        and any(weather in battle.weather for weather in SOLAR_WEAKENING_WEATHERS)
     ):
         bp_mods.append(2048)
     elif move.id in ["electrodrift", "collisioncourse"]:
@@ -764,9 +937,11 @@ def calculate_base_power_mods(
             move,
             move.type,
             defender.type_1,
+            battle,
             attacker.ability in ["scrappy", "mindseye"],
             Field.GRAVITY in battle.fields,
             defender.item == "ringtarget",
+            defender.item,
         )
 
         second_type_effectiveness = (
@@ -776,9 +951,11 @@ def calculate_base_power_mods(
                 move,
                 move.type,
                 defender.type_2,  # type: ignore
+                battle,
                 attacker.ability in ["scrappy", "mindseye"],
                 Field.GRAVITY in battle.fields,
                 defender.item == "ringtarget",
+                defender.item,
             )
         )
 
@@ -786,6 +963,14 @@ def calculate_base_power_mods(
             bp_mods.append(5461)
 
     if Effect.HELPING_HAND in attacker.effects:
+        bp_mods.append(6144)
+
+    if (
+        Weather.FOGHORN in battle.weather
+        and _weather_is_boosted(battle)
+        and move_type == PokemonType.NORMAL
+        and move.id not in FOGHORN_NO_TYPE_CHANGE_MOVES
+    ):
         bp_mods.append(6144)
 
     # ####################### Field Effects ########################
@@ -813,12 +998,12 @@ def calculate_base_power_mods(
         (attacker.ability == "technician" and base_power <= 60)
         or (
             attacker.ability == "flareboost"
-            and attacker.status == Status.BRN
+            and attacker.status in {Status.BRN, Status.FST}
             and move.category == MoveCategory.SPECIAL
         )
         or (
             attacker.ability == "toxicboost"
-            and attacker.status in {Status.PSN, Status.TOX}
+            and attacker.status in {Status.PSN, Status.TOX, Status.BLT}
             and move.category == MoveCategory.PHYSICAL
         )
         or (attacker.ability == "megalauncher" and "pulse" in move.flags)
@@ -831,7 +1016,7 @@ def calculate_base_power_mods(
         (attacker.ability == "sheerforce" and (move.secondary or move.id == "orderup"))
         or (
             attacker.ability == "sandforce"
-            and Weather.SANDSTORM in battle.weather
+            and _effective_irritant_weather(battle, attacker) == Weather.SANDSTORM
             and move.type in {PokemonType.ROCK, PokemonType.GROUND, PokemonType.STEEL}
         )
         or (attacker.ability == "analytic" and not attacker_first)
@@ -900,6 +1085,23 @@ def calculate_base_power_mods(
         and not abilities_suppressed
     ):
         bp_mods.append(5120)
+
+    if (
+        attacker.ability == "carboncapture"
+        and _effective_irritant_weather(battle, attacker) == Weather.SMOGSPREAD
+        and move_type == PokemonType.POISON
+        and not abilities_suppressed
+    ):
+        bp_mods.append(8192)
+
+    if (
+        attacker.ability == "earthforce"
+        and _effective_irritant_weather(battle, attacker)
+        in {Weather.SANDSTORM, Weather.DUSTSTORM}
+        and move_type in {PokemonType.ROCK, PokemonType.GROUND, PokemonType.STEEL}
+        and not abilities_suppressed
+    ):
+        bp_mods.append(5325)
 
     attacking_team = (
         battle.team
@@ -1033,12 +1235,14 @@ def calculate_atk_mods(
         atk_mods.append(2048)
     elif (
         attacker.ability == "solarpower"
-        and Weather.SUNNYDAY in battle.weather
+        and _effective_climate_weather(battle, attacker)
+        in {Weather.SUNNYDAY, Weather.DESOLATELAND}
         and move.category == MoveCategory.SPECIAL
     ) or (
         attacker.species == "cherrim"
         and attacker.ability == "flowergift"
-        and Weather.SUNNYDAY in battle.weather
+        and _effective_climate_weather(battle, attacker)
+        in {Weather.SUNNYDAY, Weather.DESOLATELAND}
         and move.category == MoveCategory.PHYSICAL
     ):
         atk_mods.append(6144)
@@ -1098,16 +1302,11 @@ def calculate_atk_mods(
     if (
         attacker_ally
         and attacker_ally.ability == "flowergift"
-        and Weather.SUNNYDAY in battle.weather
+        and _effective_climate_weather(battle, attacker_ally)
+        in {Weather.SUNNYDAY, Weather.DESOLATELAND}
         and move.category == MoveCategory.PHYSICAL
         and not abilities_suppressed
     ):
-        atk_mods.append(6144)
-
-    if (
-        attacker.ability == "steellyspirit"
-        or (attacker_ally and attacker_ally.ability == "steellyspirit")
-    ) and not abilities_suppressed:
         atk_mods.append(6144)
 
     if (
@@ -1172,8 +1371,8 @@ def calculate_atk_mods(
     ) or (
         attacker.ability == "orichalcumpulse"
         and move.category == MoveCategory.PHYSICAL
-        and Weather.SUNNYDAY in battle.weather
-        and not attacker.item == "utilityumbrella"
+        and _effective_climate_weather(battle, attacker)
+        in {Weather.SUNNYDAY, Weather.DESOLATELAND}
     ):
         atk_mods.append(5461)
 
@@ -1195,6 +1394,22 @@ def calculate_atk_mods(
         attacker.item == "choicespecs" and move.category == MoveCategory.SPECIAL
     ):
         atk_mods.append(6144)
+
+    if (
+        _effective_irritant_weather(battle, attacker) == Weather.POLLINATE
+        and attacker.ability not in ["bubblehelm", "bloomspring"]
+        and PokemonType.GRASS not in attacker.types
+        and PokemonType.BUG not in attacker.types
+        and not abilities_suppressed
+    ):
+        atk_mods.append(3072)
+
+    if (
+        defender.ability == "hydrophobic"
+        and move.type == PokemonType.WATER
+        and not abilities_suppressed
+    ):
+        atk_mods.append(2048)
 
     return atk_mods
 
@@ -1232,14 +1447,17 @@ def calculate_defense(
             * BOOST_MULTIPLIERS[defender.boosts[defense_stat]]
         )
 
+    sandstorm_active = _effective_irritant_weather(battle, defender) == Weather.SANDSTORM
+    sandstorm_sw = sandstorm_active and _weather_is_boosted(battle)
     if (
-        Weather.SANDSTORM in battle.weather
-        and PokemonType.ROCK in defender.types
-        and not hits_physical
-    ) or (
-        Weather.SNOW in battle.weather
-        and PokemonType.ICE in defender.types
-        and hits_physical
+        (sandstorm_active and PokemonType.ROCK in defender.types and not hits_physical)
+        or (sandstorm_sw and (PokemonType.STEEL in defender.types or PokemonType.GROUND in defender.types) and not hits_physical)
+        or (sandstorm_sw and PokemonType.ROCK in defender.types and hits_physical)
+        or (
+            _effective_climate_weather(battle, defender) in {Weather.HAIL, Weather.SNOWSCAPE}
+            and PokemonType.ICE in defender.types
+            and hits_physical
+        )
     ):
         defense = poke_round((defense * 3) / 2)  # type: ignore
 
@@ -1281,14 +1499,16 @@ def calculate_def_mods(
     elif (
         defender.species == "cherrim"
         and defender.ability == "flowergift"
-        and Weather.SUNNYDAY not in battle.weather
+        and _effective_climate_weather(battle, defender)
+        in {Weather.SUNNYDAY, Weather.DESOLATELAND}
         and not hits_physical
     ):
         def_mods.append(6144)
     elif (
         defender_ally
         and defender_ally.ability == "flowergift"
-        and Weather.SUNNYDAY in battle.weather
+        and _effective_climate_weather(battle, defender_ally)
+        in {Weather.SUNNYDAY, Weather.DESOLATELAND}
         and not hits_physical
         and not abilities_suppressed
     ):
@@ -1410,21 +1630,78 @@ def calculate_base_damage(
     if is_spread:
         base_damage = poke_round((base_damage * 3072) / 4096)
 
-    if (
-        Weather.SUNNYDAY in battle.weather
-        and move.id == "hydrosteam"
-        and attacker.item != "utilityumbrella"
-    ):
+    climate_boosted = _weather_is_boosted(battle)
+    eff_climate_atk = _effective_climate_weather(battle, attacker)
+    eff_climate_def = _effective_climate_weather(battle, defender)
+
+    if move.id == "hydrosteam" and eff_climate_atk in {
+        Weather.SUNNYDAY, Weather.DESOLATELAND
+    }:
         base_damage = poke_round((base_damage * 6144) / 4096)
-    elif defender.item != "utilityumbrella":
-        if (Weather.SUNNYDAY in battle.weather and move_type == PokemonType.FIRE) or (
-            Weather.RAINDANCE in battle.weather and move_type == PokemonType.WATER
-        ):
+    elif eff_climate_def in {Weather.SUNNYDAY, Weather.DESOLATELAND}:
+        if move_type == PokemonType.FIRE and defender.ability not in ["droughtproof"]:
+            base_damage = poke_round(
+                (base_damage * (6554 if climate_boosted else 6144)) / 4096
+            )
+        elif move_type == PokemonType.WATER and attacker.ability not in ["droughtproof"]:
+            base_damage = poke_round(
+                (base_damage * (1638 if climate_boosted else 2048)) / 4096
+            )
+    elif eff_climate_def in {Weather.RAINDANCE, Weather.PRIMORDIALSEA}:
+        if move_type == PokemonType.WATER and defender.ability not in [
+            "droughtproof", "hydrophobic"
+        ]:
+            base_damage = poke_round(
+                (base_damage * (6554 if climate_boosted else 6144)) / 4096
+            )
+        elif move_type == PokemonType.FIRE and attacker.ability not in [
+            "droughtproof", "hydrophobic"
+        ]:
+            base_damage = poke_round(
+                (base_damage * (1638 if climate_boosted else 2048)) / 4096
+            )
+    elif eff_climate_def == Weather.BLOODMOON:
+        petrichor_active = any(
+            p and p.ability == "petrichor" for p in battle.all_active_pokemons
+        )
+        if petrichor_active:
+            if move_type == PokemonType.WATER and defender.ability not in [
+                "droughtproof", "hydrophobic"
+            ]:
+                base_damage = poke_round(
+                    (base_damage * (6554 if climate_boosted else 6144)) / 4096
+                )
+            elif move_type == PokemonType.FIRE and attacker.ability not in [
+                "droughtproof", "hydrophobic"
+            ]:
+                base_damage = poke_round(
+                    (base_damage * (1638 if climate_boosted else 2048)) / 4096
+                )
+
+    if (
+        _effective_irritant_weather(battle, defender) == Weather.DUSTSTORM
+        and move_type in [PokemonType.WATER, PokemonType.GRASS]
+        and attacker.ability not in [
+            "overcoat",
+            "earthforce",
+            "bubblehelm",
+            "dustgather",
+        ]
+    ):
+        base_damage = poke_round((base_damage * 2048) / 4096)
+
+    if _effective_energy_weather(battle, defender) == Weather.DAYDREAM:
+        if move_type == PokemonType.PSYCHIC:
             base_damage = poke_round((base_damage * 6144) / 4096)
-        elif (
-            Weather.SUNNYDAY in battle.weather and move_type == PokemonType.WATER
-        ) or (Weather.RAINDANCE in battle.weather and move_type == PokemonType.FIRE):
+        elif move_type == PokemonType.DARK:
             base_damage = poke_round((base_damage * 2048) / 4096)
+
+    if (
+        _effective_energy_weather(battle, defender) == Weather.DRAGONFORCE
+        and move_type == PokemonType.DRAGON
+    ):
+        dragonforce_boost = 6144 if climate_boosted else 5120
+        base_damage = poke_round((base_damage * dragonforce_boost) / 4096)
 
     if is_critical:
         base_damage = poke_round((base_damage * 1.5))
@@ -1498,6 +1775,24 @@ def calculate_final_mods(
     elif attacker.ability == "tintedlens" and type_effectiveness < 1:
         final_mods.append(8192)
 
+    if _effective_climate_weather(battle, defender) == Weather.BLOODMOON and move.type == PokemonType.FAIRY:
+        final_mods.append(2048)
+
+    if (
+        _effective_irritant_weather(battle, attacker) == Weather.SWARMSIGNAL
+        and _weather_is_boosted(battle)
+        and move.type == PokemonType.BUG
+        and PokemonType.BUG in attacker.types
+        and type_effectiveness < 1
+    ):
+        final_mods.append(8192)
+
+    if (
+        _effective_energy_weather(battle, defender) == Weather.DRAGONFORCE
+        and type_effectiveness > 1
+    ):
+        final_mods.append(3277)
+
     if (
         defender.ability in ["multiscale", "shadowshield"]
         and defender.current_hp_fraction == 1
@@ -1532,9 +1827,6 @@ def calculate_final_mods(
     if defender.ability == "fluffy" and move.type == PokemonType.FIRE:
         final_mods.append(8192)
 
-    if defender.ability == "fluffy" and move.type == PokemonType.FIRE:
-        final_mods.append(8192)
-
     if attacker.item == "expertbelt" and type_effectiveness > 1:
         final_mods.append(4915)
     elif attacker.item == "lifeorb":
@@ -1551,9 +1843,17 @@ def calculate_final_mods(
     return final_mods
 
 
-def get_stab_mod(pokemon: Pokemon, move: Move, move_type: Optional[PokemonType]):
+def get_stab_mod(pokemon: Pokemon, move: Move, move_type: Optional[PokemonType], battle: Union[Battle, DoubleBattle]):
     stab_mod = 4096
     if move.id == "struggle":  # struggle is typeless
+        return stab_mod
+
+    if (
+        Weather.FOGHORN in battle.weather
+        and _weather_is_boosted(battle)
+        and move_type == PokemonType.NORMAL
+        and move.id not in FOGHORN_NO_TYPE_CHANGE_MOVES
+    ):
         return stab_mod
 
     if move_type in pokemon.base_types:
@@ -1643,9 +1943,11 @@ def get_move_effectiveness(
     move: Move,
     move_type: PokemonType,
     type: PokemonType,
+    battle: Union[Battle, DoubleBattle],
     is_ghost_revealed: Optional[bool] = False,
     is_gravity: Optional[bool] = False,
     is_ring_target: Optional[bool] = False,
+    defender_item: Optional[str] = None,
 ) -> float:
     if (
         is_ghost_revealed
@@ -1660,6 +1962,20 @@ def get_move_effectiveness(
     elif move.id == "freezedry" and type == PokemonType.WATER:
         return 2
     else:
+        if (
+            move_type == PokemonType.NORMAL
+            and Weather.FOGHORN in battle.weather
+            and type == PokemonType.GHOST
+        ):
+            return 1
+        if (
+            move_type == PokemonType.GHOST
+            and Weather.HAUNT in battle.weather
+            and _weather_is_boosted(battle)
+            and type == PokemonType.NORMAL
+            and defender_item != "energynullifier"
+        ):
+            return 1
         effectiveness = PokemonType.damage_multiplier(
             move_type, type, type_chart=GenData.from_gen(9).type_chart
         )
@@ -1669,6 +1985,13 @@ def get_move_effectiveness(
             effectiveness *= PokemonType.damage_multiplier(
                 PokemonType.FLYING, type, type_chart=GenData.from_gen(9).type_chart
             )
+        if (
+            Weather.DELTASTREAM in battle.weather
+            and type == PokemonType.FLYING
+            and move.category != MoveCategory.STATUS
+            and effectiveness > 1
+        ):
+            return 1
         return effectiveness
 
 

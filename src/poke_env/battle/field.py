@@ -25,6 +25,8 @@ class Field(Enum):
     TRICK_ROOM = auto()
     WATER_SPORT = auto()
     WONDER_ROOM = auto()
+    # swse
+    PEARL_DROP = auto()
 
     def __str__(self) -> str:
         return f"{self.name} (field) object"

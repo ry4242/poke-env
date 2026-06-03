@@ -16,6 +16,9 @@ class Status(Enum):
     PSN = auto()
     SLP = auto()
     TOX = auto()
+    # swse
+    BLT = auto()
+    FST = auto()
 
     def __str__(self) -> str:
         return f"{self.name} (status) object"

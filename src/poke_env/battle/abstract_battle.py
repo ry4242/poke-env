@@ -424,15 +424,29 @@ class AbstractBattle(ABC):
         return illusionist_mon
 
     def _field_end(self, field_str: str):
+        weather = Weather.from_showdown_message(field_str, warn=False)
+        if weather is not Weather.UNKNOWN:
+            self._weather.pop(weather, None)
+            return
+
         field = Field.from_showdown_message(field_str)
-        if field is not Field.UNKNOWN:
-            if field is Field.NEUTRALIZING_GAS:
-                self._fields.pop(field, 0)
-            else:
-                self._fields.pop(field)
+        if field is Field.UNKNOWN:
+            return
+
+        if field is Field.NEUTRALIZING_GAS:
+            self._fields.pop(field, 0)
+        else:
+            self._fields.pop(field)
 
     def field_start(self, field_str: str):
+        weather = Weather.from_showdown_message(field_str, warn=False)
+        if weather is not Weather.UNKNOWN:
+            self._weather_start(field_str)
+            return
+
         field = Field.from_showdown_message(field_str)
+        if field is Field.UNKNOWN:
+            return
 
         if field.is_terrain:
             self._fields = {
@@ -442,6 +456,57 @@ class AbstractBattle(ABC):
             }
 
         self._fields[field] = self.turn
+
+    def _weather_end(self, weather_str: str):
+        weather = Weather.from_showdown_message(weather_str)
+        if weather is not Weather.UNKNOWN:
+            self._weather.pop(weather, None)
+
+    def _weather_category_end(self, weather_event: str):
+        category_weathers = {
+            "-climateWeather": Weather.CLIMATE_WEATHERS,
+            "-irritantWeather": Weather.IRRITANT_WEATHERS,
+            "-energyWeather": Weather.ENERGY_WEATHERS,
+            "-clearingWeather": Weather.CLEARING_WEATHERS,
+            "-cataclysmWeather": Weather.CATACLYSM_WEATHERS,
+        }[weather_event]
+        self._weather = {
+            weather: turn
+            for weather, turn in self._weather.items()
+            if weather not in category_weathers
+        }
+
+    def _weather_start(self, weather_str: str):
+        weather = Weather.from_showdown_message(weather_str)
+        if weather is Weather.UNKNOWN:
+            return
+
+        if weather == Weather.STRONGWINDS:
+            old_weathers = (
+                Weather.CLIMATE_WEATHERS
+                | Weather.IRRITANT_WEATHERS
+                | Weather.ENERGY_WEATHERS
+                | Weather.CATACLYSM_WEATHERS
+            )
+        elif weather.is_climate_weather():
+            old_weathers = Weather.CLIMATE_WEATHERS
+        elif weather.is_irritant_weather():
+            old_weathers = Weather.IRRITANT_WEATHERS
+        elif weather.is_energy_weather():
+            old_weathers = Weather.ENERGY_WEATHERS
+        elif weather.is_clearing_weather():
+            old_weathers = Weather.CLEARING_WEATHERS
+        elif weather.is_cataclysm_weather():
+            old_weathers = Weather.CATACLYSM_WEATHERS
+        else:
+            old_weathers = frozenset()
+
+        self._weather = {
+            active_weather: turn
+            for active_weather, turn in self._weather.items()
+            if active_weather not in old_weathers
+        }
+        self._weather[weather] = self.turn
 
     @staticmethod
     def _split_message_to_replay_event(split_message: List[str]) -> str:
@@ -755,7 +820,19 @@ class AbstractBattle(ABC):
                 self._weather = {}
                 return
             else:
-                self._weather = {Weather.from_showdown_message(weather): self.turn}
+                self._weather_start(weather)
+        elif event[1] in [
+            "-climateWeather",
+            "-irritantWeather",
+            "-energyWeather",
+            "-clearingWeather",
+            "-cataclysmWeather",
+        ]:
+            weather = event[2]
+            if weather == "none":
+                self._weather_category_end(event[1])
+                return
+            self._weather_start(weather)
         elif event[1] == "faint":
             mon = self.get_pokemon(event[2])
             mon.faint()
@@ -934,6 +1011,15 @@ class AbstractBattle(ABC):
         elif event[1] == "-fieldend":
             condition = event[2]
             self._field_end(condition)
+        elif event[1] in [
+            "-climateWeatherEnd",
+            "-irritantWeatherEnd",
+            "-energyWeatherEnd",
+            "-clearingWeatherEnd",
+            "-cataclysmWeatherEnd",
+        ]:
+            condition = event[2]
+            self._weather_end(condition)
         elif event[1] == "-fieldstart":
             condition = event[2]
             self.field_start(condition)

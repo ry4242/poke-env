@@ -35,6 +35,8 @@ class SideCondition(Enum):
     TOXIC_SPIKES = auto()
     WATER_PLEDGE = auto()
     WIDE_GUARD = auto()
+    # swse
+    STEEL_BARBS = auto()
 
     def __str__(self) -> str:
         return f"{self.name} (side condition) object"
@@ -119,4 +121,6 @@ _FROM_DATA: Dict[str, SideCondition] = {
     "TOXICSPIKES": SideCondition.TOXIC_SPIKES,
     "WATERPLEDGE": SideCondition.WATER_PLEDGE,
     "WIDEGUARD": SideCondition.WIDE_GUARD,
+    # swse
+    "STEELBARBS": SideCondition.STEEL_BARBS,
 }

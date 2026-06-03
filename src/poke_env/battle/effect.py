@@ -237,6 +237,35 @@ class Effect(Enum):
     WRAP = auto()
     YAWN = auto()
     ZERO_TO_HERO = auto()
+    # swse
+    BEARHUG = auto()
+    CAFFEINE_CRASH = auto()
+    ENJOIN = auto()
+    LEAF_GUARD = auto()
+    MAGNETIZE_BOOST = auto()
+    MAGNETIZEBOOST1 = auto()
+    MAGNETIZEBOOST2 = auto()
+    MAGNETIZEBOOST3 = auto()
+    MAGNETIZEBOOST4 = auto()
+    MAGNETIZEBOOST5 = auto()
+    MAGNETIZEBOOST6 = auto()
+    MAGNETIZEBOOST7 = auto()
+    MAGNETIZEBOOST8 = auto()
+    POSSESS = auto()
+    PRICKLYPEAR = auto()
+    RESILIENTOIL = auto()
+    ROCKY_BODY = auto()
+    ROOT_CONTROL = auto()
+    SUNSCREEN = auto()
+    TO_BE = auto()
+    WARP_MIST = auto()
+    WARPMISTATK = auto()
+    WARPMISTDEF = auto()
+    WARPMISTSPA = auto()
+    WARPMISTSPD = auto()
+    WARPMISTSPE = auto()
+    WHIRLDUEL = auto()
+    WRANGLE = auto()
 
     def __str__(self) -> str:
         return f"{self.name} (effect) object"
@@ -454,6 +483,18 @@ _FROM_ABILITY_EFFECTS: Set[Effect] = {
     Effect.WATER_VEIL,
     Effect.WIMP_OUT,
     Effect.ZERO_TO_HERO,
+    # swse
+    Effect.ENJOIN,
+    Effect.LEAF_GUARD,
+    Effect.ROCKY_BODY,
+    Effect.ROOT_CONTROL,
+    Effect.TO_BE,
+    Effect.WARP_MIST,
+    Effect.WARPMISTATK,
+    Effect.WARPMISTDEF,
+    Effect.WARPMISTSPA,
+    Effect.WARPMISTSPD,
+    Effect.WARPMISTSPE,
 }
 
 _FROM_ITEM_EFFECTS: Set[Effect] = {
@@ -1006,4 +1047,34 @@ _FROM_DATA: Dict[str, Effect] = {
     "WRAP": Effect.WRAP,
     "YAWN": Effect.YAWN,
     "ZERO_TO_HERO": Effect.ZERO_TO_HERO,
+    # swse
+    "BEARHUG": Effect.BEARHUG,
+    "CAFFEINECRASH": Effect.CAFFEINE_CRASH,
+    "ENJOIN": Effect.ENJOIN,
+    "LEAF_GUARD": Effect.LEAF_GUARD,
+    "MAGNETIZEBOOST": Effect.MAGNETIZE_BOOST,
+    "MAGNETIZEBOOST1": Effect.MAGNETIZEBOOST1,
+    "MAGNETIZEBOOST2": Effect.MAGNETIZEBOOST2,
+    "MAGNETIZEBOOST3": Effect.MAGNETIZEBOOST3,
+    "MAGNETIZEBOOST4": Effect.MAGNETIZEBOOST4,
+    "MAGNETIZEBOOST5": Effect.MAGNETIZEBOOST5,
+    "MAGNETIZEBOOST6": Effect.MAGNETIZEBOOST6,
+    "MAGNETIZEBOOST7": Effect.MAGNETIZEBOOST7,
+    "MAGNETIZEBOOST8": Effect.MAGNETIZEBOOST8,
+    "POSSESS": Effect.POSSESS,
+    "PRICKLYPEAR": Effect.PRICKLYPEAR,
+    "RESILIENTOIL": Effect.RESILIENTOIL,
+    "ROCKYBODY": Effect.ROCKY_BODY,
+    "ROOT_CONTROL": Effect.ROOT_CONTROL,
+    "ROOTCONTROL": Effect.ROOT_CONTROL,
+    "SUNSCREEN": Effect.SUNSCREEN,
+    "TOBE": Effect.TO_BE,
+    "WARPMIST": Effect.WARP_MIST,
+    "WARPMISTATK": Effect.WARPMISTATK,
+    "WARPMISTDEF": Effect.WARPMISTDEF,
+    "WARPMISTSPA": Effect.WARPMISTSPA,
+    "WARPMISTSPD": Effect.WARPMISTSPD,
+    "WARPMISTSPE": Effect.WARPMISTSPE,
+    "WHIRLDUEL": Effect.WHIRLDUEL,
+    "WRANGLE": Effect.WRANGLE,
 }
