@@ -4,7 +4,7 @@ from data_script_utils import STATIC_DATA_ROOT, fetch_and_clean_ps_data
 
 # Fetch latest version
 data = fetch_and_clean_ps_data(
-    "https://raw.githubusercontent.com/ry4242/kaskade-showdown/master/data/learnsets.ts",
+    "https://raw.githubusercontent.com/Kaskade-Showdown/kaskade-showdown/master/data/learnsets.ts",
     deserialize=False,
 )
 

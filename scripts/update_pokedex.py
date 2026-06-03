@@ -60,14 +60,14 @@ def merge_next_gen_data_into_this_gen_data(this_gen_data, next_gen_data, gen):
 
 data_by_gen = {
     CURRENT_GEN: fetch_and_clean_ps_data(
-        "https://raw.githubusercontent.com/ry4242/kaskade-showdown/master/data/pokedex.ts"
+        "https://raw.githubusercontent.com/Kaskade-Showdown/kaskade-showdown/master/data/pokedex.ts"
     )
 }
 
 for gen in range(CURRENT_GEN - 1, 0, -1):
     next_gen_data = deepcopy(data_by_gen[gen + 1])
     this_gen_data = fetch_and_clean_ps_data(
-        f"https://raw.githubusercontent.com/ry4242/kaskade-showdown/master/data/mods/gen{gen}/pokedex.ts"
+        f"https://raw.githubusercontent.com/Kaskade-Showdown/kaskade-showdown/master/data/mods/gen{gen}/pokedex.ts"
     )
 
     data_by_gen[gen] = merge_next_gen_data_into_this_gen_data(
