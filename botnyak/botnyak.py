@@ -1,3 +1,5 @@
+import json
+import os
 from typing import Any, Awaitable
 
 import numpy as np
@@ -15,6 +17,10 @@ from poke_env.player import BattleOrder, DefaultBattleOrder, Player
 
 BATTLE_FORMAT = "gen9swserandombattle"
 N_FEATURES = 12
+_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = os.path.join(_DIR, "botnyak_model")
+STATS_PATH = os.path.join(_DIR, "botnyak_stats.json")
+WINRATES_PATH = os.path.join(_DIR, "winrates.txt")
 
 
 class MaskedActorCriticPolicy(ActorCriticPolicy):
@@ -119,7 +125,6 @@ class SelfPlayEnv(SinglesEnv):
             agent: Box(-1, 4, shape=(N_FEATURES,), dtype=np.float32)
             for agent in self.possible_agents
         }
-
     def calc_reward(self, battle) -> float:
         return self.reward_computing_helper(
             battle,
@@ -133,29 +138,78 @@ class SelfPlayEnv(SinglesEnv):
         return PolicyPlayer.embed_battle(battle)
 
 
+def write_winrates(stats):
+    wins = stats["total_wins"]
+    battles = stats["total_battles"]
+    rate = f"{wins / battles:.1%}" if battles else "N/A"
+    lines = [
+        "Botnyak Win Rates",
+        "=================",
+        f"Win Rate:   {rate:>8}",
+        f"Wins:       {wins:>8,}",
+        f"Battles:    {battles:>8,}",
+        f"Sessions:   {stats['sessions']:>8,}",
+        f"Steps:      {stats['total_steps']:>8,}",
+    ]
+    open(WINRATES_PATH, "w").write("\n".join(lines) + "\n")
+
+
 def train():
+    stats = (
+        json.loads(open(STATS_PATH).read())
+        if os.path.exists(STATS_PATH)
+        else {"sessions": 0, "total_steps": 0, "total_wins": 0, "total_battles": 0}
+    )
+
     num_envs = 2
     env = SelfPlayEnv(battle_format=BATTLE_FORMAT, log_level=40, open_timeout=None)
-    vec_env = ss.pettingzoo_env_to_vec_env(env)
+    vec_env = ss.pettingzoo_env_to_vec_env_v1(env)
     vec_env = ss.concat_vec_envs_v1(
         vec_env,
         num_vec_envs=num_envs,
         num_cpus=num_envs,
         base_class="stable_baselines3",
     )
-    ppo = PPO(
-        MaskedActorCriticPolicy,
-        vec_env,
-        learning_rate=3e-4,
-        n_steps=3072 // (2 * num_envs),
-        batch_size=128,
-        gamma=0.99,
-        ent_coef=0.01,
-        device="cpu",
-    )
+
+    if os.path.exists(MODEL_PATH + ".zip"):
+        ppo = PPO.load(MODEL_PATH, env=vec_env)
+        print(f"Resuming from session {stats['sessions']} ({stats['total_steps']:,} steps trained so far)")
+    else:
+        ppo = PPO(
+            MaskedActorCriticPolicy,
+            vec_env,
+            learning_rate=3e-4,
+            n_steps=3072 // (2 * num_envs),
+            batch_size=128,
+            gamma=0.99,
+            ent_coef=0.01,
+            device="cpu",
+        )
+
     ppo.learn(98_304)
     vec_env.close()
 
+    ppo.save(MODEL_PATH)
+    stats["sessions"] += 1
+    stats["total_steps"] += 98_304
+    stats["total_wins"] += env.agent1.n_won_battles
+    stats["total_battles"] += env.agent1.n_finished_battles
+    open(STATS_PATH, "w").write(json.dumps(stats, indent=2))
+    write_winrates(stats)
+    print(f"Session {stats['sessions']} complete — {stats['total_steps']:,} steps trained total")
+
 
 if __name__ == "__main__":
+    import sys
+    if "--reset-wr" in sys.argv:
+        stats = (
+            json.loads(open(STATS_PATH).read())
+            if os.path.exists(STATS_PATH)
+            else {"sessions": 0, "total_steps": 0, "total_wins": 0, "total_battles": 0}
+        )
+        stats["total_wins"] = 0
+        stats["total_battles"] = 0
+        open(STATS_PATH, "w").write(json.dumps(stats, indent=2))
+        write_winrates(stats)
+        print("Win rate stats reset.")
     train()
