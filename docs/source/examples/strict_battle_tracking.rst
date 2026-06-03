@@ -18,7 +18,7 @@ Prerequisites
     from poke_env.player import RandomPlayer
 
     player = RandomPlayer(
-        battle_format="gen9randombattle",
+        battle_format="gen9swserandombattle",
         strict_battle_tracking=True,
     )
 

@@ -22,7 +22,7 @@ from poke_env.player import (
     SimpleHeuristicsPlayer,
 )
 
-BATTLE_FORMAT = "gen9randombattle"
+BATTLE_FORMAT = "gen9swserandombattle"
 N_FEATURES = 12
 
 

@@ -22,7 +22,7 @@ async def test_laddering_sequential(send_message_mock):
         await asyncio.sleep(0.01)
         interactions.append(f"Battle {player.count} start")
         await player.ps_client._handle_message(
-            f">battle-gen9randombattle-{player.count}\n|init|battle"
+            f">battle-gen9swserandombattle-{player.count}\n|init|battle"
         )
         asyncio.ensure_future(end_battle(player.count))
         player.count += 1
@@ -31,7 +31,7 @@ async def test_laddering_sequential(send_message_mock):
         await asyncio.sleep(0.01)
         interactions.append(f"Battle {count} end")
         await player.ps_client._handle_message(
-            f">battle-gen9randombattle-{count}\n|win|{player.username}"
+            f">battle-gen9swserandombattle-{count}\n|win|{player.username}"
         )
 
     player = RandomPlayer(start_listening=False)
@@ -76,7 +76,7 @@ async def test_laddering_parallel(send_message_mock):
     async def start_battle():
         interactions.append(f"Battle {player.count} start")
         await player.ps_client._handle_message(
-            f">battle-gen9randombattle-{player.count}\n|init|battle"
+            f">battle-gen9swserandombattle-{player.count}\n|init|battle"
         )
         asyncio.ensure_future(end_battle(player.count))
         player.count += 1
@@ -85,7 +85,7 @@ async def test_laddering_parallel(send_message_mock):
         await asyncio.sleep(0.05)
         interactions.append(f"Battle {count} end")
         await player.ps_client._handle_message(
-            f">battle-gen9randombattle-{count}\n|win|{player.username}"
+            f">battle-gen9swserandombattle-{count}\n|win|{player.username}"
         )
 
     player = RandomPlayer(start_listening=False, max_concurrent_battles=3)

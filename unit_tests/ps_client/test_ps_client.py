@@ -126,9 +126,9 @@ async def test_handle_message():
     await client._handle_message(">battle|thing")
     on_battle_message.assert_called_once_with([[">battle", "thing"]])
 
-    await client._handle_message("|pm| opponent| username|/challenge gen9randombattle")
+    await client._handle_message("|pm| opponent| username|/challenge gen9swserandombattle")
     on_challenge_request.assert_called_once_with(
-        ["", "pm", " opponent", " username", "/challenge gen9randombattle"]
+        ["", "pm", " opponent", " username", "/challenge gen9swserandombattle"]
     )
 
     await client._handle_message("|updatesearch")

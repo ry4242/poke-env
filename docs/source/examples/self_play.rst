@@ -40,7 +40,7 @@ The environment is identical to the single-agent example: we subclass ``SinglesE
 
 .. code-block:: python
 
-    BATTLE_FORMAT = "gen9randombattle"
+    BATTLE_FORMAT = "gen9swserandombattle"
     N_FEATURES = 12
 
     class SelfPlayEnv(SinglesEnv):

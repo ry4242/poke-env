@@ -73,8 +73,8 @@ class ObservationTrackingPlayer(Player):
 
 
 async def main():
-    player = ObservationTrackingPlayer(battle_format="gen9randombattle")
-    opponent = RandomPlayer(battle_format="gen9randombattle")
+    player = ObservationTrackingPlayer(battle_format="gen9swserandombattle")
+    opponent = RandomPlayer(battle_format="gen9swserandombattle")
     await player.battle_against(opponent, n_battles=3)
 
 

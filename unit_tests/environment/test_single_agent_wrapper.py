@@ -9,7 +9,7 @@ from poke_env.environment import SingleAgentWrapper
 from poke_env.player import DefaultBattleOrder, SingleBattleOrder
 
 
-def _battle(*, wait=False, teampreview=False, format_="gen9randombattle"):
+def _battle(*, wait=False, teampreview=False, format_="gen9swserandombattle"):
     return SimpleNamespace(
         wait=wait,
         teampreview=teampreview,

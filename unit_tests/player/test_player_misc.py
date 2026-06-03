@@ -146,15 +146,15 @@ async def test_start_timer_on_battle_start(send_message_patch):
     # on
     player = SimplePlayer(start_listening=False, start_timer_on_battle_start=True)
 
-    await player._create_battle(["", "gen9randombattle", "uuu"])
-    # assert player._sent_messages == ["/timer on", "gen9randombattle-uuu"]
+    await player._create_battle(["", "gen9swserandombattle", "uuu"])
+    # assert player._sent_messages == ["/timer on", "gen9swserandombattle-uuu"]
 
-    send_message_patch.assert_called_with("/timer on", "gen9randombattle-uuu")
+    send_message_patch.assert_called_with("/timer on", "gen9swserandombattle-uuu")
 
     # off
     player = SimplePlayer(start_listening=False, start_timer_on_battle_start=False)
 
-    await player._create_battle(["", "gen9randombattle", "uuu"])
+    await player._create_battle(["", "gen9swserandombattle", "uuu"])
     with pytest.raises(AttributeError):
         player._sent_messages
 
@@ -170,8 +170,8 @@ async def test_basic_challenge_handling():
             "pm",
             "Opponent",
             player.username,
-            "/challenge gen9randombattle",
-            "gen9randombattle",
+            "/challenge gen9swserandombattle",
+            "gen9swserandombattle",
             "",
             "",
         ]
@@ -201,8 +201,8 @@ async def test_basic_challenge_handling():
             "pm",
             player.username,
             "Opponent",
-            "/challenge gen9randombattle",
-            "gen9randombattle",
+            "/challenge gen9swserandombattle",
+            "gen9swserandombattle",
             "",
             "",
         ]
@@ -210,7 +210,7 @@ async def test_basic_challenge_handling():
     assert player._challenge_queue.empty()
 
     await player._handle_challenge_request(
-        ["", "pm", "Opponent", player.username, "/challenge gen9randombattle"]
+        ["", "pm", "Opponent", player.username, "/challenge gen9swserandombattle"]
     )
     assert player._challenge_queue.empty()
 
@@ -344,7 +344,7 @@ async def test_parse_showteam(packed_format_teams):
 def test_player_save_replay_delegates_and_supports_leading_gt(tmp_path):
     player = SimplePlayer(start_listening=False)
     battle = Battle(
-        "battle-gen9randombattle-123", player.username, player.logger, gen=9
+        "battle-gen9swserandombattle-123", player.username, player.logger, gen=9
     )
     battle.parse_message(["", "tier", "[Gen 9] Random Battle"])
     battle.won_by(player.username)
@@ -363,4 +363,4 @@ def test_player_save_replay_raises_on_unknown_battle_tag(tmp_path):
     player = SimplePlayer(start_listening=False)
 
     with pytest.raises(KeyError, match="Unknown battle_tag"):
-        player.save_replay("battle-gen9randombattle-missing", tmp_path / "missing.html")
+        player.save_replay("battle-gen9swserandombattle-missing", tmp_path / "missing.html")

@@ -1,4 +1,3 @@
-import asyncio
 from typing import Any, Awaitable
 
 import numpy as np
@@ -12,14 +11,7 @@ from stable_baselines3.common.torch_layers import BaseFeaturesExtractor
 from poke_env.battle import AbstractBattle
 from poke_env.data import GenData
 from poke_env.environment import SinglesEnv
-from poke_env.player import (
-    BattleOrder,
-    DefaultBattleOrder,
-    MaxBasePowerPlayer,
-    Player,
-    RandomPlayer,
-    SimpleHeuristicsPlayer,
-)
+from poke_env.player import BattleOrder, DefaultBattleOrder, Player
 
 BATTLE_FORMAT = "gen9swserandombattle"
 N_FEATURES = 12
@@ -49,9 +41,6 @@ class MaskedActorCriticPolicy(ActorCriticPolicy):
 
 
 class FeaturesExtractor(BaseFeaturesExtractor):
-    """Extracts the observation tensor from the dict obs and declares features_dim
-    so SB3 builds the MLP with the right input size."""
-
     def __init__(self, observation_space):
         super().__init__(observation_space, features_dim=N_FEATURES)
 
@@ -145,7 +134,6 @@ class SelfPlayEnv(SinglesEnv):
 
 
 def train():
-    # setup
     num_envs = 2
     env = SelfPlayEnv(battle_format=BATTLE_FORMAT, log_level=40, open_timeout=None)
     vec_env = ss.pettingzoo_env_to_vec_env(env)
@@ -165,24 +153,8 @@ def train():
         ent_coef=0.01,
         device="cpu",
     )
-
-    # train
     ppo.learn(98_304)
     vec_env.close()
-
-    # evaluate
-    agent = PolicyPlayer(
-        policy=ppo.policy, battle_format=BATTLE_FORMAT, max_concurrent_battles=10
-    )
-    opponents: list[Player] = [
-        c(battle_format=BATTLE_FORMAT, max_concurrent_battles=10)
-        for c in [RandomPlayer, MaxBasePowerPlayer, SimpleHeuristicsPlayer]
-    ]
-    asyncio.run(agent.battle_against(*opponents, n_battles=100))
-    print("--- Win rates vs bots ---")
-    for opp in opponents:
-        win_rate = round(100 * opp.n_lost_battles / opp.n_finished_battles)
-        print(f"{opp.username}: {win_rate}%")
 
 
 if __name__ == "__main__":

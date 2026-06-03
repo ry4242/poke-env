@@ -5,7 +5,7 @@ Reinforcement learning with Stable-Baselines3
 
 The corresponding complete source code can be found `here <https://github.com/hsahovic/poke-env/blob/master/examples/reinforcement_learning.py>`__.
 
-The goal of this example is to demonstrate how to use the ``PokeEnv`` environment with `Stable-Baselines3 <https://stable-baselines3.readthedocs.io/>`__ to train a reinforcement learning agent that plays ``gen9randombattle`` with action masking.
+The goal of this example is to demonstrate how to use the ``PokeEnv`` environment with `Stable-Baselines3 <https://stable-baselines3.readthedocs.io/>`__ to train a reinforcement learning agent that plays ``gen9swserandombattle`` with action masking.
 
 .. note:: This example requires `stable-baselines3 <https://github.com/DLR-RM/stable-baselines3>`__ and `PyTorch <https://pytorch.org/>`__. You can install them by running ``pip install stable-baselines3``.
 
@@ -95,7 +95,7 @@ Our environment subclasses ``SinglesEnv`` and defines the observation space, rew
 
 .. code-block:: python
 
-    BATTLE_FORMAT = "gen9randombattle"
+    BATTLE_FORMAT = "gen9swserandombattle"
 
     class ExampleEnv(SinglesEnv):
         def __init__(self, **kwargs):
