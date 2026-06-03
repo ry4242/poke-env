@@ -178,10 +178,10 @@ class PSClient:
                 # Confirms connection to the server: we can login
                 await self.log_in(split_messages[0])
             elif split_messages[0][1] == "updateuser":
-                if split_messages[0][2] in [
-                    " " + self.username,
-                    " " + self.username + "@!",
-                ]:
+                # Strip leading space and any group prefix character before comparing
+                raw = split_messages[0][2].lstrip(" ").lstrip("~&@%+*#")
+                raw_name = raw.rstrip("@!")
+                if raw_name == self.username or raw == self.username + "@!":
                     # Confirms successful login
                     self.logged_in.set()
                 elif not split_messages[0][2].startswith(" Guest "):

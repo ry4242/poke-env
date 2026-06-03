@@ -122,3 +122,6 @@ replays_*/
 
 # PyCharm
 .idea/
+
+# Botnyak
+botnyak/stats/

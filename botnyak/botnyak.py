@@ -1,5 +1,8 @@
 import json
 import os
+
+from dotenv import load_dotenv
+load_dotenv(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".env"))
 from typing import Any, Awaitable
 
 import numpy as np
@@ -13,14 +16,20 @@ from stable_baselines3.common.torch_layers import BaseFeaturesExtractor
 from poke_env.battle import AbstractBattle
 from poke_env.data import GenData
 from poke_env.environment import SinglesEnv
-from poke_env.player import BattleOrder, DefaultBattleOrder, Player
+from poke_env.concurrency import handle_threaded_coroutines
+from poke_env.player import BattleOrder, DefaultBattleOrder, Player, SimpleHeuristicsPlayer
+from poke_env.ps_client.account_configuration import AccountConfiguration
+from poke_env.ps_client.server_configuration import LocalhostServerConfiguration
 
 BATTLE_FORMAT = "gen9swserandombattle"
 N_FEATURES = 12
 _DIR = os.path.dirname(os.path.abspath(__file__))
-MODEL_PATH = os.path.join(_DIR, "botnyak_model")
-STATS_PATH = os.path.join(_DIR, "botnyak_stats.json")
-WINRATES_PATH = os.path.join(_DIR, "winrates.txt")
+STATS_DIR = os.path.join(_DIR, "stats")
+os.makedirs(STATS_DIR, exist_ok=True)
+MODEL_PATH = os.path.join(STATS_DIR, "botnyak_model")
+STATS_PATH = os.path.join(STATS_DIR, "botnyak_stats.json")
+WINRATES_TRAIN_PATH = os.path.join(STATS_DIR, "winrates_train.txt")
+WINRATES_SERVE_PATH = os.path.join(STATS_DIR, "winrates_serve.txt")
 
 
 class MaskedActorCriticPolicy(ActorCriticPolicy):
@@ -138,27 +147,153 @@ class SelfPlayEnv(SinglesEnv):
         return PolicyPlayer.embed_battle(battle)
 
 
-def write_winrates(stats):
-    wins = stats["total_wins"]
-    battles = stats["total_battles"]
-    rate = f"{wins / battles:.1%}" if battles else "N/A"
-    lines = [
-        "Botnyak Win Rates",
-        "=================",
-        f"Win Rate:   {rate:>8}",
-        f"Wins:       {wins:>8,}",
-        f"Battles:    {battles:>8,}",
-        f"Sessions:   {stats['sessions']:>8,}",
-        f"Steps:      {stats['total_steps']:>8,}",
-    ]
-    open(WINRATES_PATH, "w").write("\n".join(lines) + "\n")
+def _get_species_name(mon) -> str:
+    species = mon.species
+    item = mon.item or ""
+    moves = list(mon.moves.keys())
+
+    s = species.lower()
+
+    if s.startswith("pikachu-") or (s.startswith("pikachu") and s != "pikachu"):
+        return "pikachu"
+    elif s.startswith("unown-") or (s.startswith("unown") and s != "unown"):
+        return "unown"
+    elif s.startswith("basculin-") or (s.startswith("basculin") and s != "basculin"):
+        return "basculin"
+    elif s.startswith("sawsbuck-") or (s.startswith("sawsbuck") and s != "sawsbuck"):
+        return "sawsbuck"
+    elif s.startswith("vivillon-") or (s.startswith("vivillon") and s != "vivillon"):
+        return "vivillon"
+    elif s.startswith("florges-") or (s.startswith("florges") and s != "florges"):
+        return "florges"
+    elif s.startswith("furfrou-") or (s.startswith("furfrou") and s != "furfrou"):
+        return "furfrou"
+    elif s.startswith("minior-") or (s.startswith("minior") and s != "minior"):
+        return "minior"
+    elif s.startswith("toxtricity-") or (s.startswith("toxtricity") and s != "toxtricity"):
+        return "toxtricity"
+    elif s.startswith("tatsugiri-") or (s.startswith("tatsugiri") and s != "tatsugiri"):
+        return "tatsugiri"
+    elif s.startswith("alcremie-") or (s.startswith("alcremie") and s != "alcremie"):
+        return "alcremie"
+    elif s.startswith("deerling-") or (s.startswith("deerling") and s != "deerling"):
+        return "deerling"
+    elif s.startswith("flabébé-") or (s.startswith("flabébé") and s != "flabébé"):
+        return "flabébé"
+    elif s.startswith("botnyak-") or (s.startswith("botnyak") and s != "botnyak"):
+        return "botnyak"
+    elif s in ("gastrodon-east", "gastrodoneast"):
+        return "gastrodon"
+    elif s in ("magearna-original", "magearnaoriginal"):
+        return "magearna"
+    elif s in ("genesect-douse", "genesectdouse"):
+        return "genesect"
+    elif s in ("dudunsparce-three-segment", "dudunsparse-three-segment", "dudunsparce-threesegment", "dudunsparcethreesegment"):
+        return "dudunsparce"
+    elif s in ("maushold-four", "mausholdfourfamily", "mausholdfour"):
+        return "maushold"
+    elif s in ("greninja-bond", "greninjabond"):
+        return "greninja"
+    elif s in ("keldeo-resolute", "keldeoresolute"):
+        return "keldeo"
+    elif s in ("zarude-dada", "zarudedada"):
+        return "zarude"
+    elif s in ("polteageist-antique", "polteageistantique"):
+        return "polteageist"
+    elif s in ("sinistcha-masterpiece", "sinistchamasterpiece"):
+        return "sinistcha"
+    elif s in ("squawkabilly-blue", "squawkabillyblue"):
+        return "squawkabilly"
+    elif s in ("squawkabilly-white", "squawkabillywhite"):
+        return "squawkabillyyellow"
+    elif s in ("poltchageist-artisan", "poltchageistartisan"):
+        return "poltchageist"
+    elif s in ("shellos-east", "shelloseast"):
+        return "shellos"
+    elif s in ("sinistea-antique", "sinisteaantique"):
+        return "sinistea"
+    elif s == "zacian" and item == "rustedsword":
+        return "zaciancrowned"
+    elif s == "zamazenta" and item == "rustedshield":
+        return "zamazentacrowned"
+    elif s == "kyogre" and item == "blueorb":
+        return "kyogreprimal"
+    elif s == "groudon" and item == "redorb":
+        return "groudonprimal"
+    elif s == "rayquaza" and "dragonascent" in moves:
+        return "rayquazamega"
+    elif s == "castform" and item == "whirligig":
+        return "castformwhirly"
+    elif s in ("snover-lowland", "snowerlowland") and item == "weathervane":
+        return "snover"
+    elif s == "snover" and item == "weathervane":
+        return "snoverlowland"
+    elif s in ("abomasnow-lowland", "abomasnowlowland") and item == "weathervane":
+        return "abomasnow"
+    elif s == "abomasnow" and item == "weathervane":
+        return "abomasnowlowland"
+    elif s == "bearvoyance" and item in ("weathervane", "thickclub"):
+        return "bearvoyanceawakened"
+    elif s == "blurrun" and item == "weathervane":
+        return "blurruncharged"
+    elif s == "drout" and item == "weathervane":
+        return "droutdry"
+    return species
+
+
+def collect_pokemon_stats(battles):
+    pokemon = {}
+    for battle in battles.values():
+        if battle.won is None:
+            continue
+        for mon in battle.team.values():
+            name = _get_species_name(mon)
+            if name not in pokemon:
+                pokemon[name] = {"wins": 0, "generated": 0}
+            pokemon[name]["generated"] += 1
+            if battle.won:
+                pokemon[name]["wins"] += 1
+    return pokemon
+
+
+def _pokemon_table(pokemon):
+    rows = sorted(
+        [
+            (name, d["wins"], d["generated"], d["wins"] / d["generated"])
+            for name, d in pokemon.items()
+            if d["generated"] > 0
+        ],
+        key=lambda r: r[3],
+        reverse=True,
+    )
+    col = max((len(r[0]) for r in rows), default=7)
+    header = f"{'Pokemon':<{col}}  {'Win Rate':>8}  {'Wins':>6}  {'Generated':>9}"
+    sep = "-" * len(header)
+    lines = [header, sep]
+    for name, wins, generated, rate in rows:
+        lines.append(f"{name:<{col}}  {rate:>8.1%}  {wins:>6,}  {generated:>9,}")
+    return lines
+
+
+def write_winrates_train(stats):
+    lines = ["Botnyak — Training Win Rates", "=" * 40]
+    lines += _pokemon_table(stats.get("pokemon", {}))
+    lines += ["", f"Sessions: {stats['sessions']:,}  |  Steps: {stats['total_steps']:,}"]
+    open(WINRATES_TRAIN_PATH, "w").write("\n".join(lines) + "\n")
+
+
+def write_winrates_serve(stats):
+    lines = ["Botnyak — Serve Win Rates", "=" * 40]
+    lines += _pokemon_table(stats.get("pokemon", {}))
+    lines += ["", f"Sessions: {stats['sessions']:,}  |  Steps: {stats['total_steps']:,}"]
+    open(WINRATES_SERVE_PATH, "w").write("\n".join(lines) + "\n")
 
 
 def train():
     stats = (
         json.loads(open(STATS_PATH).read())
         if os.path.exists(STATS_PATH)
-        else {"sessions": 0, "total_steps": 0, "total_wins": 0, "total_battles": 0}
+        else {"sessions": 0, "total_steps": 0, "pokemon": {}}
     )
 
     num_envs = 2
@@ -189,27 +324,114 @@ def train():
     ppo.learn(98_304)
     vec_env.close()
 
+    agent = PolicyPlayer(policy=ppo.policy, battle_format=BATTLE_FORMAT, max_concurrent_battles=50)
+    opponent = SimpleHeuristicsPlayer(battle_format=BATTLE_FORMAT, max_concurrent_battles=50)
+    import asyncio as _asyncio
+    _asyncio.run(agent.battle_against(opponent, n_battles=100))
+
+    for name, d in collect_pokemon_stats(agent.battles).items():
+        entry = stats["pokemon"].setdefault(name, {"wins": 0, "generated": 0})
+        entry["wins"] += d["wins"]
+        entry["generated"] += d["generated"]
+
+    session_wins = agent.n_won_battles
+    session_wr = session_wins / 100
     ppo.save(MODEL_PATH)
     stats["sessions"] += 1
     stats["total_steps"] += 98_304
-    stats["total_wins"] += env.agent1.n_won_battles
-    stats["total_battles"] += env.agent1.n_finished_battles
     open(STATS_PATH, "w").write(json.dumps(stats, indent=2))
-    write_winrates(stats)
-    print(f"Session {stats['sessions']} complete — {stats['total_steps']:,} steps trained total")
+    write_winrates_train(stats)
+    print(f"Session {stats['sessions']} complete — {stats['total_steps']:,} steps trained | eval vs heuristics: {session_wins}/100 ({session_wr:.0%})")
+
+
+async def serve():
+    if not os.path.exists(MODEL_PATH + ".zip"):
+        print("No trained model found. Run with --train first.")
+        return
+
+    stats = (
+        json.loads(open(STATS_PATH).read())
+        if os.path.exists(STATS_PATH)
+        else {"sessions": 0, "total_steps": 0, "pokemon": {}}
+    )
+
+    bot = PolicyPlayer(
+        policy=PPO.load(MODEL_PATH).policy,
+        account_configuration=AccountConfiguration("Botnyak", os.environ.get("BOTNYAK_PASSWORD")),
+        battle_format=BATTLE_FORMAT,
+        avatar="ash",
+        max_concurrent_battles=50,
+        start_timer_on_battle_start=True,
+        server_configuration=LocalhostServerConfiguration,
+    )
+
+    async def _join_lobby():
+        await bot.ps_client.logged_in.wait()
+        await bot.ps_client.send_message("/join lobby")
+
+    await handle_threaded_coroutines(_join_lobby(), bot.ps_client.loop)
+    print("Botnyak is online. Accepting challenges...")
+
+    seen_battles = set()
+    while True:
+        await bot.accept_challenges(None, 1)
+        new_battles = {tag: b for tag, b in bot.battles.items() if tag not in seen_battles}
+        seen_battles.update(new_battles)
+        for name, d in collect_pokemon_stats(new_battles).items():
+            entry = stats["pokemon"].setdefault(name, {"wins": 0, "generated": 0})
+            entry["wins"] += d["wins"]
+            entry["generated"] += d["generated"]
+        open(STATS_PATH, "w").write(json.dumps(stats, indent=2))
+        write_winrates_serve(stats)
 
 
 if __name__ == "__main__":
+    import asyncio
     import sys
-    if "--reset-wr" in sys.argv:
+
+    if "--help" in sys.argv:
+        print("""
+Botnyak — a self-improving Pokémon Showdown bot.
+
+Trains via PPO self-play in gen9swserandombattle, evaluates against
+SimpleHeuristicsPlayer after each session, and accepts challenges
+from users on a local Showdown server.
+
+Usage:
+  python botnyak.py                  Train one session (~98k steps)
+  python botnyak.py --loops=N        Train N sessions back to back
+  python botnyak.py --serve          Load saved model and accept challenges
+  python botnyak.py --reset-wr       Reset pokemon win rate stats (keeps model/training progress)
+  python botnyak.py --help           Show this message
+
+Files written to botnyak/stats/:
+  botnyak_model.zip       Saved PPO model (loaded automatically each session)
+  botnyak_stats.json      Raw cumulative stats
+  winrates_train.txt      Per-pokemon win rates from post-training eval vs SimpleHeuristicsPlayer
+  winrates_serve.txt      Per-pokemon win rates from real user challenges
+
+Config:
+  botnyak/.env            Set BOTNYAK_PASSWORD=yourpassword to protect the bot's account
+""".strip())
+    elif "--reset-wr" in sys.argv:
         stats = (
             json.loads(open(STATS_PATH).read())
             if os.path.exists(STATS_PATH)
-            else {"sessions": 0, "total_steps": 0, "total_wins": 0, "total_battles": 0}
+            else {"sessions": 0, "total_steps": 0, "pokemon": {}}
         )
-        stats["total_wins"] = 0
-        stats["total_battles"] = 0
+        stats["pokemon"] = {}
         open(STATS_PATH, "w").write(json.dumps(stats, indent=2))
-        write_winrates(stats)
+        write_winrates_train(stats)
+        write_winrates_serve(stats)
         print("Win rate stats reset.")
-    train()
+    elif "--serve" in sys.argv:
+        asyncio.run(serve())
+    else:
+        loops = 1
+        for arg in sys.argv[1:]:
+            if arg.startswith("--loops="):
+                loops = int(arg.split("=")[1])
+        for i in range(loops):
+            if loops > 1:
+                print(f"--- Loop {i + 1}/{loops} ---")
+            train()
